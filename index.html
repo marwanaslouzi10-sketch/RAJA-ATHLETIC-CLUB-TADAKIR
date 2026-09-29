@@ -3,52 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>RCA TADAKIR | Raja Club Athletic</title>
+<title>RCA TADAKIR</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    min-height:100%;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#020604;
-    color:white;
+    color:#fff;
     overflow-x:hidden;
 }
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
+/* =========================
+   PAGES
+========================= */
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
+.page{
+    min-height:100vh;
+    min-height:100dvh;
+    width:100%;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:30px 18px;
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(0,220,100,.18),
+            circle at 50% 10%,
+            rgba(0,210,95,.20),
             transparent 35%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(0,120,50,.12),
-            transparent 30%
         ),
         linear-gradient(
             135deg,
@@ -56,95 +51,42 @@ body::before{
             #06150c,
             #010302
         );
-
-    z-index:-2;
 }
 
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        );
-
-    background-size:40px 40px;
-
-    z-index:-1;
-}
-
-/* =========================================================
-   PAGE SYSTEM
-========================================================= */
-
-.page{
-    display:none;
-
-    width:100%;
-    min-height:100vh;
-    min-height:100dvh;
-
-    padding:35px 20px;
-
-    align-items:center;
-    justify-content:center;
-
-    animation:pageIn .45s ease;
-}
-
-.page.active{
+.page:target{
     display:flex;
 }
 
-@keyframes pageIn{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
+/* الصفحة الأولى تظهر افتراضياً */
+#home{
+    display:flex;
 }
 
-/* =========================================================
+/* =========================
    CONTAINER
-========================================================= */
+========================= */
 
 .container{
     width:min(1000px,100%);
     text-align:center;
 }
 
-/* =========================================================
+/* =========================
    LOGO
-========================================================= */
+========================= */
 
 .logo{
     width:190px;
     max-width:55vw;
 
-    object-fit:contain;
-
     filter:
-        drop-shadow(0 0 15px rgba(0,220,100,.45))
-        drop-shadow(0 0 40px rgba(0,180,70,.25));
+        drop-shadow(0 0 15px rgba(0,220,100,.5))
+        drop-shadow(0 0 40px rgba(0,150,60,.3));
 
-    animation:logoFloat 3s ease-in-out infinite;
+    animation:floatLogo 3s ease-in-out infinite;
 }
 
-@keyframes logoFloat{
+@keyframes floatLogo{
 
     0%,100%{
         transform:translateY(0);
@@ -153,33 +95,26 @@ body::after{
     50%{
         transform:translateY(-10px);
     }
-
 }
 
-/* =========================================================
-   TITLES
-========================================================= */
+/* =========================
+   TEXT
+========================= */
 
 h1{
-    margin-top:25px;
-
     font-size:clamp(42px,8vw,82px);
-
     font-weight:900;
-
-    line-height:1;
+    margin-top:25px;
 }
 
 h2{
     font-size:clamp(30px,6vw,58px);
-
     font-weight:900;
-
     margin-bottom:20px;
 }
 
 .green{
-    color:#15d96d;
+    color:#13d66d;
 }
 
 .gold{
@@ -187,79 +122,58 @@ h2{
 }
 
 .subtitle{
-    margin-top:15px;
-
-    color:#9ba69f;
-
+    color:#a1aaa5;
     letter-spacing:5px;
-
+    margin-top:15px;
     font-size:13px;
 }
 
-/* =========================================================
-   TEXT
-========================================================= */
-
 .text{
     width:min(800px,100%);
-
     margin:18px auto;
-
-    color:#d3d8d5;
-
+    color:#d5dad7;
     line-height:1.8;
-
     font-size:17px;
 }
 
-/* =========================================================
+/* =========================
    CARD
-========================================================= */
+========================= */
 
 .card{
     width:min(850px,100%);
-
     margin:20px auto;
-
     padding:30px;
 
     border-radius:25px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.025)
-        );
+    background:rgba(255,255,255,.05);
 
     border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.35);
+        0 20px 70px rgba(0,0,0,.35);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(10px);
 }
 
-/* =========================================================
-   BUTTON
-========================================================= */
+/* =========================
+   HTML NAV BUTTON
+========================= */
 
-.main-btn{
-
+.next-btn,
+.ticket-btn{
     display:inline-flex;
 
     align-items:center;
     justify-content:center;
 
     width:min(300px,100%);
-
     min-height:62px;
 
     margin-top:25px;
 
     padding:15px 30px;
-
-    border:none;
 
     border-radius:16px;
 
@@ -270,13 +184,15 @@ h2{
             #13d86b
         );
 
-    color:white;
+    border:2px solid #13d66d;
+
+    color:#fff;
+
+    text-decoration:none;
 
     font-size:18px;
 
     font-weight:900;
-
-    cursor:pointer;
 
     box-shadow:
         0 0 30px rgba(0,210,100,.25);
@@ -284,50 +200,46 @@ h2{
     transition:.25s;
 }
 
-.main-btn:hover{
-
+.next-btn:hover,
+.ticket-btn:hover{
     transform:translateY(-4px);
 
     box-shadow:
         0 0 40px rgba(0,220,100,.5);
 }
 
-.main-btn:active{
-
+.next-btn:active,
+.ticket-btn:active{
     transform:scale(.96);
-
 }
 
-/* =========================================================
+/* =========================
    CURVA
-========================================================= */
+========================= */
 
 .curva{
+    display:block;
 
     width:min(850px,100%);
-
-    max-height:470px;
+    max-height:480px;
 
     object-fit:cover;
-
-    display:block;
 
     margin:20px auto;
 
     border-radius:25px;
 
-    border:2px solid rgba(20,220,100,.35);
+    border:2px solid rgba(20,220,100,.4);
 
     box-shadow:
         0 20px 70px rgba(0,0,0,.5);
 }
 
-/* =========================================================
+/* =========================
    ROUNDS
-========================================================= */
+========================= */
 
 .rounds{
-
     width:min(850px,100%);
 
     margin:30px auto;
@@ -341,8 +253,9 @@ h2{
 }
 
 .round{
+    min-height:110px;
 
-    min-height:115px;
+    padding:15px;
 
     border-radius:18px;
 
@@ -358,78 +271,56 @@ h2{
 }
 
 .round:hover{
-
-    transform:translateY(-5px);
-
     border-color:#13d66d;
-
+    transform:translateY(-5px);
 }
 
 .round.selected{
-
     background:
         linear-gradient(
             135deg,
             #087b40,
-            #12ce66
+            #13cc67
         );
 
-    border-color:white;
+    border-color:#fff;
 
     box-shadow:
         0 0 30px rgba(0,220,100,.35);
-
 }
 
 .round-number{
-
+    color:#9ba69f;
     font-size:13px;
-
-    color:#a8b0ab;
-
     margin-bottom:10px;
 }
 
-.round.selected .round-number{
-    color:white;
-}
-
 .round-match{
-
     font-size:17px;
-
     font-weight:900;
 }
 
-/* =========================================================
+/* =========================
    FORM
-========================================================= */
+========================= */
 
 .form{
-
     width:min(600px,100%);
-
     margin:auto;
 }
 
-.form-group{
-
+.group{
     text-align:left;
-
     margin-bottom:20px;
 }
 
-.form-group label{
-
+.group label{
     display:block;
-
     margin-bottom:8px;
-
     font-weight:900;
 }
 
-.form-group input{
-
+.group input{
     width:100%;
 
     padding:17px;
@@ -447,39 +338,30 @@ h2{
     font-size:16px;
 }
 
-.form-group input:focus{
-
+.group input:focus{
     border-color:#13d66d;
 
     box-shadow:
         0 0 20px rgba(0,220,100,.15);
-
 }
 
-/* =========================================================
+/* =========================
    SEATS
-========================================================= */
+========================= */
 
 .seat-title{
-
     text-align:left;
-
-    margin:25px 0 12px;
-
     font-weight:900;
+    margin:25px 0 12px;
 }
 
 .seats{
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:15px;
 }
 
 .seat{
-
     padding:25px 15px;
 
     border-radius:18px;
@@ -488,7 +370,7 @@ h2{
 
     background:#07110b;
 
-    color:white;
+    color:#fff;
 
     cursor:pointer;
 
@@ -496,70 +378,92 @@ h2{
 }
 
 .seat:hover{
-
     border-color:#13d66d;
-
     transform:translateY(-3px);
 }
 
 .seat.selected{
-
     border-color:#13d66d;
 
-    background:
-        rgba(0,180,80,.25);
+    background:rgba(0,180,80,.25);
 
     box-shadow:
         0 0 25px rgba(0,220,100,.25);
 }
 
 .seat-name{
-
     font-size:23px;
-
     font-weight:900;
 }
 
 .seat-price{
-
     margin-top:8px;
-
     color:#d9b84d;
-
     font-size:25px;
-
     font-weight:900;
 }
 
-/* =========================================================
+/* =========================
+   ACTION BUTTON
+========================= */
+
+.action-btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:min(300px,100%);
+    min-height:62px;
+
+    margin-top:25px;
+
+    padding:15px 30px;
+
+    border-radius:16px;
+
+    border:2px solid #13d66d;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087b40,
+            #13d86b
+        );
+
+    color:#fff;
+
+    font-size:18px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 30px rgba(0,210,100,.25);
+}
+
+/* =========================
    ERROR
-========================================================= */
+========================= */
 
 .error{
-
     min-height:25px;
-
     margin:15px 0;
-
     color:#ff5b5b;
-
     font-weight:bold;
 }
 
-/* =========================================================
+/* =========================
    SECURITY
-========================================================= */
+========================= */
 
 .security-box{
-
     width:min(560px,100%);
-
     margin:auto;
 }
 
 .security-question{
-
-    margin:25px 0;
+    margin:25px auto;
 
     padding:25px;
 
@@ -576,22 +480,18 @@ h2{
     font-weight:900;
 
     letter-spacing:8px;
-
-    box-shadow:
-        0 0 30px rgba(0,220,100,.12);
 }
 
-/* =========================================================
+/* =========================
    TICKET
-========================================================= */
+========================= */
 
 .ticket{
-
     width:min(850px,100%);
 
     margin:20px auto;
 
-    background:#f3f7f4;
+    background:#f4f8f5;
 
     color:#07110b;
 
@@ -604,7 +504,6 @@ h2{
 }
 
 .ticket-header{
-
     display:flex;
 
     align-items:center;
@@ -615,11 +514,10 @@ h2{
 
     background:#087b40;
 
-    color:white;
+    color:#fff;
 }
 
 .ticket-logo{
-
     width:72px;
     height:72px;
 
@@ -633,31 +531,24 @@ h2{
 }
 
 .ticket-title{
-
     text-align:left;
 }
 
 .ticket-title h3{
-
     font-size:24px;
-
-    margin-bottom:5px;
 }
 
 .ticket-title p{
-
+    margin-top:5px;
     color:#d9b84d;
-
     font-weight:900;
 }
 
 .ticket-body{
-
     padding:30px;
 }
 
 .ticket-match{
-
     text-align:center;
 
     font-size:34px;
@@ -668,7 +559,6 @@ h2{
 }
 
 .ticket-grid{
-
     display:grid;
 
     grid-template-columns:1fr 1fr;
@@ -677,7 +567,6 @@ h2{
 }
 
 .ticket-info{
-
     padding:15px;
 
     border-radius:12px;
@@ -688,32 +577,23 @@ h2{
 }
 
 .ticket-label{
-
     color:#657168;
-
     font-size:11px;
-
     font-weight:bold;
 }
 
 .ticket-value{
-
     margin-top:5px;
-
     font-weight:900;
-
     word-break:break-word;
 }
 
 .dashed{
-
     border-top:3px dashed #87938b;
-
     margin:28px 0;
 }
 
 .ticket-bottom{
-
     display:grid;
 
     grid-template-columns:1fr 160px;
@@ -724,7 +604,6 @@ h2{
 }
 
 .barcode{
-
     display:flex;
 
     align-items:stretch;
@@ -739,25 +618,18 @@ h2{
 }
 
 .bar{
-
     background:#07110b;
-
     height:100%;
 }
 
 .ticket-id{
-
     margin-top:8px;
-
     color:#657168;
-
     font-size:12px;
 }
 
 .qr{
-
     width:150px;
-
     height:150px;
 
     padding:6px;
@@ -767,12 +639,11 @@ h2{
     border-radius:8px;
 }
 
-/* =========================================================
+/* =========================
    SUCCESS
-========================================================= */
+========================= */
 
 .success{
-
     width:min(850px,100%);
 
     margin:20px auto;
@@ -788,45 +659,9 @@ h2{
     border:1px solid rgba(20,220,100,.3);
 }
 
-/* =========================================================
-   PRINT
-========================================================= */
-
-@media print{
-
-    body{
-        background:white;
-    }
-
-    body::before,
-    body::after{
-        display:none;
-    }
-
-    .page{
-        display:none!important;
-    }
-
-    #ticketPage{
-        display:flex!important;
-        min-height:auto!important;
-        padding:0!important;
-    }
-
-    .success,
-    .print-button{
-        display:none!important;
-    }
-
-    .ticket{
-        box-shadow:none;
-        border:1px solid #ccc;
-    }
-}
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:700px){
 
@@ -893,30 +728,56 @@ h2{
         font-size:28px;
         letter-spacing:5px;
     }
-
 }
 
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    body{
+        background:white;
+    }
+
+    .page{
+        display:none !important;
+    }
+
+    #ticketPage{
+        display:flex !important;
+        min-height:auto !important;
+        padding:0 !important;
+    }
+
+    .success,
+    .print-button{
+        display:none !important;
+    }
+
+    .ticket{
+        box-shadow:none;
+        border:1px solid #ccc;
+    }
+}
 </style>
 </head>
 
 <body>
 
 
-<!-- =========================================================
-     PAGE 1 — WELCOME
-========================================================= -->
+<!-- =====================================================
+     HOME
+===================================================== -->
 
-<section
-    class="page active"
-    id="homePage"
->
+<section class="page" id="home">
 
 <div class="container">
 
 <img
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    class="logo"
-    alt="Raja Club Athletic"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="logo"
+alt="RCA"
 >
 
 <h1>
@@ -928,33 +789,30 @@ Bienvenue
 RAJA CLUB ATHLETIC
 </div>
 
-<button
-    class="main-btn"
-    id="next1"
+<a
+href="#infoPage"
+class="next-btn"
 >
 NEXT ✓
-</button>
+</a>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
-     PAGE 2 — RCA
-========================================================= -->
+<!-- =====================================================
+     RCA INFO
+===================================================== -->
 
-<section
-    class="page"
-    id="infoPage"
->
+<section class="page" id="infoPage">
 
 <div class="container">
 
 <img
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    class="logo"
-    alt="RCA"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="logo"
+alt="RCA"
 >
 
 <h2>
@@ -965,38 +823,34 @@ NEXT ✓
 
 <p class="text">
 Le Raja Club Athletic est un club sportif marocain
-fondé à Casablanca. Il possède une histoire importante
-dans le football marocain et une identité fortement liée
-à ses supporters.
+fondé à Casablanca. Le club possède une longue histoire
+dans le football marocain et une forte identité auprès
+de ses supporters.
 </p>
 
 <p class="text">
-Bienvenue sur la plateforme digitale de billetterie
-RCA TADAKIR.
+Bienvenue sur la plateforme digitale RCA TADAKIR.
 </p>
 
 </div>
 
-<button
-    class="main-btn"
-    id="next2"
+<a
+href="#curvaPage"
+class="next-btn"
 >
 NEXT ✓
-</button>
+</a>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
-     PAGE 3 — CURVA
-========================================================= -->
+<!-- =====================================================
+     CURVA
+===================================================== -->
 
-<section
-    class="page"
-    id="curvaPage"
->
+<section class="page" id="curvaPage">
 
 <div class="container">
 
@@ -1013,41 +867,38 @@ MAGANA
 </h2>
 
 <img
-    src="IMG_0062.webp"
-    class="curva"
-    alt="Curva Sud Magana"
+src="IMG_0062.webp"
+class="curva"
+alt="Curva Sud Magana"
 >
 
 <div class="card">
 
 <p class="text">
-La Curva Sud Magana est associée à la culture des
-supporters du Raja, aux chants, aux tifos et à
-l'ambiance des tribunes.
+La Curva Sud Magana représente une partie emblématique
+de la culture des supporters du Raja, avec les chants,
+les tifos et l'ambiance des tribunes.
 </p>
 
 </div>
 
-<button
-    class="main-btn"
-    id="next3"
+<a
+href="#roundsPage"
+class="next-btn"
 >
 NEXT ✓
-</button>
+</a>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
-     PAGE 4 — ROUNDS
-========================================================= -->
+<!-- =====================================================
+     ROUNDS
+===================================================== -->
 
-<section
-    class="page"
-    id="roundsPage"
->
+<section class="page" id="roundsPage">
 
 <div class="container">
 
@@ -1062,17 +913,17 @@ MATCHES
 </h2>
 
 <p class="text">
-Sélectionnez le Round que vous souhaitez regarder.
+Sélectionnez un Round.
 </p>
-
 
 <div class="rounds">
 
 
 <button
-    class="round"
-    data-round="ROUND 1"
-    data-match="JSK VS RCA"
+type="button"
+class="round"
+data-round="ROUND 1"
+data-match="JSK VS RCA"
 >
 
 <div class="round-number">
@@ -1087,9 +938,10 @@ JSK VS RCA
 
 
 <button
-    class="round"
-    data-round="ROUND 2"
-    data-match="RCA VS CRB"
+type="button"
+class="round"
+data-round="ROUND 2"
+data-match="RCA VS CRB"
 >
 
 <div class="round-number">
@@ -1104,9 +956,10 @@ RCA VS CRB
 
 
 <button
-    class="round"
-    data-round="ROUND 3"
-    data-match="WAC VS RCA"
+type="button"
+class="round"
+data-round="ROUND 3"
+data-match="WAC VS RCA"
 >
 
 <div class="round-number">
@@ -1121,9 +974,10 @@ WAC VS RCA
 
 
 <button
-    class="round"
-    data-round="ROUND 4"
-    data-match="RCA VS IRT"
+type="button"
+class="round"
+data-round="ROUND 4"
+data-match="RCA VS IRT"
 >
 
 <div class="round-number">
@@ -1138,9 +992,10 @@ RCA VS IRT
 
 
 <button
-    class="round"
-    data-round="ROUND 5"
-    data-match="KAC VS RCA"
+type="button"
+class="round"
+data-round="ROUND 5"
+data-match="KAC VS RCA"
 >
 
 <div class="round-number">
@@ -1155,9 +1010,10 @@ KAC VS RCA
 
 
 <button
-    class="round"
-    data-round="ROUND 6"
-    data-match="RCA VS KACM"
+type="button"
+class="round"
+data-round="ROUND 6"
+data-match="RCA VS KACM"
 >
 
 <div class="round-number">
@@ -1172,9 +1028,10 @@ RCA VS KACM
 
 
 <button
-    class="round"
-    data-round="ROUND 7"
-    data-match="CRB VS RCA"
+type="button"
+class="round"
+data-round="ROUND 7"
+data-match="CRB VS RCA"
 >
 
 <div class="round-number">
@@ -1189,9 +1046,10 @@ CRB VS RCA
 
 
 <button
-    class="round"
-    data-round="ROUND 8"
-    data-match="RCA VS MAS"
+type="button"
+class="round"
+data-round="ROUND 8"
+data-match="RCA VS MAS"
 >
 
 <div class="round-number">
@@ -1204,29 +1062,33 @@ RCA VS MAS
 
 </button>
 
+
 </div>
 
 
-<button
-    class="main-btn"
-    id="getTicket"
+<!--
+GET TICKET is now a normal HTML link.
+JavaScript only checks whether a round is selected.
+-->
+
+<a
+href="#formPage"
+class="ticket-btn"
+id="getTicket"
 >
 GET TICKET 🎟️
-</button>
+</a>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
-     PAGE 5 — FORM
-========================================================= -->
+<!-- =====================================================
+     FORM
+===================================================== -->
 
-<section
-    class="page"
-    id="formPage"
->
+<section class="page" id="formPage">
 
 <div class="container">
 
@@ -1244,33 +1106,31 @@ YOUR TICKET
 <div class="card form">
 
 
-<div class="form-group">
+<div class="group">
 
 <label>
 User roblox :
 </label>
 
 <input
-    id="robloxInput"
-    type="text"
-    autocomplete="off"
-    placeholder="Enter your Roblox username"
+type="text"
+id="robloxInput"
+placeholder="Enter your Roblox username"
 >
 
 </div>
 
 
-<div class="form-group">
+<div class="group">
 
 <label>
 User discord :
 </label>
 
 <input
-    id="discordInput"
-    type="text"
-    autocomplete="off"
-    placeholder="Enter your Discord username"
+type="text"
+id="discordInput"
+placeholder="Enter your Discord username"
 >
 
 </div>
@@ -1283,11 +1143,11 @@ Seat location:
 
 <div class="seats">
 
-
 <button
-    class="seat"
-    data-seat="VIRAGE"
-    data-price="5"
+type="button"
+class="seat"
+data-seat="VIRAGE"
+data-price="5"
 >
 
 <div class="seat-name">
@@ -1302,9 +1162,10 @@ $5
 
 
 <button
-    class="seat"
-    data-seat="VIP"
-    data-price="100"
+type="button"
+class="seat"
+data-seat="VIP"
+data-price="100"
 >
 
 <div class="seat-name">
@@ -1317,22 +1178,27 @@ $100
 
 </button>
 
-
 </div>
 
 
 <div
-    class="error"
-    id="formError"
+class="error"
+id="formError"
 ></div>
 
 
-<button
-    class="main-btn"
-    id="confirmBtn"
+<!--
+CONFIRMER uses HTML navigation.
+JS can cancel it when information is missing.
+-->
+
+<a
+href="#securityPage"
+class="action-btn"
+id="confirmBtn"
 >
 CONFIRMER ✓
-</button>
+</a>
 
 </div>
 
@@ -1341,68 +1207,59 @@ CONFIRMER ✓
 </section>
 
 
-<!-- =========================================================
-     PAGE 6 — SECURITY
-========================================================= -->
+<!-- =====================================================
+     SECURITY
+===================================================== -->
 
-<section
-    class="page"
-    id="securityPage"
->
+<section class="page" id="securityPage">
 
 <div class="container">
 
 <div class="security-box">
 
 <img
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    class="logo"
-    alt="RCA"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="logo"
+alt="RCA"
 >
 
 <h2>
 SECURITY
 </h2>
 
-
 <div class="security-question">
 G ..... W 9
 </div>
-
 
 <p class="text">
 ملاحظة: أجب على السؤال للتمكن من إتمام عملية شراء التذكرة
 </p>
 
-
 <div class="card">
 
-
-<div class="form-group">
+<div class="group">
 
 <label>
 Enter answer:
 </label>
 
 <input
-    id="securityInput"
-    type="text"
-    autocomplete="off"
-    placeholder="Enter security answer"
+type="text"
+id="securityInput"
+placeholder="Enter answer"
 >
 
 </div>
 
-
 <div
-    class="error"
-    id="securityError"
+class="error"
+id="securityError"
 ></div>
 
-
 <button
-    class="main-btn"
-    id="verifyBtn"
+type="button"
+class="action-btn"
+id="verifyBtn"
 >
 VERIFY ✓
 </button>
@@ -1416,14 +1273,11 @@ VERIFY ✓
 </section>
 
 
-<!-- =========================================================
-     PAGE 7 — TICKET
-========================================================= -->
+<!-- =====================================================
+     TICKET
+===================================================== -->
 
-<section
-    class="page"
-    id="ticketPage"
->
+<section class="page" id="ticketPage">
 
 <div class="container">
 
@@ -1440,13 +1294,12 @@ CONFIRMED ✓
 
 <div class="ticket">
 
-
 <div class="ticket-header">
 
 <img
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    class="ticket-logo"
-    alt="RCA"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="ticket-logo"
+alt="RCA"
 >
 
 <div class="ticket-title">
@@ -1466,12 +1319,11 @@ OFFICIAL DIGITAL TICKET
 
 <div class="ticket-body">
 
-
 <div
-    class="ticket-match"
-    id="ticketMatch"
+class="ticket-match"
+id="ticketMatch"
 >
-RCA VS RCA
+-
 </div>
 
 
@@ -1485,8 +1337,8 @@ ROUND
 </div>
 
 <div
-    class="ticket-value"
-    id="ticketRound"
+class="ticket-value"
+id="ticketRound"
 >
 -
 </div>
@@ -1501,8 +1353,8 @@ SEAT
 </div>
 
 <div
-    class="ticket-value"
-    id="ticketSeat"
+class="ticket-value"
+id="ticketSeat"
 >
 -
 </div>
@@ -1517,8 +1369,8 @@ PRICE
 </div>
 
 <div
-    class="ticket-value"
-    id="ticketPrice"
+class="ticket-value"
+id="ticketPrice"
 >
 -
 </div>
@@ -1572,8 +1424,8 @@ ROBLOX
 </div>
 
 <div
-    class="ticket-value"
-    id="ticketRoblox"
+class="ticket-value"
+id="ticketRoblox"
 >
 -
 </div>
@@ -1588,14 +1440,13 @@ DISCORD
 </div>
 
 <div
-    class="ticket-value"
-    id="ticketDiscord"
+class="ticket-value"
+id="ticketDiscord"
 >
 -
 </div>
 
 </div>
-
 
 </div>
 
@@ -1605,7 +1456,546 @@ DISCORD
 
 <div class="ticket-bottom">
 
-
 <div>
 
-<strong
+<strong>
+RAJA CLUB ATHLETIC
+</strong>
+
+<div
+class="barcode"
+id="barcode"
+></div>
+
+<div
+class="ticket-id"
+id="ticketId"
+>
+RCA-000000
+</div>
+
+</div>
+
+
+<img
+id="qrCode"
+class="qr"
+alt="QR Code"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="success">
+
+🇲🇦 تم شراء التذكرة بنجاح.<br>
+
+عند برمجة الوقت والملعب سيتم إخباركم،
+وستصبح التذكرة متاحة للاستعمال.
+
+<br><br>
+
+🇬🇧 Your ticket has been successfully purchased.<br>
+
+You will be informed once the stadium and match time
+are programmed. The ticket will then be available for use.
+
+</div>
+
+
+<button
+type="button"
+class="action-btn print-button"
+id="printBtn"
+>
+🖨️ IMPRIMER
+</button>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   RCA TADAKIR V3
+   Navigation between pages uses HTML href.
+========================================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    let selectedRound = "";
+    let selectedMatch = "";
+
+    let selectedSeat = "";
+    let selectedPrice = "";
+
+    let userRoblox = "";
+    let userDiscord = "";
+
+
+    /* =====================================================
+       ROUND SELECTION
+    ===================================================== */
+
+    const rounds =
+        document.querySelectorAll(".round");
+
+
+    rounds.forEach(
+        function(round){
+
+            round.addEventListener(
+                "click",
+                function(){
+
+                    rounds.forEach(
+                        function(item){
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+                        }
+                    );
+
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+
+                    selectedRound =
+                        this.dataset.round;
+
+
+                    selectedMatch =
+                        this.dataset.match;
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       GET TICKET
+       IMPORTANT:
+       The link itself opens formPage.
+       JS only blocks it if no round.
+    ===================================================== */
+
+    const getTicket =
+        document.getElementById(
+            "getTicket"
+        );
+
+
+    getTicket.addEventListener(
+        "click",
+        function(event){
+
+            if(selectedRound === ""){
+
+                event.preventDefault();
+
+                alert(
+                    "⚠️ Veuillez sélectionner un Round."
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SEAT
+    ===================================================== */
+
+    const seats =
+        document.querySelectorAll(".seat");
+
+
+    seats.forEach(
+        function(seat){
+
+            seat.addEventListener(
+                "click",
+                function(){
+
+                    seats.forEach(
+                        function(item){
+
+                            item.classList.remove(
+                                "selected"
+                            );
+
+                        }
+                    );
+
+
+                    this.classList.add(
+                        "selected"
+                    );
+
+
+                    selectedSeat =
+                        this.dataset.seat;
+
+
+                    selectedPrice =
+                        this.dataset.price;
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CONFIRM
+       HTML href opens Security.
+       JS only blocks invalid information.
+    ===================================================== */
+
+    const confirmBtn =
+        document.getElementById(
+            "confirmBtn"
+        );
+
+
+    confirmBtn.addEventListener(
+        "click",
+        function(event){
+
+            const error =
+                document.getElementById(
+                    "formError"
+                );
+
+
+            error.textContent = "";
+
+
+            userRoblox =
+                document
+                .getElementById(
+                    "robloxInput"
+                )
+                .value
+                .trim();
+
+
+            userDiscord =
+                document
+                .getElementById(
+                    "discordInput"
+                )
+                .value
+                .trim();
+
+
+            if(userRoblox === ""){
+
+                event.preventDefault();
+
+                error.textContent =
+                    "Veuillez entrer votre User Roblox.";
+
+                return;
+
+            }
+
+
+            if(userDiscord === ""){
+
+                event.preventDefault();
+
+                error.textContent =
+                    "Veuillez entrer votre User Discord.";
+
+                return;
+
+            }
+
+
+            if(selectedSeat === ""){
+
+                event.preventDefault();
+
+                error.textContent =
+                    "Veuillez sélectionner VIRAGE ou VIP.";
+
+                return;
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       SECURITY
+    ===================================================== */
+
+    const verifyBtn =
+        document.getElementById(
+            "verifyBtn"
+        );
+
+
+    verifyBtn.addEventListener(
+        "click",
+        function(){
+
+            const input =
+                document.getElementById(
+                    "securityInput"
+                );
+
+
+            const error =
+                document.getElementById(
+                    "securityError"
+                );
+
+
+            const answer =
+                input.value
+                .replace(/\s+/g,"")
+                .toUpperCase();
+
+
+            error.textContent = "";
+
+
+            if(answer !== "GWW9"){
+
+                error.textContent =
+                    "❌ Réponse incorrecte. Veuillez réessayer.";
+
+                return;
+
+            }
+
+
+            createTicket();
+
+
+            /*
+              Direct HTML navigation.
+              No #target system.
+            */
+
+            window.location.href =
+                "#ticketPage";
+
+        }
+    );
+
+
+    /* =====================================================
+       SECURITY ENTER
+    ===================================================== */
+
+    document
+    .getElementById(
+        "securityInput"
+    )
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                verifyBtn.click();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CREATE TICKET
+    ===================================================== */
+
+    function createTicket(){
+
+        const ticketId =
+            "RCA-" +
+            Math
+            .random()
+            .toString(36)
+            .substring(2,10)
+            .toUpperCase();
+
+
+        document
+        .getElementById(
+            "ticketMatch"
+        )
+        .textContent =
+            selectedMatch;
+
+
+        document
+        .getElementById(
+            "ticketRound"
+        )
+        .textContent =
+            selectedRound;
+
+
+        document
+        .getElementById(
+            "ticketSeat"
+        )
+        .textContent =
+            selectedSeat;
+
+
+        document
+        .getElementById(
+            "ticketPrice"
+        )
+        .textContent =
+            "$" + selectedPrice;
+
+
+        document
+        .getElementById(
+            "ticketRoblox"
+        )
+        .textContent =
+            userRoblox;
+
+
+        document
+        .getElementById(
+            "ticketDiscord"
+        )
+        .textContent =
+            userDiscord;
+
+
+        document
+        .getElementById(
+            "ticketId"
+        )
+        .textContent =
+            ticketId;
+
+
+        /* =================================================
+           BARCODE
+        ================================================= */
+
+        const barcode =
+            document.getElementById(
+                "barcode"
+            );
+
+
+        barcode.innerHTML = "";
+
+
+        for(
+            let i = 0;
+            i < 80;
+            i++
+        ){
+
+            const bar =
+                document.createElement(
+                    "div"
+                );
+
+
+            bar.className = "bar";
+
+
+            bar.style.width =
+                (
+                    Math.random() > .5
+                    ? 2
+                    : 4
+                ) + "px";
+
+
+            barcode.appendChild(
+                bar
+            );
+
+        }
+
+
+        /* =================================================
+           QR
+        ================================================= */
+
+        const qrData =
+            "RCA TADAKIR | " +
+            ticketId +
+            " | " +
+            selectedRound +
+            " | " +
+            selectedMatch +
+            " | " +
+            selectedSeat +
+            " | " +
+            userRoblox +
+            " | " +
+            userDiscord;
+
+
+        document
+        .getElementById(
+            "qrCode"
+        )
+        .src =
+            "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+            encodeURIComponent(
+                qrData
+            );
+
+    }
+
+
+    /* =====================================================
+       PRINT
+    ===================================================== */
+
+    document
+    .getElementById(
+        "printBtn"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            window.print();
+
+        }
+    );
+
+});
+
+</script>
+
+</body>
+</html>
