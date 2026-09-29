@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>RCA TICKETS | Raja Club Athletic</title>
 
 <style>
@@ -15,14 +14,15 @@
 
 html,body{
     width:100%;
-    min-height:100%;
-    font-family:Arial, Helvetica, sans-serif;
+    height:100%;
+    font-family:Arial,Helvetica,sans-serif;
     background:#020403;
-    color:white;
+    color:#fff;
+    scroll-behavior:smooth;
 }
 
 body{
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 /* =========================
@@ -34,28 +34,58 @@ body{
     inset:0;
     width:100%;
     height:100dvh;
-    display:none;
     overflow-y:auto;
     overflow-x:hidden;
+    padding:30px 0 60px;
+
     background:
-        radial-gradient(circle at 50% 20%, rgba(0,150,70,.20), transparent 35%),
-        linear-gradient(135deg,#020403,#06150d,#020403);
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(0,180,80,.22),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #020403,
+            #06150d,
+            #020403
+        );
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateX(30px);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease;
 }
 
-.page.active{
-    display:flex;
-    animation:pageIn .45s ease;
+/* الصفحة اللي عندها target كتظهر */
+.page:target{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateX(0);
+    z-index:10;
 }
 
-@keyframes pageIn{
-    from{
-        opacity:0;
-        transform:scale(.97);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
+/* الصفحة الأولى هي default */
+#home{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateX(0);
+    z-index:1;
+}
+
+/* إذا شي صفحة target، home تختفي */
+body:has(.page:target) #home{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateX(-30px);
 }
 
 /* =========================
@@ -63,9 +93,13 @@ body{
 ========================= */
 
 .container{
-    width:min(1100px,92%);
+    width:min(1050px,92%);
+    min-height:100%;
     margin:auto;
-    padding:45px 0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
 }
 
@@ -76,13 +110,16 @@ body{
 .logo{
     width:190px;
     max-width:55vw;
+    object-fit:contain;
+
     filter:
-        drop-shadow(0 0 15px rgba(0,180,80,.6))
-        drop-shadow(0 0 35px rgba(0,100,50,.4));
-    animation:logoFloat 3s ease-in-out infinite;
+        drop-shadow(0 0 15px rgba(0,220,100,.55))
+        drop-shadow(0 0 40px rgba(0,120,60,.35));
+
+    animation:floatLogo 3s ease-in-out infinite;
 }
 
-@keyframes logoFloat{
+@keyframes floatLogo{
     0%,100%{
         transform:translateY(0);
     }
@@ -92,27 +129,28 @@ body{
 }
 
 /* =========================
-   TITLES
+   TEXT
 ========================= */
 
 h1{
-    font-size:clamp(38px,8vw,82px);
+    margin-top:25px;
+    font-size:clamp(42px,8vw,82px);
     font-weight:900;
-    margin:25px 0 10px;
     letter-spacing:2px;
 }
 
 h2{
-    font-size:clamp(28px,6vw,55px);
+    font-size:clamp(30px,6vw,58px);
     margin-bottom:20px;
+    font-weight:900;
 }
 
 h3{
-    font-size:24px;
+    margin-bottom:15px;
 }
 
 .green{
-    color:#13c86b;
+    color:#12d66c;
 }
 
 .gold{
@@ -120,21 +158,17 @@ h3{
 }
 
 .subtitle{
+    margin-top:8px;
     color:#aaa;
-    font-size:16px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:14px;
 }
-
-/* =========================
-   TEXT
-========================= */
 
 .description{
     max-width:800px;
-    margin:20px auto;
+    margin:15px auto;
+    line-height:1.9;
     color:#ddd;
-    line-height:1.8;
     font-size:17px;
 }
 
@@ -144,34 +178,35 @@ h3{
 
 .next-btn,
 .main-btn{
-    position:relative;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
 
-    min-width:210px;
-    min-height:58px;
+    min-width:220px;
+    min-height:60px;
 
     padding:15px 30px;
 
-    border:2px solid #18d874;
-    border-radius:14px;
+    border:2px solid #17d86e;
+    border-radius:15px;
 
-    background:linear-gradient(
-        135deg,
-        #0b7d42,
-        #11c967
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #087c40,
+            #12ca66
+        );
 
-    color:white;
+    color:#fff;
+    text-decoration:none;
+
     font-size:18px;
     font-weight:900;
 
     cursor:pointer;
 
     box-shadow:
-        0 0 20px rgba(0,220,100,.25),
+        0 0 25px rgba(0,210,100,.25),
         inset 0 0 15px rgba(255,255,255,.08);
 
     transition:.25s;
@@ -181,8 +216,8 @@ h3{
 .main-btn:hover{
     transform:translateY(-4px) scale(1.03);
     box-shadow:
-        0 0 30px rgba(0,220,100,.5),
-        0 10px 30px rgba(0,0,0,.5);
+        0 0 35px rgba(0,220,100,.45),
+        0 15px 35px rgba(0,0,0,.5);
 }
 
 .next-btn:active,
@@ -195,42 +230,44 @@ h3{
 }
 
 /* =========================
-   CARDS
+   CARD
 ========================= */
 
 .card{
     width:min(850px,100%);
-    margin:25px auto;
     padding:30px;
 
     background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.1);
     border-radius:22px;
 
     backdrop-filter:blur(15px);
 
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.4);
 }
 
 /* =========================
-   CURVA IMAGE
+   CURVA
 ========================= */
 
 .curva-image{
-    display:block;
     width:min(850px,100%);
     max-height:480px;
+
     object-fit:cover;
 
-    margin:25px auto;
+    display:block;
+    margin:20px auto;
 
     border-radius:22px;
 
-    border:2px solid rgba(20,210,100,.45);
+    border:2px solid rgba(15,215,105,.4);
 
     box-shadow:
-        0 0 30px rgba(0,180,80,.20),
-        0 20px 50px rgba(0,0,0,.5);
+        0 0 35px rgba(0,180,80,.2),
+        0 20px 60px rgba(0,0,0,.5);
 }
 
 /* =========================
@@ -239,24 +276,27 @@ h3{
 
 .round-grid{
     width:min(850px,100%);
-    margin:30px auto;
 
     display:grid;
     grid-template-columns:repeat(4,1fr);
+
     gap:15px;
+
+    margin:25px 0;
 }
 
 .round{
-    padding:25px 12px;
+    min-height:105px;
 
-    background:linear-gradient(
-        145deg,
-        #0b1711,
-        #07100b
-    );
-
-    border:1px solid rgba(22,210,105,.25);
+    border:1px solid rgba(20,210,100,.25);
     border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b1811,
+            #06100a
+        );
 
     color:white;
 
@@ -267,24 +307,27 @@ h3{
 
 .round:hover{
     transform:translateY(-5px);
-    border-color:#17d66e;
-    box-shadow:0 10px 30px rgba(0,200,90,.2);
+    border-color:#16d76b;
+    box-shadow:0 10px 30px rgba(0,210,100,.2);
 }
 
 .round.selected{
-    background:linear-gradient(
-        145deg,
-        #08783e,
-        #0fc765
-    );
+    background:
+        linear-gradient(
+            145deg,
+            #087b40,
+            #11c967
+        );
 
-    border-color:#fff;
-    box-shadow:0 0 30px rgba(0,220,100,.35);
+    border-color:white;
+
+    box-shadow:
+        0 0 30px rgba(0,220,100,.3);
 }
 
 .round-number{
-    color:#aaa;
     font-size:13px;
+    color:#aaa;
     margin-bottom:10px;
 }
 
@@ -299,7 +342,6 @@ h3{
 
 .form-box{
     width:min(600px,100%);
-    margin:20px auto;
 }
 
 .input-group{
@@ -310,27 +352,30 @@ h3{
 .input-group label{
     display:block;
     margin-bottom:8px;
-    font-weight:bold;
+    font-weight:900;
 }
 
 .input-group input{
     width:100%;
+
     padding:17px;
 
     border-radius:12px;
     border:1px solid rgba(255,255,255,.15);
 
-    outline:none;
-
-    background:#08100c;
+    background:#07100b;
     color:white;
+
+    outline:none;
 
     font-size:16px;
 }
 
 .input-group input:focus{
-    border-color:#16d56b;
-    box-shadow:0 0 15px rgba(0,210,100,.15);
+    border-color:#14d66b;
+
+    box-shadow:
+        0 0 20px rgba(0,210,100,.15);
 }
 
 /* =========================
@@ -341,29 +386,34 @@ h3{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:15px;
-    margin:25px 0;
+    margin:20px 0;
 }
 
 .seat{
     padding:25px 15px;
 
+    background:#07100b;
+
+    color:white;
+
     border:2px solid rgba(255,255,255,.12);
     border-radius:18px;
 
-    background:#07100b;
-
     cursor:pointer;
+
     transition:.25s;
 }
 
 .seat:hover{
-    border-color:#13ce67;
+    border-color:#14d66b;
 }
 
 .seat.selected{
-    border-color:#16d66c;
-    background:rgba(10,140,70,.25);
-    box-shadow:0 0 25px rgba(0,220,100,.2);
+    background:rgba(0,150,70,.25);
+    border-color:#15d66d;
+
+    box-shadow:
+        0 0 25px rgba(0,210,100,.2);
 }
 
 .seat-name{
@@ -379,44 +429,48 @@ h3{
 }
 
 /* =========================
+   ERROR
+========================= */
+
+.error{
+    min-height:25px;
+    margin:12px 0;
+    color:#ff5555;
+    font-weight:bold;
+}
+
+/* =========================
    SECURITY
 ========================= */
 
 .security-box{
-    width:min(550px,92%);
-    margin:auto;
-    text-align:center;
+    width:min(550px,100%);
 }
 
 .security-code{
     margin:25px auto;
-
     padding:25px;
-
-    border-radius:20px;
 
     background:#050906;
 
-    border:2px solid #16ce69;
+    border:2px solid #14d66b;
+    border-radius:20px;
+
+    color:#d9b84d;
 
     font-size:38px;
     font-weight:900;
+
     letter-spacing:8px;
 
-    color:#d9b84d;
+    box-shadow:
+        0 0 30px rgba(0,210,100,.15);
 }
 
 .security-note{
     color:#ddd;
-    line-height:1.7;
+    line-height:1.8;
     margin-bottom:20px;
-}
-
-.error{
-    min-height:25px;
-    margin:15px 0;
-    color:#ff5555;
-    font-weight:bold;
 }
 
 /* =========================
@@ -425,31 +479,26 @@ h3{
 
 .ticket-wrap{
     width:min(850px,94%);
-    margin:30px auto;
 }
 
 .ticket{
-    position:relative;
-
     overflow:hidden;
 
     background:
         linear-gradient(
             135deg,
-            #ffffff,
+            #fff,
             #edf5ef
         );
 
     color:#07110b;
 
-    border-radius:24px;
+    border-radius:25px;
 
     box-shadow:
         0 25px 80px rgba(0,0,0,.65),
         0 0 50px rgba(0,200,90,.18);
 }
-
-/* ticket top */
 
 .ticket-top{
     display:flex;
@@ -458,17 +507,21 @@ h3{
 
     padding:25px;
 
-    background:#08773d;
+    background:#08783e;
     color:white;
 }
 
 .ticket-logo{
     width:75px;
     height:75px;
+
     object-fit:contain;
-    background:white;
-    border-radius:50%;
+
     padding:5px;
+
+    background:white;
+
+    border-radius:50%;
 }
 
 .ticket-title{
@@ -477,15 +530,14 @@ h3{
 
 .ticket-title h2{
     margin:0;
-    font-size:30px;
+    font-size:28px;
 }
 
 .ticket-title p{
+    margin-top:5px;
     color:#d9b84d;
-    font-weight:bold;
+    font-weight:900;
 }
-
-/* ticket body */
 
 .ticket-body{
     padding:30px;
@@ -493,10 +545,11 @@ h3{
 
 .ticket-match{
     text-align:center;
+
+    margin-bottom:25px;
+
     font-size:32px;
     font-weight:900;
-
-    margin-bottom:30px;
 }
 
 .ticket-info{
@@ -514,9 +567,9 @@ h3{
 }
 
 .info-label{
-    font-size:12px;
-    color:#657268;
-    text-transform:uppercase;
+    color:#66736a;
+    font-size:11px;
+    font-weight:bold;
 }
 
 .info-value{
@@ -525,14 +578,10 @@ h3{
     word-break:break-word;
 }
 
-/* perforation */
-
 .perforation{
-    border-top:3px dashed #89958d;
     margin:25px 0;
+    border-top:3px dashed #89958d;
 }
-
-/* ticket bottom */
 
 .ticket-bottom{
     display:grid;
@@ -544,41 +593,51 @@ h3{
 .qr{
     width:140px;
     height:140px;
+
+    margin:auto;
+
+    padding:7px;
+
     background:white;
-    padding:8px;
     border-radius:8px;
 }
 
 .barcode{
-    height:65px;
+    height:60px;
+
     display:flex;
     align-items:stretch;
+
     gap:2px;
+
     overflow:hidden;
+
     margin-top:15px;
 }
 
 .barcode span{
-    background:#07110b;
     display:block;
+    background:#07110b;
 }
 
 .ticket-id{
-    font-size:13px;
-    margin-top:10px;
-    color:#536158;
+    margin-top:8px;
+    color:#59655d;
+    font-size:12px;
 }
 
 .success{
     width:min(850px,94%);
+
     margin:20px auto;
 
     padding:20px;
 
     border-radius:18px;
 
-    background:rgba(10,150,70,.12);
     border:1px solid rgba(20,210,100,.3);
+
+    background:rgba(10,150,70,.12);
 
     line-height:1.8;
 }
@@ -590,11 +649,12 @@ h3{
 @media(max-width:700px){
 
     .container{
-        padding:30px 0;
+        width:90%;
+        padding:25px 0;
     }
 
     .logo{
-        width:150px;
+        width:145px;
     }
 
     h1{
@@ -607,6 +667,14 @@ h3{
 
     .round-grid{
         grid-template-columns:1fr 1fr;
+    }
+
+    .round{
+        min-height:95px;
+    }
+
+    .round-match{
+        font-size:14px;
     }
 
     .seats{
@@ -623,7 +691,7 @@ h3{
     }
 
     .ticket-title h2{
-        font-size:21px;
+        font-size:19px;
     }
 
     .ticket-body{
@@ -648,7 +716,7 @@ h3{
     }
 
     .security-code{
-        font-size:28px;
+        font-size:27px;
         letter-spacing:5px;
     }
 
@@ -667,35 +735,32 @@ h3{
 
     body{
         background:white !important;
-        overflow:visible;
+        overflow:visible !important;
     }
 
     .page{
-        position:static !important;
         display:none !important;
+        position:static !important;
+        width:100% !important;
         height:auto !important;
-        min-height:0 !important;
         overflow:visible !important;
         background:white !important;
     }
 
     #ticketPage{
         display:block !important;
-    }
-
-    #ticketPage .container{
-        width:100%;
-        padding:0;
-    }
-
-    .ticket{
-        box-shadow:none;
-        border:1px solid #ccc;
+        opacity:1 !important;
+        visibility:visible !important;
     }
 
     .success,
     .print-button{
         display:none !important;
+    }
+
+    .ticket{
+        box-shadow:none !important;
+        border:1px solid #ccc;
     }
 }
 </style>
@@ -704,10 +769,10 @@ h3{
 <body>
 
 <!-- =====================================================
-     PAGE 1
+     HOME
 ===================================================== -->
 
-<section id="page1" class="page active">
+<section class="page" id="home">
 
     <div class="container">
 
@@ -727,9 +792,15 @@ h3{
         </div>
 
         <div class="next-area">
-            <button type="button" class="next-btn" id="next1">
+
+            <!-- NEXT WITHOUT JAVASCRIPT -->
+            <a
+                href="#infoPage"
+                class="next-btn"
+            >
                 NEXT ✓
-            </button>
+            </a>
+
         </div>
 
     </div>
@@ -738,10 +809,10 @@ h3{
 
 
 <!-- =====================================================
-     PAGE 2
+     INFO
 ===================================================== -->
 
-<section id="page2" class="page">
+<section class="page" id="infoPage">
 
     <div class="container">
 
@@ -773,9 +844,14 @@ h3{
         </div>
 
         <div class="next-area">
-            <button type="button" class="next-btn" id="next2">
+
+            <a
+                href="#curvaPage"
+                class="next-btn"
+            >
                 NEXT ✓
-            </button>
+            </a>
+
         </div>
 
     </div>
@@ -784,10 +860,10 @@ h3{
 
 
 <!-- =====================================================
-     PAGE 3
+     CURVA
 ===================================================== -->
 
-<section id="page3" class="page">
+<section class="page" id="curvaPage">
 
     <div class="container">
 
@@ -813,9 +889,14 @@ h3{
         </div>
 
         <div class="next-area">
-            <button type="button" class="next-btn" id="next3">
+
+            <a
+                href="#roundsPage"
+                class="next-btn"
+            >
                 NEXT ✓
-            </button>
+            </a>
+
         </div>
 
     </div>
@@ -824,10 +905,10 @@ h3{
 
 
 <!-- =====================================================
-     PAGE 4 - ROUNDS
+     ROUNDS
 ===================================================== -->
 
-<section id="roundsPage" class="page">
+<section class="page" id="roundsPage">
 
     <div class="container">
 
@@ -841,93 +922,95 @@ h3{
 
         <div class="round-grid">
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 1"
-                    data-match="JSK VS RCA">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 1"
+                data-match="JSK VS RCA"
+            >
                 <div class="round-number">ROUND 1</div>
                 <div class="round-match">JSK VS RCA</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 2"
-                    data-match="RCA VS CRB">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 2"
+                data-match="RCA VS CRB"
+            >
                 <div class="round-number">ROUND 2</div>
                 <div class="round-match">RCA VS CRB</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 3"
-                    data-match="WAC VS RCA">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 3"
+                data-match="WAC VS RCA"
+            >
                 <div class="round-number">ROUND 3</div>
                 <div class="round-match">WAC VS RCA</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 4"
-                    data-match="RCA VS IRT">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 4"
+                data-match="RCA VS IRT"
+            >
                 <div class="round-number">ROUND 4</div>
                 <div class="round-match">RCA VS IRT</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 5"
-                    data-match="KAC VS RCA">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 5"
+                data-match="KAC VS RCA"
+            >
                 <div class="round-number">ROUND 5</div>
                 <div class="round-match">KAC VS RCA</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 6"
-                    data-match="RCA VS KACM">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 6"
+                data-match="RCA VS KACM"
+            >
                 <div class="round-number">ROUND 6</div>
                 <div class="round-match">RCA VS KACM</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 7"
-                    data-match="CRB VS RCA">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 7"
+                data-match="CRB VS RCA"
+            >
                 <div class="round-number">ROUND 7</div>
                 <div class="round-match">CRB VS RCA</div>
-
             </button>
 
-            <button type="button"
-                    class="round"
-                    data-round="ROUND 8"
-                    data-match="RCA VS MAS">
-
+            <button
+                type="button"
+                class="round"
+                data-round="ROUND 8"
+                data-match="RCA VS MAS"
+            >
                 <div class="round-number">ROUND 8</div>
                 <div class="round-match">RCA VS MAS</div>
-
             </button>
 
         </div>
 
         <div class="next-area">
 
-            <button type="button"
-                    class="main-btn"
-                    id="getTicket">
+            <button
+                type="button"
+                class="main-btn"
+                id="getTicket"
+            >
                 GET TICKET 🎟️
             </button>
 
@@ -939,10 +1022,10 @@ h3{
 
 
 <!-- =====================================================
-     PAGE 5 - FORM
+     FORM
 ===================================================== -->
 
-<section id="formPage" class="page">
+<section class="page" id="formPage">
 
     <div class="container">
 
@@ -957,28 +1040,26 @@ h3{
                 <label>User roblox :</label>
 
                 <input
-                    type="text"
                     id="roblox"
+                    type="text"
                     placeholder="Enter your Roblox username"
                     autocomplete="off"
                 >
 
             </div>
 
-
             <div class="input-group">
 
                 <label>User discord :</label>
 
                 <input
-                    type="text"
                     id="discord"
+                    type="text"
                     placeholder="Enter your Discord username"
                     autocomplete="off"
                 >
 
             </div>
-
 
             <h3>
                 Seat location:
@@ -1003,7 +1084,6 @@ h3{
 
                 </button>
 
-
                 <button
                     type="button"
                     class="seat"
@@ -1023,7 +1103,10 @@ h3{
 
             </div>
 
-            <div id="formError" class="error"></div>
+            <div
+                class="error"
+                id="formError"
+            ></div>
 
             <button
                 type="button"
@@ -1041,10 +1124,10 @@ h3{
 
 
 <!-- =====================================================
-     PAGE 6 - SECURITY
+     SECURITY
 ===================================================== -->
 
-<section id="securityPage" class="page">
+<section class="page" id="securityPage">
 
     <div class="container">
 
@@ -1061,56 +1144,4 @@ h3{
             </h2>
 
             <div class="security-code">
-                G ..... W 9
-            </div>
-
-            <p class="security-note">
-                ملاحظة: أجب على السؤال للتمكن من إتمام عملية شراء التذكرة
-            </p>
-
-            <div class="card">
-
-                <div class="input-group">
-
-                    <label>
-                        Enter answer:
-                    </label>
-
-                    <input
-                        type="text"
-                        id="securityAnswer"
-                        placeholder="Your answer"
-                        autocomplete="off"
-                    >
-
-                </div>
-
-                <div id="securityError" class="error"></div>
-
-                <button
-                    type="button"
-                    class="main-btn"
-                    id="securityBtn"
-                >
-                    VERIFY ✓
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PAGE 7 - TICKET
-===================================================== -->
-
-<section id="ticketPage" class="page">
-
-    <div class="container">
-
-        <h2>
-   
+  
