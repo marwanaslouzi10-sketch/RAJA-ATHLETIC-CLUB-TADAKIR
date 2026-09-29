@@ -2,1036 +2,701 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>RCA | RAJAWI TICKETS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RCA TICKETS | Raja Club Athletic</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap');
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-:root{
-  --green:#008b45;
-  --green2:#00e875;
-  --dark:#010503;
-  --dark2:#06110a;
-  --white:#fff;
-  --gray:#a8b6ae;
-  --gold:#d7b85c;
-  --red:#ff5757;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html,body{
-  width:100%;
-  height:100%;
-  background:#010503;
+    width:100%;
+    min-height:100%;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#020403;
+    color:white;
 }
 
 body{
-  color:white;
-  font-family:Cairo,Arial,sans-serif;
-  overflow:hidden;
+    overflow:hidden;
 }
 
-/* =====================================================
-   PAGE SYSTEM
-===================================================== */
+/* =========================
+   PAGES
+========================= */
 
 .page{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  height:100dvh;
-  display:none;
-  overflow-x:hidden;
-  overflow-y:auto;
-  background:
-    radial-gradient(
-      circle at 50% -10%,
-      rgba(0,230,100,.18),
-      transparent 40%
-    ),
-    linear-gradient(
-      180deg,
-      #031009 0%,
-      #010302 100%
-    );
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100dvh;
+    display:none;
+    overflow-y:auto;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(0,150,70,.20), transparent 35%),
+        linear-gradient(135deg,#020403,#06150d,#020403);
 }
 
 .page.active{
-  display:block;
-  animation:pageIn .45s ease;
+    display:flex;
+    animation:pageIn .45s ease;
 }
 
 @keyframes pageIn{
-  from{
-    opacity:0;
-    transform:translateX(25px);
-  }
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
+    from{
+        opacity:0;
+        transform:scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
 
-/* =====================================================
-   GENERAL
-===================================================== */
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
-  position:relative;
-  z-index:5;
-  width:min(1100px,94%);
-  margin:auto;
+    width:min(1100px,92%);
+    margin:auto;
+    padding:45px 0;
+    text-align:center;
 }
 
-button{
-  font-family:Cairo,Arial,sans-serif;
-}
+/* =========================
+   LOGO
+========================= */
 
-.btn{
-  min-width:175px;
-  padding:15px 32px;
-  border:0;
-  border-radius:50px;
-  background:linear-gradient(135deg,#00783d,#00d76b);
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 15px 40px rgba(0,220,100,.18);
-  transition:.25s;
-}
-
-.btn:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,230,100,.3);
-}
-
-.btn:active{
-  transform:scale(.96);
-}
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-#intro{
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-#intro.active{
-  display:flex;
-}
-
-.intro-bg{
-  position:absolute;
-  width:500px;
-  height:500px;
-  border-radius:50%;
-  background:rgba(0,255,110,.08);
-  filter:blur(100px);
-  pointer-events:none;
-}
-
-.intro-content{
-  width:95%;
-  max-width:950px;
-  position:relative;
-  z-index:3;
-}
-
-.logo-big{
-  width:250px;
-  height:250px;
-  object-fit:contain;
-  filter:
-    drop-shadow(0 0 35px rgba(0,255,110,.3))
-    drop-shadow(0 25px 40px rgba(0,0,0,.8));
-  animation:logoFloat 4s ease-in-out infinite;
+.logo{
+    width:190px;
+    max-width:55vw;
+    filter:
+        drop-shadow(0 0 15px rgba(0,180,80,.6))
+        drop-shadow(0 0 35px rgba(0,100,50,.4));
+    animation:logoFloat 3s ease-in-out infinite;
 }
 
 @keyframes logoFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(-12px);
-  }
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
 }
 
-.welcome{
-  margin-top:20px;
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:clamp(42px,9vw,92px);
-  line-height:.95;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:-4px;
+/* =========================
+   TITLES
+========================= */
+
+h1{
+    font-size:clamp(38px,8vw,82px);
+    font-weight:900;
+    margin:25px 0 10px;
+    letter-spacing:2px;
 }
 
-.welcome span{
-  color:var(--green2);
+h2{
+    font-size:clamp(28px,6vw,55px);
+    margin-bottom:20px;
 }
 
-.intro-sub{
-  margin-top:22px;
-  color:#89978f;
-  font-size:10px;
-  letter-spacing:4px;
-}
-
-.intro-content .btn{
-  margin-top:38px;
-}
-
-/* =====================================================
-   INFO
-===================================================== */
-
-#info{
-  padding:45px 0 70px;
-}
-
-.center{
-  text-align:center;
-}
-
-.small-logo{
-  width:110px;
-  height:110px;
-  object-fit:contain;
-}
-
-.big-title{
-  margin-top:10px;
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:clamp(35px,7vw,68px);
-  font-weight:900;
-  text-transform:uppercase;
-}
-
-.big-title span{
-  color:var(--green2);
-}
-
-.description{
-  max-width:750px;
-  margin:15px auto 35px;
-  color:var(--gray);
-  font-size:14px;
-  line-height:2;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-
-.info-card{
-  overflow:hidden;
-  border-radius:28px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 25px 70px rgba(0,0,0,.5);
-}
-
-.info-image{
-  width:100%;
-  height:280px;
-  display:block;
-  object-fit:cover;
-}
-
-.info-content{
-  padding:25px;
-}
-
-.info-content h2{
-  font-size:25px;
-  font-weight:900;
-}
-
-.info-content h2 span{
-  color:var(--green2);
-}
-
-.info-content p{
-  margin-top:10px;
-  color:#aebbb3;
-  font-size:13px;
-  line-height:1.9;
-}
-
-.next-area{
-  text-align:center;
-  padding-top:35px;
-}
-
-/* =====================================================
-   CURVA
-===================================================== */
-
-#curva{
-  padding:45px 0 70px;
-  text-align:center;
-}
-
-.curva-image{
-  width:min(950px,100%);
-  height:500px;
-  object-fit:cover;
-  display:block;
-  margin:auto;
-  border-radius:30px;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 35px 90px rgba(0,0,0,.75);
-}
-
-.curva-title{
-  margin-top:25px;
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:clamp(35px,7vw,70px);
-  font-weight:900;
-}
-
-.curva-title span{
-  color:var(--green2);
-}
-
-.curva-text{
-  max-width:700px;
-  margin:10px auto 30px;
-  color:var(--gray);
-  line-height:1.9;
-}
-
-/* =====================================================
-   ROUNDS
-===================================================== */
-
-#rounds{
-  padding:40px 0 70px;
-}
-
-.round-header{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.round-header img{
-  width:100px;
-  height:100px;
-  object-fit:contain;
-}
-
-.round-header h1{
-  margin-top:5px;
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:clamp(35px,7vw,65px);
-  font-weight:900;
+h3{
+    font-size:24px;
 }
 
 .green{
-  color:var(--green2);
+    color:#13c86b;
 }
 
-.round-header p{
-  color:#89978f;
-  font-size:11px;
-  letter-spacing:2px;
+.gold{
+    color:#d9b84d;
 }
+
+.subtitle{
+    color:#aaa;
+    font-size:16px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.description{
+    max-width:800px;
+    margin:20px auto;
+    color:#ddd;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.next-btn,
+.main-btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    min-width:210px;
+    min-height:58px;
+
+    padding:15px 30px;
+
+    border:2px solid #18d874;
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        #0b7d42,
+        #11c967
+    );
+
+    color:white;
+    font-size:18px;
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 20px rgba(0,220,100,.25),
+        inset 0 0 15px rgba(255,255,255,.08);
+
+    transition:.25s;
+}
+
+.next-btn:hover,
+.main-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:
+        0 0 30px rgba(0,220,100,.5),
+        0 10px 30px rgba(0,0,0,.5);
+}
+
+.next-btn:active,
+.main-btn:active{
+    transform:scale(.96);
+}
+
+.next-area{
+    margin-top:35px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    width:min(850px,100%);
+    margin:25px auto;
+    padding:30px;
+
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:22px;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* =========================
+   CURVA IMAGE
+========================= */
+
+.curva-image{
+    display:block;
+    width:min(850px,100%);
+    max-height:480px;
+    object-fit:cover;
+
+    margin:25px auto;
+
+    border-radius:22px;
+
+    border:2px solid rgba(20,210,100,.45);
+
+    box-shadow:
+        0 0 30px rgba(0,180,80,.20),
+        0 20px 50px rgba(0,0,0,.5);
+}
+
+/* =========================
+   ROUNDS
+========================= */
 
 .round-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+    width:min(850px,100%);
+    margin:30px auto;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
-.round-card{
-  min-height:205px;
-  padding:22px;
-  border-radius:23px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(0,145,70,.18),
-      rgba(255,255,255,.035)
+.round{
+    padding:25px 12px;
+
+    background:linear-gradient(
+        145deg,
+        #0b1711,
+        #07100b
     );
-  border:1px solid rgba(0,255,110,.12);
-  transition:.25s;
+
+    border:1px solid rgba(22,210,105,.25);
+    border-radius:18px;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
 }
 
-.round-card:hover{
-  transform:translateY(-7px);
-  border-color:rgba(0,255,110,.45);
-  box-shadow:0 20px 50px rgba(0,180,80,.15);
+.round:hover{
+    transform:translateY(-5px);
+    border-color:#17d66e;
+    box-shadow:0 10px 30px rgba(0,200,90,.2);
+}
+
+.round.selected{
+    background:linear-gradient(
+        145deg,
+        #08783e,
+        #0fc765
+    );
+
+    border-color:#fff;
+    box-shadow:0 0 30px rgba(0,220,100,.35);
 }
 
 .round-number{
-  color:#84928b;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:2px;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:10px;
 }
 
-.match{
-  margin-top:18px;
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:19px;
-  font-weight:900;
-  line-height:1.5;
+.round-match{
+    font-size:17px;
+    font-weight:900;
 }
 
-.match .vs{
-  display:block;
-  color:var(--green2);
-  font-size:11px;
-  margin:2px 0;
-}
-
-.get-ticket{
-  margin-top:18px;
-  border:0;
-  border-radius:30px;
-  padding:10px 18px;
-  background:var(--green);
-  color:white;
-  font-size:11px;
-  font-weight:900;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.get-ticket:hover{
-  background:var(--green2);
-  color:#001b0d;
-}
-
-/* =====================================================
+/* =========================
    FORM
-===================================================== */
-
-#formPage{
-  padding:40px 0 70px;
-}
-
-.form-wrap{
-  width:min(620px,94%);
-  margin:auto;
-}
-
-.form-logo{
-  display:block;
-  width:110px;
-  height:110px;
-  object-fit:contain;
-  margin:auto;
-}
-
-.form-title{
-  text-align:center;
-  margin-top:10px;
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:40px;
-  font-weight:900;
-}
-
-.selected-match{
-  text-align:center;
-  color:var(--green2);
-  font-size:13px;
-  font-weight:900;
-  margin:7px 0 25px;
-}
+========================= */
 
 .form-box{
-  padding:28px;
-  border-radius:28px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 25px 70px rgba(0,0,0,.4);
+    width:min(600px,100%);
+    margin:20px auto;
 }
 
-.field{
-  margin-bottom:19px;
+.input-group{
+    text-align:left;
+    margin-bottom:20px;
 }
 
-.field label{
-  display:block;
-  margin-bottom:8px;
-  color:#aebbb3;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:1px;
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
 }
 
-.field input{
-  width:100%;
-  height:55px;
-  padding:0 16px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.13);
-  outline:none;
-  background:#07100b;
-  color:white;
-  font-family:Cairo,sans-serif;
+.input-group input{
+    width:100%;
+    padding:17px;
+
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.15);
+
+    outline:none;
+
+    background:#08100c;
+    color:white;
+
+    font-size:16px;
 }
 
-.field input:focus{
-  border-color:var(--green2);
-  box-shadow:0 0 0 3px rgba(0,220,100,.08);
+.input-group input:focus{
+    border-color:#16d56b;
+    box-shadow:0 0 15px rgba(0,210,100,.15);
 }
 
-.seat-title{
-  margin:20px 0 10px;
-  color:#aebbb3;
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:1px;
-}
+/* =========================
+   SEATS
+========================= */
 
 .seats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:13px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin:25px 0;
 }
 
 .seat{
-  position:relative;
+    padding:25px 15px;
+
+    border:2px solid rgba(255,255,255,.12);
+    border-radius:18px;
+
+    background:#07100b;
+
+    cursor:pointer;
+    transition:.25s;
 }
 
-.seat input{
-  position:absolute;
-  opacity:0;
+.seat:hover{
+    border-color:#13ce67;
 }
 
-.seat label{
-  min-height:115px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:18px;
-  background:#07100b;
-  cursor:pointer;
-  transition:.25s;
+.seat.selected{
+    border-color:#16d66c;
+    background:rgba(10,140,70,.25);
+    box-shadow:0 0 25px rgba(0,220,100,.2);
 }
 
-.seat label strong{
-  font-family:Montserrat,Cairo,sans-serif;
-  font-size:20px;
+.seat-name{
+    font-size:22px;
+    font-weight:900;
 }
 
-.seat label span{
-  margin-top:5px;
-  color:#9daaa3;
-  font-size:13px;
+.price{
+    margin-top:8px;
+    color:#d9b84d;
+    font-size:25px;
+    font-weight:900;
 }
 
-.seat input:checked+label{
-  border-color:var(--green2);
-  background:rgba(0,190,80,.18);
-  box-shadow:0 0 30px rgba(0,220,100,.14);
-}
-
-.confirm{
-  width:100%;
-  height:56px;
-  margin-top:25px;
-  border:0;
-  border-radius:15px;
-  background:linear-gradient(135deg,#007d40,#00d168);
-  color:white;
-  font-weight:900;
-  cursor:pointer;
-}
-
-/* =====================================================
+/* =========================
    SECURITY
-===================================================== */
-
-#security{
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-#security.active{
-  display:flex;
-}
+========================= */
 
 .security-box{
-  width:min(510px,100%);
-  padding:35px 25px;
-  text-align:center;
-  border-radius:28px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
+    width:min(550px,92%);
+    margin:auto;
+    text-align:center;
 }
 
-.lock{
-  font-size:50px;
+.security-code{
+    margin:25px auto;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:#050906;
+
+    border:2px solid #16ce69;
+
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:8px;
+
+    color:#d9b84d;
 }
 
-.security-box h2{
-  margin-top:8px;
-  font-size:28px;
-  font-weight:900;
+.security-note{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:20px;
 }
 
-.security-sub{
-  color:#9eaaa4;
-  font-size:13px;
+.error{
+    min-height:25px;
+    margin:15px 0;
+    color:#ff5555;
+    font-weight:bold;
 }
 
-.question{
-  margin:27px 0 15px;
-  padding:20px;
-  border-radius:16px;
-  background:#010503;
-  border:1px solid rgba(255,255,255,.1);
-  font-family:Montserrat,sans-serif;
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:7px;
-}
-
-.note{
-  color:#e6c768;
-  font-size:12px;
-  line-height:1.9;
-  margin-bottom:18px;
-}
-
-.answer{
-  width:100%;
-  height:55px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.13);
-  background:#07100b;
-  color:white;
-  outline:none;
-  text-align:center;
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:4px;
-}
-
-.security-error{
-  display:none;
-  margin-top:12px;
-  color:var(--red);
-  font-size:13px;
-}
-
-/* =====================================================
+/* =========================
    TICKET
-===================================================== */
-
-#ticketPage{
-  padding:30px 15px 60px;
-}
+========================= */
 
 .ticket-wrap{
-  width:min(950px,100%);
-  margin:auto;
-}
-
-.ticket-actions{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:22px;
-}
-
-.ticket-actions button{
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:30px;
-  padding:11px 22px;
-  background:#07100b;
-  color:white;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.ticket-actions .print{
-  background:var(--green);
+    width:min(850px,94%);
+    margin:30px auto;
 }
 
 .ticket{
-  display:grid;
-  grid-template-columns:1fr 250px;
-  min-height:560px;
-  overflow:hidden;
-  border-radius:30px;
-  background:linear-gradient(135deg,#fff,#dce9e1);
-  color:#07100b;
-  box-shadow:0 35px 90px rgba(0,0,0,.65);
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #edf5ef
+        );
+
+    color:#07110b;
+
+    border-radius:24px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.65),
+        0 0 50px rgba(0,200,90,.18);
 }
 
-.ticket-main{
-  padding:35px;
-  position:relative;
+/* ticket top */
+
+.ticket-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:25px;
+
+    background:#08773d;
+    color:white;
 }
 
-.ticket-main:after{
-  content:"";
-  position:absolute;
-  top:25px;
-  right:0;
-  bottom:25px;
-  border-right:2px dashed rgba(0,0,0,.2);
+.ticket-logo{
+    width:75px;
+    height:75px;
+    object-fit:contain;
+    background:white;
+    border-radius:50%;
+    padding:5px;
 }
 
-.ticket-brand{
-  display:flex;
-  align-items:center;
-  gap:13px;
+.ticket-title{
+    text-align:right;
 }
 
-.ticket-brand img{
-  width:68px;
-  height:68px;
-  object-fit:contain;
+.ticket-title h2{
+    margin:0;
+    font-size:30px;
 }
 
-.ticket-brand small{
-  display:block;
-  color:#60766a;
-  font-size:9px;
-  letter-spacing:2px;
-  font-weight:900;
+.ticket-title p{
+    color:#d9b84d;
+    font-weight:bold;
 }
 
-.ticket-brand strong{
-  display:block;
-  font-family:Montserrat,sans-serif;
-  font-size:22px;
-  font-weight:900;
+/* ticket body */
+
+.ticket-body{
+    padding:30px;
 }
 
-.ticket-event{
-  margin-top:48px;
-}
+.ticket-match{
+    text-align:center;
+    font-size:32px;
+    font-weight:900;
 
-.ticket-event small{
-  color:#647a6d;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.ticket-event h1{
-  margin-top:7px;
-  font-family:Montserrat,sans-serif;
-  font-size:clamp(34px,6vw,60px);
-  line-height:1;
-  font-weight:900;
-}
-
-.ticket-event h1 span{
-  color:#008b45;
+    margin-bottom:30px;
 }
 
 .ticket-info{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  margin-top:45px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-.ticket-info small{
-  display:block;
-  color:#71867b;
-  font-size:9px;
-  font-weight:900;
+.info-item{
+    padding:15px;
+
+    background:#e8f0ea;
+
+    border-radius:12px;
 }
 
-.ticket-info strong{
-  display:block;
-  margin-top:4px;
-  font-size:13px;
+.info-label{
+    font-size:12px;
+    color:#657268;
+    text-transform:uppercase;
 }
 
-.ticket-users{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-  margin-top:30px;
-  padding-top:18px;
-  border-top:1px solid rgba(0,0,0,.12);
-  font-size:12px;
+.info-value{
+    margin-top:5px;
+    font-weight:900;
+    word-break:break-word;
 }
 
-.ticket-users b{
-  color:#008b45;
+/* perforation */
+
+.perforation{
+    border-top:3px dashed #89958d;
+    margin:25px 0;
 }
 
-.ticket-notice{
-  margin-top:22px;
-  padding:13px;
-  border-radius:12px;
-  background:rgba(0,130,60,.08);
-  color:#40574a;
-  font-size:10px;
-  line-height:1.8;
-}
+/* ticket bottom */
 
-.ticket-side{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
-  background:linear-gradient(
-    180deg,
-    rgba(0,130,60,.11),
-    rgba(0,130,60,.02)
-  );
-}
-
-.ticket-side h2{
-  font-family:Montserrat,sans-serif;
-  font-size:25px;
-}
-
-.ticket-side p{
-  color:#62796d;
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:1px;
+.ticket-bottom{
+    display:grid;
+    grid-template-columns:1fr 150px;
+    gap:25px;
+    align-items:center;
 }
 
 .qr{
-  width:155px;
-  height:155px;
-  margin:22px 0 18px;
-  padding:7px;
-  border-radius:8px;
-  background:white;
-}
-
-.qr img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
+    width:140px;
+    height:140px;
+    background:white;
+    padding:8px;
+    border-radius:8px;
 }
 
 .barcode{
-  width:185px;
-  height:55px;
-  padding:5px;
-  display:flex;
-  align-items:stretch;
-  justify-content:center;
-  gap:2px;
-  overflow:hidden;
-  background:white;
+    height:65px;
+    display:flex;
+    align-items:stretch;
+    gap:2px;
+    overflow:hidden;
+    margin-top:15px;
 }
 
-.bar{
-  height:100%;
-  background:#000;
+.barcode span{
+    background:#07110b;
+    display:block;
 }
 
 .ticket-id{
-  margin-top:13px;
-  color:#53685c;
-  font-family:Montserrat,sans-serif;
-  font-size:9px;
-  letter-spacing:2px;
+    font-size:13px;
+    margin-top:10px;
+    color:#536158;
 }
 
 .success{
-  text-align:center;
-  margin-top:20px;
-  color:#a6b5ac;
-  font-size:13px;
-  line-height:1.8;
+    width:min(850px,94%);
+    margin:20px auto;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    background:rgba(10,150,70,.12);
+    border:1px solid rgba(20,210,100,.3);
+
+    line-height:1.8;
 }
 
-.success strong{
-  color:var(--green2);
-}
-
-/* =====================================================
-   TOAST
-===================================================== */
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  z-index:99999;
-  transform:translate(-50%,100px);
-  opacity:0;
-  padding:13px 22px;
-  border-radius:30px;
-  background:#09160e;
-  border:1px solid rgba(0,255,110,.25);
-  transition:.3s;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
-}
-
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
-@media(max-width:850px){
+@media(max-width:700px){
 
-  .round-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .container{
+        padding:30px 0;
+    }
 
-  .info-grid{
-    grid-template-columns:1fr;
-  }
+    .logo{
+        width:150px;
+    }
 
-  .ticket{
-    grid-template-columns:1fr;
-  }
+    h1{
+        font-size:42px;
+    }
 
-  .ticket-main:after{
-    display:none;
-  }
+    .description{
+        font-size:15px;
+    }
 
-  .ticket-side{
-    border-top:2px dashed rgba(0,0,0,.2);
-  }
+    .round-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .seats{
+        grid-template-columns:1fr;
+    }
+
+    .ticket-top{
+        padding:18px;
+    }
+
+    .ticket-logo{
+        width:60px;
+        height:60px;
+    }
+
+    .ticket-title h2{
+        font-size:21px;
+    }
+
+    .ticket-body{
+        padding:20px;
+    }
+
+    .ticket-match{
+        font-size:25px;
+    }
+
+    .ticket-info{
+        grid-template-columns:1fr;
+    }
+
+    .ticket-bottom{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .qr{
+        margin:auto;
+    }
+
+    .security-code{
+        font-size:28px;
+        letter-spacing:5px;
+    }
+
+    .next-btn,
+    .main-btn{
+        width:100%;
+        max-width:350px;
+    }
 }
 
-@media(max-width:600px){
-
-  .logo-big{
-    width:190px;
-    height:190px;
-  }
-
-  .welcome{
-    letter-spacing:-2px;
-  }
-
-  .intro-sub{
-    font-size:8px;
-    letter-spacing:2px;
-  }
-
-  .info-image{
-    height:220px;
-  }
-
-  .curva-image{
-    height:280px;
-  }
-
-  .round-grid{
-    gap:10px;
-  }
-
-  .round-card{
-    min-height:185px;
-    padding:17px;
-  }
-
-  .match{
-    font-size:16px;
-  }
-
-  .ticket-main{
-    padding:24px;
-  }
-
-  .ticket-info{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .ticket-users{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:400px){
-
-  .round-grid{
-    grid-template-columns:1fr;
-  }
-
-  .seats{
-    grid-template-columns:1fr;
-  }
-
-  .ticket-info{
-    grid-template-columns:1fr;
-  }
-}
-
-/* =====================================================
+/* =========================
    PRINT
-===================================================== */
+========================= */
 
 @media print{
 
-  @page{
-    size:A4;
-    margin:10mm;
-  }
+    body{
+        background:white !important;
+        overflow:visible;
+    }
 
-  html,body{
-    overflow:visible!important;
-    background:white!important;
-  }
+    .page{
+        position:static !important;
+        display:none !important;
+        height:auto !important;
+        min-height:0 !important;
+        overflow:visible !important;
+        background:white !important;
+    }
 
-  body *{
-    visibility:hidden!important;
-  }
+    #ticketPage{
+        display:block !important;
+    }
 
-  #ticketPage,
-  #ticketPage *{
-    visibility:visible!important;
-  }
+    #ticketPage .container{
+        width:100%;
+        padding:0;
+    }
 
-  #ticketPage{
-    position:absolute!important;
-    inset:auto!important;
-    width:100%!important;
-    height:auto!important;
-    display:block!important;
-    padding:0!important;
-    overflow:visible!important;
-    background:white!important;
-  }
+    .ticket{
+        box-shadow:none;
+        border:1px solid #ccc;
+    }
 
-  .ticket-actions,
-  .success{
-    display:none!important;
-  }
-
-  .ticket-wrap{
-    width:100%!important;
-  }
-
-  .ticket{
-    width:100%!important;
-    min-height:500px!important;
-    border-radius:0!important;
-    box-shadow:none!important;
-  }
+    .success,
+    .print-button{
+        display:none !important;
+    }
 }
 </style>
 </head>
@@ -1039,202 +704,413 @@ button{
 <body>
 
 <!-- =====================================================
-     1. INTRO
+     PAGE 1
 ===================================================== -->
 
-<section id="intro" class="page active">
+<section id="page1" class="page active">
 
-  <div class="intro-bg"></div>
-
-  <div class="intro-content">
-
-    <img
-      class="logo-big"
-      src="image_-_2026-09-29T192341.513-removebg-preview.png"
-      alt="Raja Club Athletic">
-
-    <h1 class="welcome">
-      BIENVENUE <span>RAJAWI</span>
-    </h1>
-
-    <p class="intro-sub">
-      RAJA CLUB ATHLETIC • DIGITAL TICKETING
-    </p>
-
-    <button
-      type="button"
-      class="btn"
-      id="nextIntro">
-      NEXT ✓
-    </button>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     2. INFO
-===================================================== -->
-
-<section id="info" class="page">
-
-  <div class="container">
-
-    <div class="center">
-
-      <img
-        class="small-logo"
-        src="image_-_2026-09-29T192341.513-removebg-preview.png"
-        alt="RCA">
-
-      <h1 class="big-title">
-        RAJA <span>CLUB ATHLETIC</span>
-      </h1>
-
-      <p class="description">
-        Raja Club Athletic est un club sportif marocain basé à Casablanca.
-        Le club possède une identité historique et une grande communauté
-        de supporters.
-      </p>
-
-    </div>
-
-    <div class="info-grid">
-
-      <div class="info-card">
+    <div class="container">
 
         <img
-          class="info-image"
-          src="image_-_2026-09-29T192341.513-removebg-preview.png"
-          alt="Raja Club Athletic">
+            class="logo"
+            src="image_-_2026-09-29T192341.513-removebg-preview.png"
+            alt="Raja Club Athletic"
+        >
 
-        <div class="info-content">
+        <h1>
+            Bienvenue
+            <span class="green">RAJAWI</span>
+        </h1>
 
-          <h2>
-            RAJA <span>CLUB ATHLETIC</span>
-          </h2>
-
-          <p>
-            Les couleurs vertes et l'identité du Raja sont au centre
-            de cette expérience digitale de billetterie.
-          </p>
-
+        <div class="subtitle">
+            RAJA CLUB ATHLETIC
         </div>
 
-      </div>
+        <div class="next-area">
+            <button type="button" class="next-btn" id="next1">
+                NEXT ✓
+            </button>
+        </div>
 
-      <div class="info-card">
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 2
+===================================================== -->
+
+<section id="page2" class="page">
+
+    <div class="container">
 
         <img
-          class="info-image"
-          src="IMG_0062.webp"
-          alt="Curva Sud Magana">
+            class="logo"
+            src="image_-_2026-09-29T192341.513-removebg-preview.png"
+            alt="RCA"
+        >
 
-        <div class="info-content">
+        <h2>
+            <span class="green">RAJA CLUB ATHLETIC</span>
+        </h2>
 
-          <h2>
-            CURVA <span>SUD MAGANA</span>
-          </h2>
+        <div class="card">
 
-          <p>
-            Une tribune associée à la culture des supporters, aux chants,
-            aux tifos et à l'ambiance des matchs.
-          </p>
+            <p class="description">
+                Le Raja Club Athletic est un club sportif marocain
+                fondé à Casablanca. Le club est particulièrement connu
+                pour son histoire, ses supporters et l'ambiance de sa
+                tribune populaire.
+            </p>
+
+            <p class="description">
+                Cette plateforme permet aux supporters de sélectionner
+                une rencontre et de générer une billetterie digitale
+                dédiée.
+            </p>
 
         </div>
 
-      </div>
-
-    </div>
-
-    <div class="next-area">
-
-      <button
-        type="button"
-        class="btn"
-        id="nextInfo">
-        NEXT ✓
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     3. CURVA
-===================================================== -->
-
-<section id="curva" class="page">
-
-  <div class="container center">
-
-    <img
-      class="curva-image"
-      src="IMG_0062.webp"
-      alt="Curva Sud Magana">
-
-    <h1 class="curva-title">
-      CURVA <span>SUD MAGANA</span>
-    </h1>
-
-    <p class="curva-text">
-      Découvrez les rencontres disponibles et choisissez votre round
-      pour accéder à la billetterie.
-    </p>
-
-    <button
-      type="button"
-      class="btn"
-      id="nextCurva">
-      NEXT ✓
-    </button>
-
-  </div>
-
-</section>
-
-<!-- =====================================================
-     4. ROUNDS
-===================================================== -->
-
-<section id="rounds" class="page">
-
-  <div class="container">
-
-    <div class="round-header">
-
-      <img
-        src="image_-_2026-09-29T192341.513-removebg-preview.png"
-        alt="RCA">
-
-      <h1>
-        RCA <span class="green">MATCHES</span>
-      </h1>
-
-      <p>
-        SELECT A ROUND TO GET YOUR TICKET
-      </p>
-
-    </div>
-
-    <div class="round-grid">
-
-      <div class="round-card">
-        <div class="round-number">ROUND 01</div>
-        <div class="match">
-          JSK
-          <span class="vs">VS</span>
-          RCA
+        <div class="next-area">
+            <button type="button" class="next-btn" id="next2">
+                NEXT ✓
+            </button>
         </div>
-        <button
-          class="get-ticket"
-          type="button"
-          data-round="ROUND 1"
-          data-match="JSK VS RCA">
-          GET TICKET
-        </button>
-      </div>
 
-      <div class="round-ca
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 3
+===================================================== -->
+
+<section id="page3" class="page">
+
+    <div class="container">
+
+        <h2>
+            <span class="green">CURVA SUD</span>
+            <span class="gold">MAGANA</span>
+        </h2>
+
+        <img
+            class="curva-image"
+            src="IMG_0062.webp"
+            alt="Curva Sud Magana"
+        >
+
+        <div class="card">
+
+            <p class="description">
+                La Curva Sud Magana représente une partie emblématique
+                de la culture des supporters du Raja. Elle est associée
+                aux chants, aux tifos et à l'ambiance du stade.
+            </p>
+
+        </div>
+
+        <div class="next-area">
+            <button type="button" class="next-btn" id="next3">
+                NEXT ✓
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 4 - ROUNDS
+===================================================== -->
+
+<section id="roundsPage" class="page">
+
+    <div class="container">
+
+        <h2>
+            <span class="green">RCA</span> MATCHES
+        </h2>
+
+        <p class="description">
+            Sélectionnez le Round que vous souhaitez voir.
+        </p>
+
+        <div class="round-grid">
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 1"
+                    data-match="JSK VS RCA">
+
+                <div class="round-number">ROUND 1</div>
+                <div class="round-match">JSK VS RCA</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 2"
+                    data-match="RCA VS CRB">
+
+                <div class="round-number">ROUND 2</div>
+                <div class="round-match">RCA VS CRB</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 3"
+                    data-match="WAC VS RCA">
+
+                <div class="round-number">ROUND 3</div>
+                <div class="round-match">WAC VS RCA</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 4"
+                    data-match="RCA VS IRT">
+
+                <div class="round-number">ROUND 4</div>
+                <div class="round-match">RCA VS IRT</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 5"
+                    data-match="KAC VS RCA">
+
+                <div class="round-number">ROUND 5</div>
+                <div class="round-match">KAC VS RCA</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 6"
+                    data-match="RCA VS KACM">
+
+                <div class="round-number">ROUND 6</div>
+                <div class="round-match">RCA VS KACM</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 7"
+                    data-match="CRB VS RCA">
+
+                <div class="round-number">ROUND 7</div>
+                <div class="round-match">CRB VS RCA</div>
+
+            </button>
+
+            <button type="button"
+                    class="round"
+                    data-round="ROUND 8"
+                    data-match="RCA VS MAS">
+
+                <div class="round-number">ROUND 8</div>
+                <div class="round-match">RCA VS MAS</div>
+
+            </button>
+
+        </div>
+
+        <div class="next-area">
+
+            <button type="button"
+                    class="main-btn"
+                    id="getTicket">
+                GET TICKET 🎟️
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 5 - FORM
+===================================================== -->
+
+<section id="formPage" class="page">
+
+    <div class="container">
+
+        <h2>
+            <span class="green">GET</span> YOUR TICKET
+        </h2>
+
+        <div class="card form-box">
+
+            <div class="input-group">
+
+                <label>User roblox :</label>
+
+                <input
+                    type="text"
+                    id="roblox"
+                    placeholder="Enter your Roblox username"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>User discord :</label>
+
+                <input
+                    type="text"
+                    id="discord"
+                    placeholder="Enter your Discord username"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <h3>
+                Seat location:
+            </h3>
+
+            <div class="seats">
+
+                <button
+                    type="button"
+                    class="seat"
+                    data-seat="VIRAGE"
+                    data-price="5"
+                >
+
+                    <div class="seat-name">
+                        VIRAGE
+                    </div>
+
+                    <div class="price">
+                        $5
+                    </div>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="seat"
+                    data-seat="VIP"
+                    data-price="100"
+                >
+
+                    <div class="seat-name">
+                        VIP
+                    </div>
+
+                    <div class="price">
+                        $100
+                    </div>
+
+                </button>
+
+            </div>
+
+            <div id="formError" class="error"></div>
+
+            <button
+                type="button"
+                class="main-btn"
+                id="confirmBtn"
+            >
+                CONFIRMER ✓
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 6 - SECURITY
+===================================================== -->
+
+<section id="securityPage" class="page">
+
+    <div class="container">
+
+        <div class="security-box">
+
+            <img
+                class="logo"
+                src="image_-_2026-09-29T192341.513-removebg-preview.png"
+                alt="RCA"
+            >
+
+            <h2>
+                SECURITY
+            </h2>
+
+            <div class="security-code">
+                G ..... W 9
+            </div>
+
+            <p class="security-note">
+                ملاحظة: أجب على السؤال للتمكن من إتمام عملية شراء التذكرة
+            </p>
+
+            <div class="card">
+
+                <div class="input-group">
+
+                    <label>
+                        Enter answer:
+                    </label>
+
+                    <input
+                        type="text"
+                        id="securityAnswer"
+                        placeholder="Your answer"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <div id="securityError" class="error"></div>
+
+                <button
+                    type="button"
+                    class="main-btn"
+                    id="securityBtn"
+                >
+                    VERIFY ✓
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 7 - TICKET
+===================================================== -->
+
+<section id="ticketPage" class="page">
+
+    <div class="container">
+
+        <h2>
+   
