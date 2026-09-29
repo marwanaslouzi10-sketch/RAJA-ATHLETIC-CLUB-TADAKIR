@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCA TICKETS | Raja Club Athletic</title>
+<title>RCA TADAKIR</title>
 
 <style>
 *{
@@ -12,16 +12,14 @@
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#020403;
-    color:#fff;
+html{
     scroll-behavior:smooth;
 }
 
 body{
+    background:#020504;
+    color:#fff;
+    font-family:Arial,sans-serif;
     overflow-x:hidden;
 }
 
@@ -30,62 +28,29 @@ body{
 ========================= */
 
 .page{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100dvh;
-    overflow-y:auto;
-    overflow-x:hidden;
-    padding:30px 0 60px;
+    min-height:100vh;
+    min-height:100dvh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:40px 20px;
 
     background:
         radial-gradient(
-            circle at 50% 10%,
+            circle at 50% 15%,
             rgba(0,180,80,.22),
             transparent 35%
         ),
         linear-gradient(
             135deg,
-            #020403,
-            #06150d,
-            #020403
+            #020504,
+            #06150c,
+            #020504
         );
 
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transform:translateX(30px);
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease,
-        visibility .35s ease;
-}
-
-/* الصفحة اللي عندها target كتظهر */
-.page:target{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transform:translateX(0);
-    z-index:10;
-}
-
-/* الصفحة الأولى هي default */
-#home{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transform:translateX(0);
-    z-index:1;
-}
-
-/* إذا شي صفحة target، home تختفي */
-body:has(.page:target) #home{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-    transform:translateX(-30px);
+    position:relative;
 }
 
 /* =========================
@@ -93,13 +58,7 @@ body:has(.page:target) #home{
 ========================= */
 
 .container{
-    width:min(1050px,92%);
-    min-height:100%;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    width:min(1000px,100%);
     text-align:center;
 }
 
@@ -110,47 +69,42 @@ body:has(.page:target) #home{
 .logo{
     width:190px;
     max-width:55vw;
-    object-fit:contain;
 
     filter:
-        drop-shadow(0 0 15px rgba(0,220,100,.55))
-        drop-shadow(0 0 40px rgba(0,120,60,.35));
+        drop-shadow(0 0 15px rgba(0,220,100,.5))
+        drop-shadow(0 0 35px rgba(0,120,60,.4));
 
-    animation:floatLogo 3s ease-in-out infinite;
+    animation:float 3s ease-in-out infinite;
 }
 
-@keyframes floatLogo{
+@keyframes float{
     0%,100%{
         transform:translateY(0);
     }
+
     50%{
         transform:translateY(-10px);
     }
 }
 
 /* =========================
-   TEXT
+   TITLES
 ========================= */
 
 h1{
+    font-size:clamp(42px,8vw,80px);
     margin-top:25px;
-    font-size:clamp(42px,8vw,82px);
     font-weight:900;
-    letter-spacing:2px;
 }
 
 h2{
-    font-size:clamp(30px,6vw,58px);
+    font-size:clamp(30px,6vw,55px);
     margin-bottom:20px;
     font-weight:900;
 }
 
-h3{
-    margin-bottom:15px;
-}
-
 .green{
-    color:#12d66c;
+    color:#13d66d;
 }
 
 .gold{
@@ -158,27 +112,32 @@ h3{
 }
 
 .subtitle{
-    margin-top:8px;
     color:#aaa;
     letter-spacing:4px;
-    font-size:14px;
+    margin-top:10px;
 }
 
-.description{
-    max-width:800px;
-    margin:15px auto;
-    line-height:1.9;
+/* =========================
+   TEXT
+========================= */
+
+.text{
+    width:min(800px,100%);
+    margin:20px auto;
+
     color:#ddd;
+
+    line-height:1.8;
     font-size:17px;
 }
 
 /* =========================
-   BUTTON
+   BUTTONS
 ========================= */
 
-.next-btn,
-.main-btn{
+.btn{
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
 
@@ -187,17 +146,21 @@ h3{
 
     padding:15px 30px;
 
-    border:2px solid #17d86e;
+    margin-top:30px;
+
     border-radius:15px;
+
+    border:2px solid #13d66d;
 
     background:
         linear-gradient(
             135deg,
-            #087c40,
-            #12ca66
+            #087b40,
+            #12c967
         );
 
     color:#fff;
+
     text-decoration:none;
 
     font-size:18px;
@@ -206,27 +169,20 @@ h3{
     cursor:pointer;
 
     box-shadow:
-        0 0 25px rgba(0,210,100,.25),
-        inset 0 0 15px rgba(255,255,255,.08);
+        0 0 25px rgba(0,210,100,.25);
 
     transition:.25s;
 }
 
-.next-btn:hover,
-.main-btn:hover{
-    transform:translateY(-4px) scale(1.03);
+.btn:hover{
+    transform:translateY(-4px);
+
     box-shadow:
-        0 0 35px rgba(0,220,100,.45),
-        0 15px 35px rgba(0,0,0,.5);
+        0 0 35px rgba(0,220,100,.5);
 }
 
-.next-btn:active,
-.main-btn:active{
+.btn:active{
     transform:scale(.96);
-}
-
-.next-area{
-    margin-top:35px;
 }
 
 /* =========================
@@ -235,70 +191,69 @@ h3{
 
 .card{
     width:min(850px,100%);
+
+    margin:20px auto;
+
     padding:30px;
 
-    background:rgba(255,255,255,.045);
-
-    border:1px solid rgba(255,255,255,.1);
     border-radius:22px;
 
-    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,.05);
 
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(12px);
 }
 
 /* =========================
    CURVA
 ========================= */
 
-.curva-image{
+.curva{
     width:min(850px,100%);
     max-height:480px;
 
     object-fit:cover;
 
-    display:block;
-    margin:20px auto;
-
     border-radius:22px;
 
-    border:2px solid rgba(15,215,105,.4);
+    margin:20px auto;
+
+    display:block;
+
+    border:2px solid rgba(20,210,100,.4);
 
     box-shadow:
-        0 0 35px rgba(0,180,80,.2),
-        0 20px 60px rgba(0,0,0,.5);
+        0 0 30px rgba(0,180,80,.2);
 }
 
 /* =========================
    ROUNDS
 ========================= */
 
-.round-grid{
+.rounds{
     width:min(850px,100%);
 
+    margin:30px auto;
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
 
     gap:15px;
-
-    margin:25px 0;
 }
 
 .round{
-    min-height:105px;
+    min-height:110px;
 
-    border:1px solid rgba(20,210,100,.25);
     border-radius:18px;
 
-    background:
-        linear-gradient(
-            145deg,
-            #0b1811,
-            #06100a
-        );
+    border:2px solid rgba(255,255,255,.1);
 
-    color:white;
+    background:#07110b;
+
+    color:#fff;
 
     cursor:pointer;
 
@@ -306,76 +261,79 @@ h3{
 }
 
 .round:hover{
+    border-color:#13d66d;
+
     transform:translateY(-5px);
-    border-color:#16d76b;
-    box-shadow:0 10px 30px rgba(0,210,100,.2);
 }
 
 .round.selected{
     background:
         linear-gradient(
-            145deg,
-            #087b40,
-            #11c967
+            135deg,
+            #087d40,
+            #11c866
         );
 
-    border-color:white;
+    border-color:#fff;
 
     box-shadow:
-        0 0 30px rgba(0,220,100,.3);
+        0 0 30px rgba(0,210,100,.3);
 }
 
-.round-number{
-    font-size:13px;
+.rnumber{
     color:#aaa;
+    font-size:13px;
     margin-bottom:10px;
 }
 
-.round-match{
-    font-size:17px;
+.rmatch{
     font-weight:900;
+    font-size:17px;
 }
 
 /* =========================
    FORM
 ========================= */
 
-.form-box{
+.form{
     width:min(600px,100%);
+    margin:auto;
 }
 
-.input-group{
+.group{
     text-align:left;
     margin-bottom:20px;
 }
 
-.input-group label{
+.group label{
     display:block;
     margin-bottom:8px;
-    font-weight:900;
+    font-weight:bold;
 }
 
-.input-group input{
+.group input{
     width:100%;
 
     padding:17px;
 
     border-radius:12px;
+
     border:1px solid rgba(255,255,255,.15);
 
     background:#07100b;
-    color:white;
+
+    color:#fff;
 
     outline:none;
 
     font-size:16px;
 }
 
-.input-group input:focus{
-    border-color:#14d66b;
+.group input:focus{
+    border-color:#13d66d;
 
     box-shadow:
-        0 0 20px rgba(0,210,100,.15);
+        0 0 15px rgba(0,210,100,.15);
 }
 
 /* =========================
@@ -384,33 +342,32 @@ h3{
 
 .seats{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:15px;
+
     margin:20px 0;
 }
 
 .seat{
-    padding:25px 15px;
+    padding:25px;
 
-    background:#07100b;
-
-    color:white;
-
-    border:2px solid rgba(255,255,255,.12);
     border-radius:18px;
 
+    border:2px solid rgba(255,255,255,.1);
+
+    background:#07110b;
+
+    color:#fff;
+
     cursor:pointer;
-
-    transition:.25s;
-}
-
-.seat:hover{
-    border-color:#14d66b;
 }
 
 .seat.selected{
-    background:rgba(0,150,70,.25);
-    border-color:#15d66d;
+    border-color:#13d66d;
+
+    background:rgba(0,160,80,.25);
 
     box-shadow:
         0 0 25px rgba(0,210,100,.2);
@@ -433,9 +390,9 @@ h3{
 ========================= */
 
 .error{
+    color:#ff5757;
     min-height:25px;
-    margin:12px 0;
-    color:#ff5555;
+    margin:10px 0;
     font-weight:bold;
 }
 
@@ -443,150 +400,142 @@ h3{
    SECURITY
 ========================= */
 
-.security-box{
+.security{
     width:min(550px,100%);
+    margin:auto;
 }
 
-.security-code{
-    margin:25px auto;
+.question{
     padding:25px;
 
-    background:#050906;
+    margin:25px auto;
 
-    border:2px solid #14d66b;
+    border:2px solid #13d66d;
+
     border-radius:20px;
+
+    background:#050906;
 
     color:#d9b84d;
 
     font-size:38px;
+
     font-weight:900;
 
-    letter-spacing:8px;
-
-    box-shadow:
-        0 0 30px rgba(0,210,100,.15);
-}
-
-.security-note{
-    color:#ddd;
-    line-height:1.8;
-    margin-bottom:20px;
+    letter-spacing:7px;
 }
 
 /* =========================
    TICKET
 ========================= */
 
-.ticket-wrap{
-    width:min(850px,94%);
-}
-
 .ticket{
-    overflow:hidden;
+    width:min(850px,100%);
 
-    background:
-        linear-gradient(
-            135deg,
-            #fff,
-            #edf5ef
-        );
+    margin:20px auto;
+
+    background:#f5f8f5;
 
     color:#07110b;
 
     border-radius:25px;
 
+    overflow:hidden;
+
     box-shadow:
-        0 25px 80px rgba(0,0,0,.65),
-        0 0 50px rgba(0,200,90,.18);
+        0 25px 70px rgba(0,0,0,.6);
 }
 
-.ticket-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
+.ticket-header{
     padding:25px;
 
-    background:#08783e;
-    color:white;
+    background:#087a3f;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    color:#fff;
 }
 
 .ticket-logo{
-    width:75px;
-    height:75px;
+    width:70px;
+    height:70px;
 
     object-fit:contain;
 
-    padding:5px;
+    background:#fff;
 
-    background:white;
+    padding:5px;
 
     border-radius:50%;
 }
 
-.ticket-title{
-    text-align:right;
-}
-
-.ticket-title h2{
+.ticket-header h2{
     margin:0;
-    font-size:28px;
+    font-size:25px;
 }
 
-.ticket-title p{
-    margin-top:5px;
+.ticket-header p{
     color:#d9b84d;
-    font-weight:900;
+    font-weight:bold;
 }
 
 .ticket-body{
     padding:30px;
 }
 
-.ticket-match{
+.match{
+    font-size:32px;
+    font-weight:900;
+
     text-align:center;
 
     margin-bottom:25px;
-
-    font-size:32px;
-    font-weight:900;
 }
 
 .ticket-info{
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:15px;
 }
 
-.info-item{
+.info{
     padding:15px;
 
-    background:#e8f0ea;
+    background:#e7efe9;
 
     border-radius:12px;
 }
 
-.info-label{
-    color:#66736a;
+.label{
     font-size:11px;
-    font-weight:bold;
+    color:#647068;
 }
 
-.info-value{
+.value{
     margin-top:5px;
     font-weight:900;
     word-break:break-word;
 }
 
-.perforation{
-    margin:25px 0;
+.line{
     border-top:3px dashed #89958d;
+
+    margin:25px 0;
 }
 
 .ticket-bottom{
     display:grid;
+
     grid-template-columns:1fr 150px;
-    gap:25px;
+
+    gap:20px;
+
     align-items:center;
 }
 
@@ -594,11 +543,10 @@ h3{
     width:140px;
     height:140px;
 
-    margin:auto;
+    background:#fff;
 
     padding:7px;
 
-    background:white;
     border-radius:8px;
 }
 
@@ -606,6 +554,7 @@ h3{
     height:60px;
 
     display:flex;
+
     align-items:stretch;
 
     gap:2px;
@@ -627,7 +576,7 @@ h3{
 }
 
 .success{
-    width:min(850px,94%);
+    width:min(850px,100%);
 
     margin:20px auto;
 
@@ -635,11 +584,11 @@ h3{
 
     border-radius:18px;
 
-    border:1px solid rgba(20,210,100,.3);
-
-    background:rgba(10,150,70,.12);
-
     line-height:1.8;
+
+    background:rgba(0,150,70,.12);
+
+    border:1px solid rgba(20,210,100,.3);
 }
 
 /* =========================
@@ -648,32 +597,19 @@ h3{
 
 @media(max-width:700px){
 
-    .container{
-        width:90%;
-        padding:25px 0;
+    .page{
+        padding:30px 15px;
     }
 
     .logo{
         width:145px;
     }
 
-    h1{
-        font-size:42px;
-    }
-
-    .description{
-        font-size:15px;
-    }
-
-    .round-grid{
+    .rounds{
         grid-template-columns:1fr 1fr;
     }
 
-    .round{
-        min-height:95px;
-    }
-
-    .round-match{
+    .rmatch{
         font-size:14px;
     }
 
@@ -681,25 +617,21 @@ h3{
         grid-template-columns:1fr;
     }
 
-    .ticket-top{
+    .ticket-header{
         padding:18px;
     }
 
     .ticket-logo{
-        width:60px;
-        height:60px;
+        width:58px;
+        height:58px;
     }
 
-    .ticket-title h2{
-        font-size:19px;
+    .ticket-header h2{
+        font-size:18px;
     }
 
     .ticket-body{
         padding:20px;
-    }
-
-    .ticket-match{
-        font-size:25px;
     }
 
     .ticket-info{
@@ -711,17 +643,12 @@ h3{
         text-align:center;
     }
 
-    .qr{
-        margin:auto;
-    }
-
-    .security-code{
+    .question{
         font-size:27px;
         letter-spacing:5px;
     }
 
-    .next-btn,
-    .main-btn{
+    .btn{
         width:100%;
         max-width:350px;
     }
@@ -734,32 +661,26 @@ h3{
 @media print{
 
     body{
-        background:white !important;
-        overflow:visible !important;
+        background:#fff;
     }
 
     .page{
-        display:none !important;
-        position:static !important;
-        width:100% !important;
-        height:auto !important;
-        overflow:visible !important;
-        background:white !important;
+        display:none!important;
     }
 
     #ticketPage{
-        display:block !important;
-        opacity:1 !important;
-        visibility:visible !important;
+        display:block!important;
+        min-height:0!important;
+        padding:0!important;
     }
 
     .success,
-    .print-button{
-        display:none !important;
+    .print{
+        display:none!important;
     }
 
     .ticket{
-        box-shadow:none !important;
+        box-shadow:none;
         border:1px solid #ccc;
     }
 }
@@ -768,380 +689,908 @@ h3{
 
 <body>
 
+
 <!-- =====================================================
-     HOME
+     PAGE 1
 ===================================================== -->
 
 <section class="page" id="home">
 
-    <div class="container">
+<div class="container">
 
-        <img
-            class="logo"
-            src="image_-_2026-09-29T192341.513-removebg-preview.png"
-            alt="Raja Club Athletic"
-        >
+<img
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="logo"
+alt="RCA"
+>
 
-        <h1>
-            Bienvenue
-            <span class="green">RAJAWI</span>
-        </h1>
+<h1>
+Bienvenue
+<span class="green">RAJAWI</span>
+</h1>
 
-        <div class="subtitle">
-            RAJA CLUB ATHLETIC
-        </div>
+<div class="subtitle">
+RAJA CLUB ATHLETIC
+</div>
 
-        <div class="next-area">
+<a
+href="#infoPage"
+class="btn"
+>
+NEXT ✓
+</a>
 
-            <!-- NEXT WITHOUT JAVASCRIPT -->
-            <a
-                href="#infoPage"
-                class="next-btn"
-            >
-                NEXT ✓
-            </a>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
 <!-- =====================================================
-     INFO
+     PAGE 2
 ===================================================== -->
 
 <section class="page" id="infoPage">
 
-    <div class="container">
+<div class="container">
 
-        <img
-            class="logo"
-            src="image_-_2026-09-29T192341.513-removebg-preview.png"
-            alt="RCA"
-        >
+<img
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="logo"
+alt="RCA"
+>
 
-        <h2>
-            <span class="green">RAJA CLUB ATHLETIC</span>
-        </h2>
+<h2>
+<span class="green">RAJA CLUB ATHLETIC</span>
+</h2>
 
-        <div class="card">
+<div class="card">
 
-            <p class="description">
-                Le Raja Club Athletic est un club sportif marocain
-                fondé à Casablanca. Le club est particulièrement connu
-                pour son histoire, ses supporters et l'ambiance de sa
-                tribune populaire.
-            </p>
+<p class="text">
+Le Raja Club Athletic est un club sportif marocain
+fondé à Casablanca. Le club est connu pour son histoire,
+son identité et la grande passion de ses supporters.
+</p>
 
-            <p class="description">
-                Cette plateforme permet aux supporters de sélectionner
-                une rencontre et de générer une billetterie digitale
-                dédiée.
-            </p>
+<p class="text">
+Cette plateforme permet de sélectionner une rencontre
+et de générer une billetterie digitale.
+</p>
 
-        </div>
+</div>
 
-        <div class="next-area">
+<a
+href="#curvaPage"
+class="btn"
+>
+NEXT ✓
+</a>
 
-            <a
-                href="#curvaPage"
-                class="next-btn"
-            >
-                NEXT ✓
-            </a>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
 <!-- =====================================================
-     CURVA
+     PAGE 3
 ===================================================== -->
 
 <section class="page" id="curvaPage">
 
-    <div class="container">
+<div class="container">
 
-        <h2>
-            <span class="green">CURVA SUD</span>
-            <span class="gold">MAGANA</span>
-        </h2>
+<h2>
+<span class="green">CURVA SUD</span>
+<span class="gold">MAGANA</span>
+</h2>
 
-        <img
-            class="curva-image"
-            src="IMG_0062.webp"
-            alt="Curva Sud Magana"
-        >
+<img
+src="IMG_0062.webp"
+class="curva"
+alt="Curva Sud Magana"
+>
 
-        <div class="card">
+<div class="card">
 
-            <p class="description">
-                La Curva Sud Magana représente une partie emblématique
-                de la culture des supporters du Raja. Elle est associée
-                aux chants, aux tifos et à l'ambiance du stade.
-            </p>
+<p class="text">
+La Curva Sud Magana représente une partie emblématique
+de la culture des supporters du Raja, avec les chants,
+les tifos et l'ambiance du stade.
+</p>
 
-        </div>
+</div>
 
-        <div class="next-area">
+<a
+href="#roundsPage"
+class="btn"
+>
+NEXT ✓
+</a>
 
-            <a
-                href="#roundsPage"
-                class="next-btn"
-            >
-                NEXT ✓
-            </a>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 
 <!-- =====================================================
-     ROUNDS
+     PAGE 4
 ===================================================== -->
 
 <section class="page" id="roundsPage">
 
-    <div class="container">
+<div class="container">
 
-        <h2>
-            <span class="green">RCA</span> MATCHES
-        </h2>
+<h2>
+<span class="green">RCA</span> MATCHES
+</h2>
 
-        <p class="description">
-            Sélectionnez le Round que vous souhaitez voir.
-        </p>
+<p class="text">
+Sélectionnez un Round pour continuer.
+</p>
 
-        <div class="round-grid">
+<div class="rounds">
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 1"
-                data-match="JSK VS RCA"
-            >
-                <div class="round-number">ROUND 1</div>
-                <div class="round-match">JSK VS RCA</div>
-            </button>
+<button
+type="button"
+class="round"
+data-round="ROUND 1"
+data-match="JSK VS RCA"
+>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 2"
-                data-match="RCA VS CRB"
-            >
-                <div class="round-number">ROUND 2</div>
-                <div class="round-match">RCA VS CRB</div>
-            </button>
+<div class="rnumber">
+ROUND 1
+</div>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 3"
-                data-match="WAC VS RCA"
-            >
-                <div class="round-number">ROUND 3</div>
-                <div class="round-match">WAC VS RCA</div>
-            </button>
+<div class="rmatch">
+JSK VS RCA
+</div>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 4"
-                data-match="RCA VS IRT"
-            >
-                <div class="round-number">ROUND 4</div>
-                <div class="round-match">RCA VS IRT</div>
-            </button>
+</button>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 5"
-                data-match="KAC VS RCA"
-            >
-                <div class="round-number">ROUND 5</div>
-                <div class="round-match">KAC VS RCA</div>
-            </button>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 6"
-                data-match="RCA VS KACM"
-            >
-                <div class="round-number">ROUND 6</div>
-                <div class="round-match">RCA VS KACM</div>
-            </button>
+<button
+type="button"
+class="round"
+data-round="ROUND 2"
+data-match="RCA VS CRB"
+>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 7"
-                data-match="CRB VS RCA"
-            >
-                <div class="round-number">ROUND 7</div>
-                <div class="round-match">CRB VS RCA</div>
-            </button>
+<div class="rnumber">
+ROUND 2
+</div>
 
-            <button
-                type="button"
-                class="round"
-                data-round="ROUND 8"
-                data-match="RCA VS MAS"
-            >
-                <div class="round-number">ROUND 8</div>
-                <div class="round-match">RCA VS MAS</div>
-            </button>
+<div class="rmatch">
+RCA VS CRB
+</div>
 
-        </div>
+</button>
 
-        <div class="next-area">
 
-            <button
-                type="button"
-                class="main-btn"
-                id="getTicket"
-            >
-                GET TICKET 🎟️
-            </button>
+<button
+type="button"
+class="round"
+data-round="ROUND 3"
+data-match="WAC VS RCA"
+>
 
-        </div>
+<div class="rnumber">
+ROUND 3
+</div>
 
-    </div>
+<div class="rmatch">
+WAC VS RCA
+</div>
 
+</button>
+
+
+<button
+type="button"
+class="round"
+data-round="ROUND 4"
+data-match="RCA VS IRT"
+>
+
+<div class="rnumber">
+ROUND 4
+</div>
+
+<div class="rmatch">
+RCA VS IRT
+</div>
+
+</button>
+
+
+<button
+type="button"
+class="round"
+data-round="ROUND 5"
+data-match="KAC VS RCA"
+>
+
+<div class="rnumber">
+ROUND 5
+</div>
+
+<div class="rmatch">
+KAC VS RCA
+</div>
+
+</button>
+
+
+<button
+type="button"
+class="round"
+data-round="ROUND 6"
+data-match="RCA VS KACM"
+>
+
+<div class="rnumber">
+ROUND 6
+</div>
+
+<div class="rmatch">
+RCA VS KACM
+</div>
+
+</button>
+
+
+<button
+type="button"
+class="round"
+data-round="ROUND 7"
+data-match="CRB VS RCA"
+>
+
+<div class="rnumber">
+ROUND 7
+</div>
+
+<div class="rmatch">
+CRB VS RCA
+</div>
+
+</button>
+
+
+<button
+type="button"
+class="round"
+data-round="ROUND 8"
+data-match="RCA VS MAS"
+>
+
+<div class="rnumber">
+ROUND 8
+</div>
+
+<div class="rmatch">
+RCA VS MAS
+</div>
+
+</button>
+
+</div>
+
+
+<!--
+GET TICKET is an HTML link.
+It does NOT depend on JavaScript.
+-->
+
+<a
+href="#formPage"
+class="btn"
+id="getTicket"
+>
+GET TICKET 🎟️
+</a>
+
+</div>
 </section>
 
 
 <!-- =====================================================
-     FORM
+     PAGE 5
 ===================================================== -->
 
 <section class="page" id="formPage">
 
-    <div class="container">
+<div class="container">
 
-        <h2>
-            <span class="green">GET</span> YOUR TICKET
-        </h2>
+<h2>
+<span class="green">GET</span> YOUR TICKET
+</h2>
 
-        <div class="card form-box">
+<div class="card form">
 
-            <div class="input-group">
+<div class="group">
 
-                <label>User roblox :</label>
+<label>
+User roblox :
+</label>
 
-                <input
-                    id="roblox"
-                    type="text"
-                    placeholder="Enter your Roblox username"
-                    autocomplete="off"
-                >
+<input
+type="text"
+id="roblox"
+placeholder="Enter your Roblox username"
+>
 
-            </div>
+</div>
 
-            <div class="input-group">
 
-                <label>User discord :</label>
+<div class="group">
 
-                <input
-                    id="discord"
-                    type="text"
-                    placeholder="Enter your Discord username"
-                    autocomplete="off"
-                >
+<label>
+User discord :
+</label>
 
-            </div>
+<input
+type="text"
+id="discord"
+placeholder="Enter your Discord username"
+>
 
-            <h3>
-                Seat location:
-            </h3>
+</div>
 
-            <div class="seats">
 
-                <button
-                    type="button"
-                    class="seat"
-                    data-seat="VIRAGE"
-                    data-price="5"
-                >
+<h3>
+Seat location:
+</h3>
 
-                    <div class="seat-name">
-                        VIRAGE
-                    </div>
 
-                    <div class="price">
-                        $5
-                    </div>
+<div class="seats">
 
-                </button>
+<button
+type="button"
+class="seat"
+data-seat="VIRAGE"
+data-price="5"
+>
 
-                <button
-                    type="button"
-                    class="seat"
-                    data-seat="VIP"
-                    data-price="100"
-                >
+<div class="seat-name">
+VIRAGE
+</div>
 
-                    <div class="seat-name">
-                        VIP
-                    </div>
+<div class="price">
+$5
+</div>
 
-                    <div class="price">
-                        $100
-                    </div>
+</button>
 
-                </button>
 
-            </div>
+<button
+type="button"
+class="seat"
+data-seat="VIP"
+data-price="100"
+>
 
-            <div
-                class="error"
-                id="formError"
-            ></div>
+<div class="seat-name">
+VIP
+</div>
 
-            <button
-                type="button"
-                class="main-btn"
-                id="confirmBtn"
-            >
-                CONFIRMER ✓
-            </button>
+<div class="price">
+$100
+</div>
 
-        </div>
+</button>
 
-    </div>
+</div>
 
+
+<div
+class="error"
+id="formError"
+></div>
+
+
+<button
+type="button"
+class="btn"
+id="confirmBtn"
+>
+CONFIRMER ✓
+</button>
+
+</div>
+
+</div>
 </section>
 
 
 <!-- =====================================================
-     SECURITY
+     PAGE 6
 ===================================================== -->
 
 <section class="page" id="securityPage">
 
-    <div class="container">
+<div class="container">
 
-        <div class="security-box">
+<div class="security">
 
-            <img
-                class="logo"
-                src="image_-_2026-09-29T192341.513-removebg-preview.png"
-                alt="RCA"
-            >
+<img
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="logo"
+alt="RCA"
+>
 
-            <h2>
-                SECURITY
-            </h2>
+<h2>
+SECURITY
+</h2>
 
-            <div class="security-code">
-  
+<div class="question">
+G ..... W 9
+</div>
+
+<p class="text">
+ملاحظة: أجب على السؤال للتمكن من إتمام عملية شراء التذكرة
+</p>
+
+<div class="card">
+
+<div class="group">
+
+<label>
+Enter answer:
+</label>
+
+<input
+type="text"
+id="securityAnswer"
+placeholder="Your answer"
+>
+
+</div>
+
+<div
+class="error"
+id="securityError"
+></div>
+
+<button
+type="button"
+class="btn"
+id="verifyBtn"
+>
+VERIFY ✓
+</button>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 7
+===================================================== -->
+
+<section class="page" id="ticketPage">
+
+<div class="container">
+
+<h2>
+<span class="green">TICKET</span> CONFIRMED
+</h2>
+
+
+<div class="ticket">
+
+<div class="ticket-header">
+
+<img
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+class="ticket-logo"
+alt="RCA"
+>
+
+<div>
+
+<h2>
+RAJA CLUB ATHLETIC
+</h2>
+
+<p>
+OFFICIAL DIGITAL TICKET
+</p>
+
+</div>
+
+</div>
+
+
+<div class="ticket-body">
+
+<div
+class="match"
+id="ticketMatch"
+>
+RCA VS ...
+</div>
+
+
+<div class="ticket-info">
+
+<div class="info">
+<div class="label">ROUND</div>
+<div class="value" id="ticketRound">-</div>
+</div>
+
+<div class="info">
+<div class="label">SEAT</div>
+<div class="value" id="ticketSeat">-</div>
+</div>
+
+<div class="info">
+<div class="label">PRICE</div>
+<div class="value" id="ticketPrice">-</div>
+</div>
+
+<div class="info">
+<div class="label">STADIUM</div>
+<div class="value">N/A</div>
+</div>
+
+<div class="info">
+<div class="label">DATE</div>
+<div class="value">N/A</div>
+</div>
+
+<div class="info">
+<div class="label">GATE</div>
+<div class="value">N/A</div>
+</div>
+
+<div class="info">
+<div class="label">ROBLOX</div>
+<div class="value" id="ticketRoblox">-</div>
+</div>
+
+<div class="info">
+<div class="label">DISCORD</div>
+<div class="value" id="ticketDiscord">-</div>
+</div>
+
+</div>
+
+
+<div class="line"></div>
+
+
+<div class="ticket-bottom">
+
+<div>
+
+<strong>
+RAJA CLUB ATHLETIC
+</strong>
+
+<div
+class="barcode"
+id="barcode"
+></div>
+
+<div
+class="ticket-id"
+id="ticketId"
+>
+RCA-
+</div>
+
+</div>
+
+
+<img
+class="qr"
+id="qr"
+alt="QR"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="success">
+
+🇲🇦 تم شراء التذكرة بنجاح.<br>
+
+عند برمجة الوقت والملعب سيتم إخباركم،
+وستصبح التذكرة متاحة للاستعمال.
+
+<br><br>
+
+🇬🇧 Your ticket has been successfully purchased.<br>
+
+You will be informed once the stadium and match time
+are programmed. The ticket will then be available for use.
+
+</div>
+
+
+<button
+type="button"
+class="btn print"
+id="printBtn"
+>
+🖨️ IMPRIMER
+</button>
+
+</div>
+</section>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+/* =========================
+   VARIABLES
+========================= */
+
+let selectedRound="";
+let selectedMatch="";
+
+let selectedSeat="";
+let selectedPrice="";
+
+let roblox="";
+let discord="";
+
+
+/* =========================
+   ROUND
+========================= */
+
+const rounds=
+document.querySelectorAll(".round");
+
+rounds.forEach(function(round){
+
+round.addEventListener("click",function(){
+
+rounds.forEach(function(r){
+r.classList.remove("selected");
+});
+
+this.classList.add("selected");
+
+selectedRound=
+this.dataset.round;
+
+selectedMatch=
+this.dataset.match;
+
+});
+
+});
+
+
+/* =========================
+   GET TICKET
+========================= */
+
+/*
+   IMPORTANT:
+   GET TICKET itself is an HTML <a>.
+   JavaScript is NOT responsible for opening formPage.
+*/
+
+const getTicket=
+document.getElementById("getTicket");
+
+getTicket.addEventListener("click",function(){
+
+if(selectedRound===""){
+
+alert("Veuillez sélectionner un Round.");
+
+}
+
+});
+
+
+/* =========================
+   SEAT
+========================= */
+
+const seats=
+document.querySelectorAll(".seat");
+
+seats.forEach(function(seat){
+
+seat.addEventListener("click",function(){
+
+seats.forEach(function(s){
+s.classList.remove("selected");
+});
+
+this.classList.add("selected");
+
+selectedSeat=
+this.dataset.seat;
+
+selectedPrice=
+this.dataset.price;
+
+});
+
+});
+
+
+/* =========================
+   CONFIRM
+========================= */
+
+document
+.getElementById("confirmBtn")
+.addEventListener("click",function(){
+
+const error=
+document.getElementById("formError");
+
+error.textContent="";
+
+
+roblox=
+document.getElementById("roblox")
+.value
+.trim();
+
+
+discord=
+document.getElementById("discord")
+.value
+.trim();
+
+
+if(roblox===""){
+
+error.textContent=
+"Veuillez entrer votre User Roblox.";
+
+return;
+
+}
+
+
+if(discord===""){
+
+error.textContent=
+"Veuillez entrer votre User Discord.";
+
+return;
+
+}
+
+
+if(selectedSeat===""){
+
+error.textContent=
+"Veuillez sélectionner votre Seat location.";
+
+return;
+
+}
+
+
+/*
+   We use hash navigation.
+*/
+
+window.location.hash="securityPage";
+
+});
+
+
+/* =========================
+   VERIFY
+========================= */
+
+document
+.getElementById("verifyBtn")
+.addEventListener("click",function(){
+
+const answer=
+document
+.getElementById("securityAnswer")
+.value
+.replace(/\s+/g,"")
+.toUpperCase();
+
+const error=
+document.getElementById("securityError");
+
+
+if(answer!=="GWW9"){
+
+error.textContent=
+"Réponse incorrecte. Veuillez réessayer.";
+
+return;
+
+}
+
+
+createTicket();
+
+window.location.hash="ticketPage";
+
+});
+
+
+/* =========================
+   ENTER SECURITY
+========================= */
+
+document
+.getElementById("securityAnswer")
+.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+document
+.getElementById("verifyBtn")
+.click();
+
+}
+
+});
+
+
+/* =========================
+   CREATE TICKET
+========================= */
+
+function createTicket(){
+
+const ticketId=
+"RCA-"+
+Math.random()
+.toString(36)
+.substring(2,10)
+.toUpperCase();
+
+
+document
+.getElementById("ticketMatch")
+.textContent=
+selectedMatch;
+
+
+document
+.getElementById("ticketRound")
+.textContent=
+selectedRound;
+
+
+document
+.getElementById("ticketSeat")
+.textContent=
+selectedSeat;
+
+
+document
+.getElementById("ticketPrice")
+.textContent=
+"$"+selectedPrice;
+
+
+document
+.getElementById("ticketRoblox")
+.textContent=
+roblox;
+
+
+document
+.getElementById("ticketDiscord")
+.textContent=
+discord;
+
+
+document
+.getElementById("ticket
