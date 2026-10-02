@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RCA TADAKIR | Derby Casablanca</title>
 
 <style>
@@ -14,17 +15,17 @@
 }
 
 body{
+  min-height:100vh;
+  color:#fff;
   background:
     radial-gradient(circle at top,#087a45 0%,#031f13 45%,#020807 100%);
-  color:white;
-  min-height:100vh;
 }
 
 .page{
   display:none;
   min-height:100vh;
   padding:25px 15px;
-  animation:fade .5s ease;
+  animation:fade .45s ease;
 }
 
 .page.active{
@@ -35,8 +36,14 @@ body{
 }
 
 @keyframes fade{
-  from{opacity:0;transform:translateY(15px)}
-  to{opacity:1;transform:translateY(0)}
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .logo{
@@ -73,7 +80,7 @@ h2{
   box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
-input,select{
+input{
   width:100%;
   padding:15px;
   margin:8px 0 15px;
@@ -115,13 +122,25 @@ button:hover{
 
 .secondary{
   background:rgba(255,255,255,.12);
-  color:white;
+  color:#fff;
   border:1px solid rgba(255,255,255,.2);
 }
 
 .red{
   background:#e52323;
-  color:white;
+  color:#fff;
+}
+
+.error{
+  color:#ff7373;
+  text-align:center;
+  min-height:22px;
+  margin:5px 0;
+  font-weight:bold;
+}
+
+.success{
+  color:#0bd66f;
 }
 
 .topbar{
@@ -207,6 +226,11 @@ button:hover{
   padding:20px;
   cursor:pointer;
   text-align:center;
+  transition:.2s;
+}
+
+.category:hover{
+  transform:translateY(-3px);
 }
 
 .category.selected{
@@ -248,7 +272,7 @@ button:hover{
 
 .ticket{
   width:min(650px,95vw);
-  background:white;
+  background:#fff;
   color:#111;
   border-radius:25px;
   overflow:hidden;
@@ -257,13 +281,13 @@ button:hover{
 
 .ticket-head{
   background:#007a43;
-  color:white;
+  color:#fff;
   padding:25px;
   text-align:center;
 }
 
 .ticket-head h2{
-  margin:0;
+  margin:0 0 5px;
 }
 
 .ticket-body{
@@ -287,11 +311,13 @@ button:hover{
   background:#f1f1f1;
   padding:12px;
   border-radius:10px;
+  overflow-wrap:anywhere;
 }
 
 .ticket-info small{
   display:block;
   color:#777;
+  margin-bottom:4px;
 }
 
 .qr{
@@ -299,6 +325,12 @@ button:hover{
   width:220px;
   height:220px;
   margin:25px auto;
+}
+
+.ticket-price{
+  text-align:center;
+  font-size:30px;
+  font-weight:900;
 }
 
 .ticket-footer{
@@ -354,7 +386,7 @@ button:hover{
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:750px;
+  min-width:850px;
 }
 
 th,td{
@@ -374,14 +406,9 @@ th{
   opacity:.7;
 }
 
-.error{
-  color:#ff6b6b;
+.loading{
   text-align:center;
-  margin:8px 0;
-  min-height:20px;
-}
-
-.success{
+  padding:25px;
   color:#0bd66f;
 }
 
@@ -390,19 +417,44 @@ th{
 }
 
 @media(max-width:600px){
-  h1{font-size:30px}
-  .info-grid{grid-template-columns:1fr}
-  .category-grid{grid-template-columns:1fr}
-  .ticket-info{grid-template-columns:1fr}
-  .actions{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr}
-  .teams{gap:12px}
-  .teambox{font-size:27px}
+
+  h1{
+    font-size:30px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .category-grid{
+    grid-template-columns:1fr;
+  }
+
+  .ticket-info{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .teams{
+    gap:12px;
+  }
+
+  .teambox{
+    font-size:27px;
+  }
 }
 
 @media print{
+
   body{
-    background:white;
+    background:#fff;
   }
 
   body *{
@@ -421,8 +473,9 @@ th{
     width:100%;
   }
 
-  .actions{
-    display:none;
+  .actions,
+  #ticketPage > button{
+    display:none !important;
   }
 }
 </style>
@@ -430,7 +483,11 @@ th{
 
 <body>
 
-<!-- LOGIN -->
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
 <section id="loginPage" class="page active">
 
   <img
@@ -447,34 +504,63 @@ th{
   <div class="card">
 
     <label>NOM</label>
+
     <input
       id="loginName"
       type="text"
+      autocomplete="off"
       placeholder="Votre nom">
 
+
     <label>MOD PASS</label>
+
     <input
       id="loginPass"
       type="password"
+      autocomplete="off"
       placeholder="Votre mot de passe">
+
 
     <div id="loginError" class="error"></div>
 
-    <button class="primary" onclick="login()">
+
+    <button
+      type="button"
+      id="enterBtn"
+      class="primary">
+
       ENTRER
+
     </button>
 
   </div>
+
 </section>
 
 
-<!-- MEMBER HOME -->
+<!-- =====================================================
+     MEMBER HOME
+===================================================== -->
+
 <section id="homePage" class="page">
 
   <div class="topbar">
-    <div class="team">RCA TADAKIR</div>
-    <button class="secondary" onclick="logout()">LOGOUT</button>
+
+    <div class="team">
+      RCA TADAKIR
+    </div>
+
+    <button
+      type="button"
+      class="secondary"
+      onclick="logout()">
+
+      LOGOUT
+
+    </button>
+
   </div>
+
 
   <div class="derby card">
 
@@ -483,108 +569,201 @@ th{
       src="image_-_2026-09-29T192341.513-removebg-preview.png"
       alt="RCA">
 
-    <h1>DERBY CASABLANCA</h1>
+
+    <h1>
+      DERBY CASABLANCA
+    </h1>
+
 
     <div class="teams">
-      <div class="teambox">RCA</div>
-      <div class="vs">VS</div>
-      <div class="teambox">WAC</div>
+
+      <div class="teambox">
+        RCA
+      </div>
+
+      <div class="vs">
+        VS
+      </div>
+
+      <div class="teambox">
+        WAC
+      </div>
+
     </div>
 
+
     <p class="subtitle">
-      Bienvenue <b id="welcomeName"></b>
+
+      Bienvenue
+      <b id="welcomeName"></b>
+
     </p>
+
 
     <img
       class="about-image"
       src="IMG_0062.webp"
       alt="Curva Sud Magana">
 
+
     <p>
-      Assistez au Derby Casablanca entre RCA et WAC
+      Assistez au Derby Casablanca entre
+      <b>RCA</b> et <b>WAC</b>
       au <b>Sir.alien Stadium</b>.
     </p>
+
 
     <div class="info-grid">
 
       <div class="info">
+
         <small>DATE</small>
-        <strong>04/10/2026</strong>
+
+        <strong>
+          04/10/2026
+        </strong>
+
       </div>
 
+
       <div class="info">
+
         <small>HEURE</small>
-        <strong>21:30</strong>
+
+        <strong>
+          21:30
+        </strong>
+
       </div>
 
+
       <div class="info">
+
         <small>STADIUM</small>
-        <strong>Sir.alien Stadium</strong>
+
+        <strong>
+          Sir.alien Stadium
+        </strong>
+
       </div>
 
     </div>
 
-    <button class="primary" onclick="showPage('ticketFormPage')">
+
+    <button
+      type="button"
+      class="primary"
+      onclick="showPage('ticketFormPage')">
+
       GET TICKET
+
     </button>
 
   </div>
+
 </section>
 
 
-<!-- TICKET FORM -->
+<!-- =====================================================
+     TICKET FORM
+===================================================== -->
+
 <section id="ticketFormPage" class="page">
 
   <div class="topbar">
-    <div class="team">RCA TADAKIR</div>
-    <button class="secondary" onclick="showPage('homePage')">
+
+    <div class="team">
+      RCA TADAKIR
+    </div>
+
+    <button
+      type="button"
+      class="secondary"
+      onclick="showPage('homePage')">
+
       RETOUR
+
     </button>
+
   </div>
+
 
   <div class="card">
 
-    <h2>GET YOUR TICKET</h2>
+    <h2>
+      GET YOUR TICKET
+    </h2>
 
-    <label>ROBLOX USERNAME</label>
+
+    <label>
+      ROBLOX USERNAME
+    </label>
+
     <input
       id="roblox"
       type="text"
+      autocomplete="off"
       placeholder="Votre username Roblox">
 
-    <label>DISCORD USERNAME</label>
+
+    <label>
+      DISCORD USERNAME
+    </label>
+
     <input
       id="discord"
       type="text"
+      autocomplete="off"
       placeholder="Votre username Discord">
 
-    <label>CATEGORY</label>
+
+    <label>
+      CATEGORY
+    </label>
+
 
     <div class="category-grid">
+
 
       <div
         id="virage"
         class="category"
         onclick="selectCategory('VIRAGE',5)">
 
-        <b>VIRAGE</b>
-        <span class="price">$5 / ticket</span>
+        <b>
+          VIRAGE
+        </b>
+
+        <span class="price">
+          $5 / ticket
+        </span>
 
       </div>
+
 
       <div
         id="vip"
         class="category"
         onclick="selectCategory('VIP',100)">
 
-        <b>VIP</b>
-        <span class="price">$100 / ticket</span>
+        <b>
+          VIP
+        </b>
+
+        <span class="price">
+          $100 / ticket
+        </span>
 
       </div>
 
+
     </div>
 
-    <label>NOMBRE DE TICKETS</label>
+
+    <label>
+      NOMBRE DE TICKETS
+    </label>
+
 
     <input
       id="quantity"
@@ -594,174 +773,357 @@ th{
       placeholder="Entrez le nombre de tickets"
       oninput="updateTotal()">
 
+
     <div class="total-box">
-      <span>TOTAL</span>
-      <strong id="totalPrice">$0</strong>
+
+      <span>
+        TOTAL
+      </span>
+
+      <strong id="totalPrice">
+        $0
+      </strong>
+
     </div>
 
-    <div id="formError" class="error"></div>
 
-    <button class="primary" onclick="generateTicket()">
+    <div
+      id="formError"
+      class="error">
+    </div>
+
+
+    <button
+      type="button"
+      class="primary"
+      onclick="generateTicket()">
+
       CONFIRMER LA RÉSERVATION
+
     </button>
 
   </div>
+
 </section>
 
 
-<!-- TICKET -->
+<!-- =====================================================
+     TICKET
+===================================================== -->
+
 <section id="ticketPage" class="page">
 
   <div class="ticket">
 
+
     <div class="ticket-head">
 
-      <h2>RCA TADAKIR</h2>
-      <p>DERBY CASABLANCA</p>
+      <h2>
+        RCA TADAKIR
+      </h2>
+
+      <p>
+        DERBY CASABLANCA
+      </p>
 
     </div>
 
+
     <div class="ticket-body">
+
 
       <div class="ticket-match">
         RCA VS WAC
       </div>
 
+
       <div class="ticket-info">
 
-        <div>
-          <small>DATE</small>
-          <b>04/10/2026</b>
-        </div>
 
         <div>
-          <small>HEURE</small>
-          <b>21:30</b>
+
+          <small>
+            DATE
+          </small>
+
+          <b>
+            04/10/2026
+          </b>
+
         </div>
 
-        <div>
-          <small>STADIUM</small>
-          <b>Sir.alien Stadium</b>
-        </div>
 
         <div>
-          <small>CATEGORY</small>
-          <b id="ticketCategory"></b>
+
+          <small>
+            HEURE
+          </small>
+
+          <b>
+            21:30
+          </b>
+
         </div>
 
-        <div>
-          <small>NOMBRE DE TICKETS</small>
-          <b id="ticketQuantity"></b>
-        </div>
 
         <div>
-          <small>UNIT PRICE</small>
-          <b id="ticketUnitPrice"></b>
+
+          <small>
+            STADIUM
+          </small>
+
+          <b>
+            Sir.alien Stadium
+          </b>
+
         </div>
 
-        <div>
-          <small>ROBLOX</small>
-          <b id="ticketRoblox"></b>
-        </div>
 
         <div>
-          <small>DISCORD</small>
-          <b id="ticketDiscord"></b>
+
+          <small>
+            CATEGORY
+          </small>
+
+          <b id="ticketCategory">
+          </b>
+
         </div>
+
+
+        <div>
+
+          <small>
+            NOMBRE DE TICKETS
+          </small>
+
+          <b id="ticketQuantity">
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <small>
+            UNIT PRICE
+          </small>
+
+          <b id="ticketUnitPrice">
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <small>
+            ROBLOX
+          </small>
+
+          <b id="ticketRoblox">
+          </b>
+
+        </div>
+
+
+        <div>
+
+          <small>
+            DISCORD
+          </small>
+
+          <b id="ticketDiscord">
+          </b>
+
+        </div>
+
 
       </div>
 
-      <img
-        id="qr"
-        class="qr"
-        alt="QR CODE">
 
-      <div style="text-align:center;font-size:28px;font-weight:900">
-        <span id="ticketTotal"></span>
+      <a
+        id="qrLink"
+        href="#"
+        target="_blank">
+
+        <img
+          id="qr"
+          class="qr"
+          alt="QR CODE">
+
+      </a>
+
+
+      <div
+        id="ticketTotal"
+        class="ticket-price">
+
       </div>
+
 
     </div>
 
+
     <div class="ticket-footer">
+
       PRESENT THIS TICKET AT THE STADIUM
+
     </div>
 
   </div>
+
 
   <div class="actions">
 
-    <button
-      class="primary"
-      onclick="window.print()">
-      🖨️ PRINT
-    </button>
 
     <button
+      type="button"
+      class="primary"
+      onclick="window.print()">
+
+      🖨️ PRINT
+
+    </button>
+
+
+    <button
+      type="button"
       class="secondary"
       onclick="showPage('ticketFormPage')">
+
       MODIFIER
+
     </button>
+
 
   </div>
 
+
   <button
+    type="button"
     class="secondary"
     style="margin-top:10px"
     onclick="showPage('homePage')">
+
     NOUVELLE RÉSERVATION
+
   </button>
 
 </section>
 
 
-<!-- MANAGER DASHBOARD -->
+<!-- =====================================================
+     MANAGER DASHBOARD
+===================================================== -->
+
 <section id="managerPage" class="page">
 
   <div class="dashboard">
 
+
     <div class="topbar">
+
       <div>
-        <div class="team manager-title">👑 MANAGER DASHBOARD</div>
-        <small>RCA TADAKIR</small>
+
+        <div class="team manager-title">
+          👑 MANAGER DASHBOARD
+        </div>
+
+        <small>
+          RCA TADAKIR
+        </small>
+
       </div>
 
-      <button class="red" onclick="logout()">
+
+      <button
+        type="button"
+        class="red"
+        onclick="logout()">
+
         LOGOUT
+
       </button>
+
     </div>
+
 
     <div class="stats">
 
-      <div class="stat">
-        <small>🎟️ TOTAL TICKETS</small>
-        <strong id="totalTickets">0</strong>
-      </div>
 
       <div class="stat">
-        <small>👥 TOTAL RESERVATIONS</small>
-        <strong id="totalReservations">0</strong>
+
+        <small>
+          🎟️ TOTAL TICKETS
+        </small>
+
+        <strong id="totalTickets">
+          0
+        </strong>
+
       </div>
+
+
+      <div class="stat">
+
+        <small>
+          👥 TOTAL RESERVATIONS
+        </small>
+
+        <strong id="totalReservations">
+          0
+        </strong>
+
+      </div>
+
 
     </div>
+
 
     <div class="table-wrap">
 
       <table>
 
         <thead>
+
           <tr>
+
             <th>#</th>
+
             <th>DISCORD</th>
+
             <th>ROBLOX</th>
+
             <th>CATEGORY</th>
+
             <th>NOMBRE</th>
+
             <th>UNIT PRICE</th>
+
             <th>TOTAL</th>
+
             <th>DATE</th>
+
           </tr>
+
         </thead>
 
+
         <tbody id="reservationsTable">
+
+          <tr>
+
+            <td
+              colspan="8"
+              class="loading">
+
+              Chargement...
+
+            </td>
+
+          </tr>
+
         </tbody>
 
       </table>
@@ -773,14 +1135,184 @@ th{
 </section>
 
 
+<!-- =====================================================
+     LOGIN SCRIPT
+     IMPORTANT:
+     This script is NOT module, so the button
+     always works independently from Firebase.
+===================================================== -->
+
+<script>
+
+const MANAGER_PASSWORD = "admin";
+
+let currentUser = "";
+
+
+/* LOGIN BUTTON */
+
+document
+  .getElementById("enterBtn")
+  .addEventListener("click", function(){
+
+    const name =
+      document
+        .getElementById("loginName")
+        .value
+        .trim();
+
+    const pass =
+      document
+        .getElementById("loginPass")
+        .value;
+
+    const error =
+      document
+        .getElementById("loginError");
+
+
+    error.textContent = "";
+
+
+    if(!name){
+
+      error.textContent =
+        "Veuillez entrer votre nom.";
+
+      return;
+    }
+
+
+    if(!pass){
+
+      error.textContent =
+        "Veuillez entrer votre MOD PASS.";
+
+      return;
+    }
+
+
+    currentUser = name;
+
+
+    /* MANAGER */
+
+    if(pass === MANAGER_PASSWORD){
+
+      showPage("managerPage");
+
+      if(
+        typeof window.loadManagerData ===
+        "function"
+      ){
+
+        window.loadManagerData();
+
+      }
+
+      return;
+    }
+
+
+    /* MEMBER */
+
+    document
+      .getElementById("welcomeName")
+      .textContent = name;
+
+
+    showPage("homePage");
+
+});
+
+
+/* ENTER KEY */
+
+document
+  .getElementById("loginPass")
+  .addEventListener("keydown",function(event){
+
+    if(event.key === "Enter"){
+
+      document
+        .getElementById("enterBtn")
+        .click();
+
+    }
+
+});
+
+
+/* PAGE NAVIGATION */
+
+function showPage(pageId){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(function(page){
+
+      page.classList.remove("active");
+
+    });
+
+
+  const page =
+    document.getElementById(pageId);
+
+
+  if(page){
+
+    page.classList.add("active");
+
+  }
+
+
+  window.scrollTo(0,0);
+
+}
+
+
+window.showPage = showPage;
+
+
+/* LOGOUT */
+
+function logout(){
+
+  currentUser = "";
+
+  document
+    .getElementById("loginName")
+    .value = "";
+
+  document
+    .getElementById("loginPass")
+    .value = "";
+
+  document
+    .getElementById("loginError")
+    .textContent = "";
+
+  showPage("loginPage");
+
+}
+
+window.logout = logout;
+
+</script>
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
 <script type="module">
 
-/* =========================================================
-   FIREBASE
-========================================================= */
-
-import { initializeApp }
+import {
+  initializeApp
+}
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 
 import {
   getFirestore,
@@ -793,6 +1325,8 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -816,134 +1350,37 @@ const firebaseConfig = {
 
   measurementId:
     "G-402TD1QZSM"
+
 };
 
 
-const app = initializeApp(firebaseConfig);
+/* INITIALIZE */
 
-const db = getFirestore(app);
+const app =
+  initializeApp(firebaseConfig);
 
 
-/* =========================================================
-   GLOBAL DATA
-========================================================= */
+const db =
+  getFirestore(app);
 
-let currentUser = "";
+
+/* GLOBAL */
 
 let selectedCategory = "";
 
 let selectedPrice = 0;
 
-const managerPassword = "admin";
 
 const stadiumURL =
 "https://www.roblox.com/games/71836037262520/AVL-Sir-Alien-Stadium";
 
 
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
-
-window.showPage = function(pageId){
-
-  document
-    .querySelectorAll(".page")
-    .forEach(page => page.classList.remove("active"));
-
-  const page =
-    document.getElementById(pageId);
-
-  if(page){
-    page.classList.add("active");
-  }
-
-  window.scrollTo(0,0);
-};
-
-
-/* =========================================================
-   LOGIN
-========================================================= */
-
-window.login = function(){
-
-  const name =
-    document.getElementById("loginName")
-    .value.trim();
-
-  const pass =
-    document.getElementById("loginPass")
-    .value;
-
-  const error =
-    document.getElementById("loginError");
-
-
-  error.textContent = "";
-
-
-  if(!name){
-
-    error.textContent =
-      "Veuillez entrer votre nom.";
-
-    return;
-  }
-
-
-  if(!pass){
-
-    error.textContent =
-      "Veuillez entrer votre MOD PASS.";
-
-    return;
-  }
-
-
-  currentUser = name;
-
-
-  /* MANAGER */
-
-  if(pass === managerPassword){
-
-    showPage("managerPage");
-
-    loadReservations();
-
-    return;
-  }
-
-
-  /* MEMBER */
-
-  document.getElementById("welcomeName")
-    .textContent = name;
-
-  showPage("homePage");
-};
-
-
-/* =========================================================
-   LOGOUT
-========================================================= */
-
-window.logout = function(){
-
-  currentUser = "";
-
-  document.getElementById("loginName").value = "";
-  document.getElementById("loginPass").value = "";
-
-  showPage("loginPage");
-};
-
-
-/* =========================================================
+/* =====================================================
    CATEGORY
-========================================================= */
+===================================================== */
 
-window.selectCategory = function(category,price){
+window.selectCategory =
+function(category,price){
 
   selectedCategory = category;
 
@@ -953,6 +1390,7 @@ window.selectCategory = function(category,price){
   document
     .getElementById("virage")
     .classList.remove("selected");
+
 
   document
     .getElementById("vip")
@@ -965,7 +1403,8 @@ window.selectCategory = function(category,price){
       .getElementById("virage")
       .classList.add("selected");
 
-  }else{
+  }
+  else{
 
     document
       .getElementById("vip")
@@ -975,18 +1414,22 @@ window.selectCategory = function(category,price){
 
 
   updateTotal();
+
 };
 
 
-/* =========================================================
+/* =====================================================
    TOTAL
-========================================================= */
+===================================================== */
 
-window.updateTotal = function(){
+window.updateTotal =
+function(){
 
   const quantity =
     parseInt(
-      document.getElementById("quantity").value
+      document
+        .getElementById("quantity")
+        .value
     );
 
 
@@ -997,10 +1440,12 @@ window.updateTotal = function(){
     quantity > 10
   ){
 
-    document.getElementById("totalPrice")
+    document
+      .getElementById("totalPrice")
       .textContent = "$0";
 
     return;
+
   }
 
 
@@ -1008,14 +1453,17 @@ window.updateTotal = function(){
     quantity * selectedPrice;
 
 
-  document.getElementById("totalPrice")
-    .textContent = "$" + total;
+  document
+    .getElementById("totalPrice")
+    .textContent =
+      "$" + total;
+
 };
 
 
-/* =========================================================
+/* =====================================================
    QR
-========================================================= */
+===================================================== */
 
 function generateQR(){
 
@@ -1023,35 +1471,56 @@ function generateQR(){
     document.getElementById("qr");
 
 
-  qr.src =
+  const qrLink =
+    document.getElementById("qrLink");
+
+
+  const qrURL =
     "https://api.qrserver.com/v1/create-qr-code/" +
     "?size=300x300&data=" +
     encodeURIComponent(stadiumURL);
+
+
+  qr.src = qrURL;
+
+  qrLink.href = stadiumURL;
+
 }
 
 
-/* =========================================================
+/* =====================================================
    GENERATE TICKET
-========================================================= */
+===================================================== */
 
-window.generateTicket = async function(){
+window.generateTicket =
+async function(){
 
   const roblox =
-    document.getElementById("roblox")
-    .value.trim();
+    document
+      .getElementById("roblox")
+      .value
+      .trim();
+
 
   const discord =
-    document.getElementById("discord")
-    .value.trim();
+    document
+      .getElementById("discord")
+      .value
+      .trim();
+
 
   const quantity =
     parseInt(
-      document.getElementById("quantity").value
+      document
+        .getElementById("quantity")
+        .value
     );
 
 
   const error =
-    document.getElementById("formError");
+    document
+      .getElementById("formError");
+
 
   error.textContent = "";
 
@@ -1062,6 +1531,7 @@ window.generateTicket = async function(){
       "Veuillez entrer votre Roblox username.";
 
     return;
+
   }
 
 
@@ -1071,6 +1541,7 @@ window.generateTicket = async function(){
       "Veuillez entrer votre Discord username.";
 
     return;
+
   }
 
 
@@ -1080,6 +1551,7 @@ window.generateTicket = async function(){
       "Veuillez choisir une catégorie.";
 
     return;
+
   }
 
 
@@ -1093,6 +1565,7 @@ window.generateTicket = async function(){
       "Veuillez entrer le nombre de tickets (1 à 10).";
 
     return;
+
   }
 
 
@@ -1100,11 +1573,11 @@ window.generateTicket = async function(){
     quantity * selectedPrice;
 
 
-  try{
+  /*
+     SAVE TO FIRESTORE
+  */
 
-    /*
-      SAVE RESERVATION TO FIRESTORE
-    */
+  try{
 
     await addDoc(
       collection(db,"reservations"),
@@ -1134,33 +1607,51 @@ window.generateTicket = async function(){
 
         stadium: "Sir.alien Stadium",
 
-        createdAt: serverTimestamp()
+        createdAt:
+          serverTimestamp()
 
       }
     );
 
 
     /*
-      FILL TICKET
+       TICKET DATA
     */
 
-    document.getElementById("ticketCategory")
-      .textContent = selectedCategory;
+    document
+      .getElementById("ticketCategory")
+      .textContent =
+        selectedCategory;
 
-    document.getElementById("ticketQuantity")
-      .textContent = quantity;
 
-    document.getElementById("ticketUnitPrice")
-      .textContent = "$" + selectedPrice;
+    document
+      .getElementById("ticketQuantity")
+      .textContent =
+        quantity;
 
-    document.getElementById("ticketTotal")
-      .textContent = "$" + total;
 
-    document.getElementById("ticketRoblox")
-      .textContent = roblox;
+    document
+      .getElementById("ticketUnitPrice")
+      .textContent =
+        "$" + selectedPrice;
 
-    document.getElementById("ticketDiscord")
-      .textContent = discord;
+
+    document
+      .getElementById("ticketTotal")
+      .textContent =
+        "$" + total;
+
+
+    document
+      .getElementById("ticketRoblox")
+      .textContent =
+        roblox;
+
+
+    document
+      .getElementById("ticketDiscord")
+      .textContent =
+        discord;
 
 
     generateQR();
@@ -1169,34 +1660,49 @@ window.generateTicket = async function(){
     showPage("ticketPage");
 
 
-  }catch(errorFirebase){
+  }
+  catch(firebaseError){
 
-    console.error(errorFirebase);
+    console.error(
+      "Firebase error:",
+      firebaseError
+    );
+
 
     error.textContent =
-      "Erreur lors de l'enregistrement. Vérifiez Firebase.";
+      "Erreur Firebase. Vérifiez Firestore.";
 
   }
 
 };
 
 
-/* =========================================================
-   LOAD MANAGER RESERVATIONS
-========================================================= */
+/* =====================================================
+   MANAGER DASHBOARD
+===================================================== */
 
-async function loadReservations(){
+window.loadManagerData =
+async function(){
 
   const table =
-    document.getElementById("reservationsTable");
+    document
+      .getElementById("reservationsTable");
 
 
   table.innerHTML = `
+
     <tr>
-      <td colspan="8" class="empty">
-        Chargement...
+
+      <td
+        colspan="8"
+        class="loading">
+
+        Chargement des réservations...
+
       </td>
+
     </tr>
+
   `;
 
 
@@ -1210,7 +1716,9 @@ async function loadReservations(){
 
 
     const snapshot =
-      await getDocs(reservationsQuery);
+      await getDocs(
+        reservationsQuery
+      );
 
 
     let totalTickets = 0;
@@ -1223,30 +1731,47 @@ async function loadReservations(){
     if(snapshot.empty){
 
       table.innerHTML = `
+
         <tr>
-          <td colspan="8" class="empty">
+
+          <td
+            colspan="8"
+            class="empty">
+
             Aucune réservation pour le moment.
+
           </td>
+
         </tr>
+
       `;
 
-      document.getElementById("totalTickets")
+
+      document
+        .getElementById("totalTickets")
         .textContent = "0";
 
-      document.getElementById("totalReservations")
+
+      document
+        .getElementById("totalReservations")
         .textContent = "0";
+
 
       return;
+
     }
 
 
-    snapshot.forEach(doc => {
+    snapshot.forEach(function(doc){
 
-      const data = doc.data();
+      const data =
+        doc.data();
 
 
       const quantity =
-        Number(data.quantity || 0);
+        Number(
+          data.quantity || 0
+        );
 
 
       totalTickets += quantity;
@@ -1255,4 +1780,184 @@ async function loadReservations(){
       let date = "-";
 
 
-     
+      if(data.createdAt){
+
+        try{
+
+          date =
+            data.createdAt
+              .toDate()
+              .toLocaleString("fr-FR");
+
+        }
+        catch(e){
+
+          date = "-";
+
+        }
+
+      }
+
+
+      html += `
+
+        <tr>
+
+          <td>
+            ${index}
+          </td>
+
+          <td>
+            ${escapeHTML(data.discord || "-")}
+          </td>
+
+          <td>
+            ${escapeHTML(data.roblox || "-")}
+          </td>
+
+          <td>
+            ${escapeHTML(data.category || "-")}
+          </td>
+
+          <td>
+            ${quantity}
+          </td>
+
+          <td>
+            $${Number(data.unitPrice || 0)}
+          </td>
+
+          <td>
+            $${Number(data.total || 0)}
+          </td>
+
+          <td>
+            ${date}
+          </td>
+
+        </tr>
+
+      `;
+
+
+      index++;
+
+    });
+
+
+    table.innerHTML =
+      html;
+
+
+    document
+      .getElementById("totalTickets")
+      .textContent =
+        totalTickets;
+
+
+    document
+      .getElementById("totalReservations")
+      .textContent =
+        snapshot.size;
+
+
+  }
+  catch(firebaseError){
+
+    console.error(
+      "Dashboard error:",
+      firebaseError
+    );
+
+
+    table.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="8"
+          class="empty">
+
+          Impossible de charger les réservations.
+          <br><br>
+          Vérifiez les règles Firestore.
+
+        </td>
+
+      </tr>
+
+    `;
+
+  }
+
+};
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value)
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+/* =====================================================
+   AUTO REFRESH MANAGER
+===================================================== */
+
+setInterval(
+  function(){
+
+    const managerPage =
+      document.getElementById(
+        "managerPage"
+      );
+
+
+    if(
+      managerPage &&
+      managerPage.classList.contains(
+        "active"
+      )
+    ){
+
+      window.loadManagerData();
+
+    }
+
+  },
+  15000
+);
+
+</script>
+
+</body>
+</html>
