@@ -4,1097 +4,122 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<title>RCA TADAKIR | DERBY CASABLANCA</title>
+<title>RCA TADAKIR TEST</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
+body{
+    margin:0;
+    min-height:100vh;
+    background:#06150d;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-body{
-  min-height:100vh;
-  background:
-    radial-gradient(circle at top,#15803d 0%,#062b18 35%,#020604 100%);
-  color:white;
-  overflow-x:hidden;
+.box{
+    width:90%;
+    max-width:450px;
+    text-align:center;
+}
+
+h1{
+    color:#20c463;
+    font-size:40px;
+}
+
+.btn{
+    display:block;
+    width:100%;
+    padding:18px 0;
+    margin:15px 0;
+    border-radius:15px;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:bold;
+    background:#20c463;
+    color:#000;
+}
+
+.manager{
+    background:#222;
+    color:white;
 }
 
 .page{
-  display:none;
-  min-height:100vh;
-  padding:25px 16px;
-  animation:fade .35s ease;
+    display:none;
 }
 
-.page.active{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.page:target{
+    display:block;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(15px)}
-  to{opacity:1;transform:translateY(0)}
+#home{
+    display:block;
 }
 
-.logo{
-  width:150px;
-  height:150px;
-  object-fit:contain;
-  margin:20px auto;
-  filter:drop-shadow(0 0 20px rgba(255,255,255,.25));
-}
-
-.title{
-  font-size:42px;
-  font-weight:900;
-  text-align:center;
-  letter-spacing:2px;
-}
-
-.subtitle{
-  color:#b8ffce;
-  font-weight:bold;
-  letter-spacing:4px;
-  margin-top:8px;
-  text-align:center;
-}
-
-.card{
-  width:100%;
-  max-width:500px;
-  background:rgba(0,0,0,.55);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:24px;
-  padding:24px;
-  margin-top:25px;
-  box-shadow:0 20px 60px rgba(0,0,0,.4);
-  backdrop-filter:blur(12px);
-}
-
-.match{
-  text-align:center;
-  font-size:31px;
-  font-weight:900;
-  margin-bottom:20px;
-}
-
-.match span{
-  color:#25d366;
-}
-
-.info{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.infoBox{
-  background:rgba(255,255,255,.07);
-  border-radius:15px;
-  padding:13px 7px;
-  text-align:center;
-}
-
-.infoBox small{
-  display:block;
-  color:#aaa;
-  margin-bottom:6px;
-}
-
-.infoBox strong{
-  font-size:13px;
-}
-
-button{
-  width:100%;
-  border:0;
-  border-radius:16px;
-  padding:16px;
-  margin-top:13px;
-  font-size:16px;
-  font-weight:900;
-  cursor:pointer;
-  transition:.2s;
-}
-
-button:active{
-  transform:scale(.97);
-}
-
-.memberBtn{
-  background:#20c463;
-  color:#031108;
-}
-
-.managerBtn{
-  background:#111;
-  color:white;
-  border:1px solid #333;
-}
-
-.backBtn{
-  background:#222;
-  color:white;
-}
-
-.primary{
-  background:#20c463;
-  color:#031108;
-}
-
-.vip{
-  background:#d8a500;
-  color:#090700;
-}
-
-input,select{
-  width:100%;
-  padding:16px;
-  margin-top:10px;
-  border-radius:14px;
-  border:1px solid #333;
-  background:#0d0d0d;
-  color:white;
-  outline:none;
-  font-size:15px;
-}
-
-input:focus,select:focus{
-  border-color:#20c463;
-}
-
-label{
-  display:block;
-  margin-top:16px;
-  font-weight:bold;
-  color:#ddd;
-}
-
-.categoryGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.category{
-  background:#101010;
-  border:2px solid #333;
-  color:white;
-}
-
-.category.selected{
-  border-color:#20c463;
-  background:#08391e;
-}
-
-.price{
-  text-align:center;
-  margin:20px 0;
-  font-size:34px;
-  font-weight:900;
-  color:#20c463;
-}
-
-.ticket{
-  background:white;
-  color:#111;
-  border-radius:22px;
-  padding:24px;
-  width:100%;
-  max-width:500px;
-  margin-top:20px;
-}
-
-.ticketLogo{
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  display:block;
-  margin:auto;
-}
-
-.ticketTitle{
-  text-align:center;
-  font-size:26px;
-  font-weight:900;
-  margin:10px 0 3px;
-}
-
-.ticketSub{
-  text-align:center;
-  color:#555;
-  margin-bottom:18px;
-}
-
-.ticketLine{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  border-bottom:1px solid #ddd;
-  padding:10px 0;
-}
-
-.ticketLine span:first-child{
-  color:#777;
-}
-
-.ticketLine span:last-child{
-  font-weight:bold;
-  text-align:right;
-}
-
-.qr{
-  width:220px;
-  height:220px;
-  display:block;
-  margin:20px auto 10px;
-}
-
-.total{
-  font-size:24px;
-  font-weight:900;
-  color:#08752f;
-}
-
-.dashboardGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  width:100%;
-}
-
-.stat{
-  background:#101010;
-  border:1px solid #292929;
-  border-radius:18px;
-  padding:20px 10px;
-  text-align:center;
-}
-
-.stat small{
-  display:block;
-  color:#999;
-  margin-bottom:10px;
-}
-
-.stat strong{
-  font-size:30px;
-  color:#20c463;
-}
-
-.error{
-  color:#ff6969;
-  text-align:center;
-  margin-top:10px;
-  font-weight:bold;
-}
-
-.success{
-  color:#20c463;
-  text-align:center;
-  font-weight:bold;
-  margin-top:10px;
-}
-
-.hidden{
-  display:none!important;
-}
-
-@media(max-width:500px){
-  .title{
-    font-size:34px;
-  }
-
-  .info{
-    grid-template-columns:1fr;
-  }
-
-  .categoryGrid{
-    grid-template-columns:1fr;
-  }
-}
-
-@media print{
-  body{
-    background:white;
-  }
-
-  body *{
-    visibility:hidden;
-  }
-
-  #ticketPage,
-  #ticketPage *{
-    visibility:visible;
-  }
-
-  #ticketPage{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-  }
-
-  .noPrint{
-    display:none!important;
-  }
+#booking:target,
+#manager:target{
+    display:block;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HOME ================= -->
+<div class="box">
 
-<section id="homePage" class="page active">
+    <!-- HOME -->
+    <div id="home" class="page">
 
-  <img
-    class="logo"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA Logo"
-  >
+        <h1>RCA TADAKIR</h1>
 
-  <h1 class="title">RCA TADAKIR</h1>
-  <p class="subtitle">DERBY CASABLANCA</p>
+        <p>DERBY CASABLANCA</p>
 
-  <div class="card">
+        <a class="btn" href="#booking">
+            🟢 MEMBER
+        </a>
 
-    <div class="match">
-      <span>RCA</span> VS WAC
-    </div>
-
-    <button
-      type="button"
-      class="memberBtn"
-      onclick="openMember()"
-    >
-      🟢 MEMBER
-    </button>
-
-    <button
-      type="button"
-      class="managerBtn"
-      onclick="openManager()"
-    >
-      ⚫ MANAGER
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= BOOKING ================= -->
-
-<section id="bookingPage" class="page">
-
-  <img
-    class="logo"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA Logo"
-    style="width:100px;height:100px"
-  >
-
-  <h1 class="title" style="font-size:32px">
-    GET YOUR TICKET
-  </h1>
-
-  <div class="card">
-
-    <div class="match">
-      <span>RCA</span> VS WAC
-    </div>
-
-    <div class="info">
-
-      <div class="infoBox">
-        <small>DATE</small>
-        <strong>04/10/2026</strong>
-      </div>
-
-      <div class="infoBox">
-        <small>TIME</small>
-        <strong>21:30</strong>
-      </div>
-
-      <div class="infoBox">
-        <small>STADIUM</small>
-        <strong>Sir.alien Stadium</strong>
-      </div>
+        <a class="btn manager" href="#manager">
+            ⚫ MANAGER
+        </a>
 
     </div>
 
-    <label>Roblox Username</label>
-    <input
-      id="roblox"
-      type="text"
-      placeholder="Votre username Roblox"
-      autocomplete="off"
-    >
 
-    <label>Discord Username</label>
-    <input
-      id="discord"
-      type="text"
-      placeholder="Votre username Discord"
-      autocomplete="off"
-    >
+    <!-- BOOKING -->
+    <div id="booking" class="page">
 
-    <label>Category</label>
+        <h1>GET TICKET</h1>
 
-    <div class="categoryGrid">
+        <p>RCA VS WAC</p>
 
-      <button
-        type="button"
-        id="virageBtn"
-        class="category"
-        onclick="selectCategory('VIRAGE',5)"
-      >
-        VIRAGE
-        <br>
-        <small>$5</small>
-      </button>
+        <p>04/10/2026 — 21:30</p>
 
-      <button
-        type="button"
-        id="vipBtn"
-        class="category"
-        onclick="selectCategory('VIP',100)"
-      >
-        VIP
-        <br>
-        <small>$100</small>
-      </button>
+        <p>Sir.alien Stadium</p>
+
+        <a class="btn" href="#home">
+            ← BACK
+        </a>
 
     </div>
 
-    <label>Quantity</label>
 
-    <input
-      id="quantity"
-      type="number"
-      min="1"
-      max="10"
-      placeholder="Entrez le nombre de tickets"
-      oninput="updateTotal()"
-    >
+    <!-- MANAGER -->
+    <div id="manager" class="page">
 
-    <div id="total" class="price">$0</div>
+        <h1>MANAGER</h1>
 
-    <div id="bookingError" class="error"></div>
+        <p>RCA2026</p>
 
-    <button
-      type="button"
-      class="primary"
-      onclick="confirmReservation()"
-    >
-      🎟️ CONFIRM RESERVATION
-    </button>
-
-    <button
-      type="button"
-      class="backBtn"
-      onclick="showPage('homePage')"
-    >
-      ← BACK
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= MANAGER LOGIN ================= -->
-
-<section id="managerPage" class="page">
-
-  <img
-    class="logo"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA Logo"
-    style="width:100px;height:100px"
-  >
-
-  <h1 class="title" style="font-size:32px">
-    MANAGER
-  </h1>
-
-  <div class="card">
-
-    <label>Manager Code</label>
-
-    <input
-      id="managerCode"
-      type="password"
-      placeholder="Enter manager code"
-      autocomplete="off"
-    >
-
-    <div id="managerError" class="error"></div>
-
-    <button
-      type="button"
-      class="primary"
-      onclick="loginManager()"
-    >
-      🔐 LOGIN
-    </button>
-
-    <button
-      type="button"
-      class="backBtn"
-      onclick="showPage('homePage')"
-    >
-      ← BACK
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= DASHBOARD ================= -->
-
-<section id="dashboardPage" class="page">
-
-  <img
-    class="logo"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA Logo"
-    style="width:90px;height:90px"
-  >
-
-  <h1 class="title" style="font-size:32px">
-    MANAGER DASHBOARD
-  </h1>
-
-  <div class="card">
-
-    <div class="dashboardGrid">
-
-      <div class="stat">
-        <small>TICKETS SOLD</small>
-        <strong id="ticketsSold">0</strong>
-      </div>
-
-      <div class="stat">
-        <small>REVENUE</small>
-        <strong id="revenue">$0</strong>
-      </div>
-
-      <div class="stat">
-        <small>VIRAGE SOLD</small>
-        <strong id="virageSold">0</strong>
-      </div>
-
-      <div class="stat">
-        <small>VIP SOLD</small>
-        <strong id="vipSold">0</strong>
-      </div>
+        <a class="btn" href="#home">
+            ← BACK
+        </a>
 
     </div>
 
-    <button
-      type="button"
-      class="primary"
-      onclick="refreshDashboard()"
-    >
-      🔄 REFRESH
-    </button>
-
-    <button
-      type="button"
-      class="backBtn"
-      onclick="logout()"
-    >
-      🚪 LOGOUT
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- ================= TICKET ================= -->
-
-<section id="ticketPage" class="page">
-
-  <div class="ticket">
-
-    <img
-      class="ticketLogo"
-      src="image_-_2026-09-29T192341.513-removebg-preview.png"
-      alt="RCA"
-    >
-
-    <div class="ticketTitle">
-      RCA VS WAC
-    </div>
-
-    <div class="ticketSub">
-      DERBY CASABLANCA
-    </div>
-
-    <div class="ticketLine">
-      <span>Date</span>
-      <span>04/10/2026</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Time</span>
-      <span>21:30</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Stadium</span>
-      <span>Sir.alien Stadium</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Category</span>
-      <span id="ticketCategory">-</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Tickets</span>
-      <span id="ticketQuantity">-</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Unit Price</span>
-      <span id="ticketUnitPrice">-</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Roblox</span>
-      <span id="ticketRoblox">-</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Discord</span>
-      <span id="ticketDiscord">-</span>
-    </div>
-
-    <div class="ticketLine">
-      <span>Total</span>
-      <span id="ticketTotal" class="total">$0</span>
-    </div>
-
-    <img
-      id="qrCode"
-      class="qr"
-      alt="QR Code"
-    >
-
-    <div
-      style="
-        text-align:center;
-        font-size:12px;
-        color:#777;
-        word-break:break-all;
-      "
-    >
-      AVL - Sir Alien Stadium
-    </div>
-
-  </div>
-
-  <button
-    type="button"
-    class="primary noPrint"
-    onclick="printTicket()"
-    style="max-width:500px"
-  >
-    🖨️ PRINT TICKET
-  </button>
-
-  <button
-    type="button"
-    class="backBtn noPrint"
-    onclick="newReservation()"
-    style="max-width:500px"
-  >
-    🎟️ NEW RESERVATION
-  </button>
-
-</section>
-
-
-<script>
-/* =========================================================
-   RCA TADAKIR
-   VERSION WITHOUT FIREBASE
-   ALL BUTTONS USE INLINE ONCLICK
-   ========================================================= */
-
-(function(){
-
-  const STADIUM_URL =
-    "https://www.roblox.com/games/71836037262520/AVL-Sir-Alien-Stadium";
-
-  let selectedCategory = "";
-  let selectedPrice = 0;
-
-
-  /* ================= PAGE SYSTEM ================= */
-
-  window.showPage = function(pageId){
-
-    const pages = document.querySelectorAll(".page");
-
-    pages.forEach(function(page){
-      page.classList.remove("active");
-    });
-
-    const page = document.getElementById(pageId);
-
-    if(page){
-      page.classList.add("active");
-      window.scrollTo(0,0);
-    }
-
-  };
-
-
-  /* ================= MEMBER ================= */
-
-  window.openMember = function(){
-
-    resetBooking();
-
-    showPage("bookingPage");
-
-  };
-
-
-  /* ================= MANAGER ================= */
-
-  window.openManager = function(){
-
-    document.getElementById("managerCode").value = "";
-    document.getElementById("managerError").textContent = "";
-
-    showPage("managerPage");
-
-  };
-
-
-  window.loginManager = function(){
-
-    const input =
-      document.getElementById("managerCode").value.trim();
-
-    const error =
-      document.getElementById("managerError");
-
-    if(input === "RCA2026"){
-
-      error.textContent = "";
-
-      refreshDashboard();
-
-      showPage("dashboardPage");
-
-    }else{
-
-      error.textContent = "❌ Code incorrect";
-
-    }
-
-  };
-
-
-  /* ================= CATEGORY ================= */
-
-  window.selectCategory = function(category,price){
-
-    selectedCategory = category;
-    selectedPrice = price;
-
-    const virage =
-      document.getElementById("virageBtn");
-
-    const vip =
-      document.getElementById("vipBtn");
-
-    virage.classList.remove("selected");
-    vip.classList.remove("selected");
-
-    if(category === "VIRAGE"){
-      virage.classList.add("selected");
-    }
-
-    if(category === "VIP"){
-      vip.classList.add("selected");
-    }
-
-    updateTotal();
-
-  };
-
-
-  /* ================= TOTAL ================= */
-
-  window.updateTotal = function(){
-
-    const quantityInput =
-      document.getElementById("quantity");
-
-    const quantity =
-      parseInt(quantityInput.value) || 0;
-
-    const total =
-      selectedPrice * quantity;
-
-    document.getElementById("total").textContent =
-      "$" + total;
-
-  };
-
-
-  /* ================= RESERVATION ================= */
-
-  window.confirmReservation = function(){
-
-    const roblox =
-      document.getElementById("roblox").value.trim();
-
-    const discord =
-      document.getElementById("discord").value.trim();
-
-    const quantity =
-      parseInt(
-        document.getElementById("quantity").value
-      ) || 0;
-
-    const error =
-      document.getElementById("bookingError");
-
-    error.textContent = "";
-
-    if(!roblox){
-
-      error.textContent =
-        "⚠️ Entrez votre username Roblox";
-
-      return;
-
-    }
-
-    if(!discord){
-
-      error.textContent =
-        "⚠️ Entrez votre username Discord";
-
-      return;
-
-    }
-
-    if(!selectedCategory){
-
-      error.textContent =
-        "⚠️ Choisissez une catégorie";
-
-      return;
-
-    }
-
-    if(quantity < 1 || quantity > 10){
-
-      error.textContent =
-        "⚠️ Quantité entre 1 et 10";
-
-      return;
-
-    }
-
-    const total =
-      selectedPrice * quantity;
-
-
-    /* ================= SAVE LOCAL STATS ================= */
-
-    const stats = getStats();
-
-    stats.ticketsSold += quantity;
-
-    stats.revenue += total;
-
-    if(selectedCategory === "VIRAGE"){
-      stats.virageSold += quantity;
-    }
-
-    if(selectedCategory === "VIP"){
-      stats.vipSold += quantity;
-    }
-
-    localStorage.setItem(
-      "rca_stats",
-      JSON.stringify(stats)
-    );
-
-
-    /* ================= TICKET ================= */
-
-    document.getElementById("ticketCategory")
-      .textContent = selectedCategory;
-
-    document.getElementById("ticketQuantity")
-      .textContent = quantity;
-
-    document.getElementById("ticketUnitPrice")
-      .textContent = "$" + selectedPrice;
-
-    document.getElementById("ticketRoblox")
-      .textContent = roblox;
-
-    document.getElementById("ticketDiscord")
-      .textContent = discord;
-
-    document.getElementById("ticketTotal")
-      .textContent = "$" + total;
-
-
-    /* ================= QR ================= */
-
-    const qr =
-      "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
-      + encodeURIComponent(STADIUM_URL);
-
-    document.getElementById("qrCode").src = qr;
-
-
-    showPage("ticketPage");
-
-  };
-
-
-  /* ================= STATS ================= */
-
-  function getStats(){
-
-    try{
-
-      const saved =
-        localStorage.getItem("rca_stats");
-
-      if(saved){
-
-        const data = JSON.parse(saved);
-
-        return {
-
-          ticketsSold:
-            Number(data.ticketsSold) || 0,
-
-          revenue:
-            Number(data.revenue) || 0,
-
-          virageSold:
-            Number(data.virageSold) || 0,
-
-          vipSold:
-            Number(data.vipSold) || 0
-
-        };
-
-      }
-
-    }catch(e){}
-
-    return {
-
-      ticketsSold:0,
-      revenue:0,
-      virageSold:0,
-      vipSold:0
-
-    };
-
-  }
-
-
-  window.refreshDashboard = function(){
-
-    const stats = getStats();
-
-    document.getElementById("ticketsSold")
-      .textContent = stats.ticketsSold;
-
-    document.getElementById("revenue")
-      .textContent = "$" + stats.revenue;
-
-    document.getElementById("virageSold")
-      .textContent = stats.virageSold;
-
-    document.getElementById("vipSold")
-      .textContent = stats.vipSold;
-
-  };
-
-
-  /* ================= RESET ================= */
-
-  function resetBooking(){
-
-    selectedCategory = "";
-    selectedPrice = 0;
-
-    document.getElementById("roblox").value = "";
-    document.getElementById("discord").value = "";
-    document.getElementById("quantity").value = "";
-
-    document.getElementById("total").textContent = "$0";
-
-    document.getElementById("bookingError").textContent = "";
-
-    document.getElementById("virageBtn")
-      .classList.remove("selected");
-
-    document.getElementById("vipBtn")
-      .classList.remove("selected");
-
-  }
-
-
-  /* ================= NEW RESERVATION ================= */
-
-  window.newReservation = function(){
-
-    resetBooking();
-
-    showPage("bookingPage");
-
-  };
-
-
-  /* ================= PRINT ================= */
-
-  window.printTicket = function(){
-
-    window.print();
-
-  };
-
-
-  /* ================= LOGOUT ================= */
-
-  window.logout = function(){
-
-    showPage("homePage");
-
-  };
-
-})();
-</script>
+</div>
 
 </body>
-  </html>
+</html>
