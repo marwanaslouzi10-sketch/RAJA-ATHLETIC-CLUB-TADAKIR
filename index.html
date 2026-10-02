@@ -2,42 +2,24 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>RCA TADAKIR | Derby Casablanca</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
 
 *{
+  box-sizing:border-box;
   margin:0;
   padding:0;
-  box-sizing:border-box;
 }
 
 body{
-  font-family:'Montserrat',Arial,sans-serif;
-  background:
-    radial-gradient(circle at top,#174f32 0,#07150e 35%,#020604 75%);
-  color:#fff;
+  font-family:Montserrat,Arial,sans-serif;
   min-height:100vh;
-  overflow-x:hidden;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
   background:
-    linear-gradient(120deg,rgba(255,255,255,.02),transparent 40%),
-    repeating-linear-gradient(
-      135deg,
-      rgba(255,255,255,.012) 0px,
-      rgba(255,255,255,.012) 1px,
-      transparent 1px,
-      transparent 7px
-    );
+    radial-gradient(circle at top,#14552f 0,#06150c 38%,#020604 100%);
+  color:#fff;
 }
 
 .hidden{
@@ -46,121 +28,27 @@ body::before{
 
 .page{
   min-height:100vh;
-  width:100%;
-  padding:25px 15px 50px;
-  position:relative;
-  z-index:1;
+  padding:18px;
 }
 
 .container{
-  width:100%;
-  max-width:1100px;
+  max-width:1050px;
   margin:auto;
 }
 
-/* ================= LOGIN ================= */
-
-.login-screen{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+button{
+  font-family:inherit;
 }
-
-.login-box{
-  width:100%;
-  max-width:430px;
-  background:rgba(4,18,11,.88);
-  border:1px solid rgba(34,197,94,.3);
-  border-radius:25px;
-  padding:35px 25px;
-  box-shadow:
-    0 0 60px rgba(0,255,100,.12),
-    0 20px 60px rgba(0,0,0,.5);
-  backdrop-filter:blur(18px);
-  text-align:center;
-}
-
-.logo{
-  width:100px;
-  height:100px;
-  object-fit:contain;
-  margin-bottom:15px;
-  filter:drop-shadow(0 0 20px rgba(34,197,94,.3));
-}
-
-.login-title{
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:2px;
-  margin-bottom:7px;
-}
-
-.login-sub{
-  color:#91a59a;
-  font-size:12px;
-  margin-bottom:30px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-}
-
-.input-group{
-  text-align:left;
-  margin-bottom:16px;
-}
-
-.input-group label{
-  display:block;
-  color:#b6c9bd;
-  font-size:11px;
-  font-weight:800;
-  margin-bottom:8px;
-  letter-spacing:1px;
-}
-
-input,select{
-  width:100%;
-  border:none;
-  outline:none;
-  color:#fff;
-  background:#0a2115;
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:13px;
-  padding:15px;
-  font-size:14px;
-  transition:.25s;
-}
-
-input:focus,select:focus{
-  border-color:#22c55e;
-  box-shadow:0 0 0 3px rgba(34,197,94,.1);
-}
-
-input::placeholder{
-  color:#64746b;
-}
-
-.login-status{
-  min-height:20px;
-  margin-top:10px;
-  font-size:12px;
-  color:#82948a;
-}
-
-/* ================= HEADER ================= */
 
 .topbar{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:15px;
-  margin-bottom:30px;
-  padding:15px 18px;
-  border:1px solid rgba(255,255,255,.08);
-  background:rgba(3,15,9,.75);
+  justify-content:space-between;
+  padding:14px 17px;
   border-radius:18px;
-  backdrop-filter:blur(15px);
+  background:rgba(2,15,8,.85);
+  border:1px solid rgba(255,255,255,.08);
+  margin-bottom:28px;
 }
 
 .brand{
@@ -175,96 +63,150 @@ input::placeholder{
   object-fit:contain;
 }
 
-.brand strong{
+.brand b{
   display:block;
-  font-size:16px;
-  font-weight:900;
+  font-size:14px;
 }
 
-.brand span{
-  color:#7f9186;
-  font-size:9px;
+.brand small{
+  color:#759080;
+  font-size:8px;
   letter-spacing:2px;
 }
 
-.back-btn,
-.logout-btn{
-  border:none;
-  background:#102a1b;
-  color:#fff;
-  padding:11px 15px;
+.logout{
+  border:0;
   border-radius:10px;
+  background:#10291a;
+  color:white;
+  padding:10px 13px;
   cursor:pointer;
   font-weight:800;
-  font-size:11px;
+  font-size:10px;
 }
 
-.back-btn:hover,
-.logout-btn:hover{
-  background:#17482b;
+/* LOGIN */
+
+#login{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
-/* ================= HERO ================= */
-
-.hero{
+.login-card{
+  width:100%;
+  max-width:420px;
+  padding:35px 25px;
   text-align:center;
-  margin:25px auto 35px;
+  border-radius:26px;
+  background:rgba(3,18,10,.92);
+  border:1px solid rgba(48,220,105,.25);
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
 }
 
-.hero .mini{
-  color:#43df78;
-  font-weight:800;
-  font-size:11px;
-  letter-spacing:4px;
+.login-card img{
+  width:105px;
+  height:105px;
+  object-fit:contain;
   margin-bottom:12px;
 }
 
-.hero h1{
-  font-size:clamp(34px,7vw,70px);
-  line-height:.95;
+.login-card h1{
+  font-size:28px;
   font-weight:900;
-  letter-spacing:-3px;
 }
 
-.hero h1 span{
-  color:#36d66e;
+.login-card p{
+  margin:8px 0 28px;
+  color:#789082;
+  font-size:10px;
+  letter-spacing:2px;
 }
 
-.hero p{
-  margin-top:14px;
-  color:#8da095;
-  font-size:12px;
+label{
+  display:block;
+  text-align:left;
+  color:#a8b9af;
+  font-size:10px;
+  font-weight:800;
+  margin:0 0 7px;
   letter-spacing:1px;
 }
 
-/* ================= MATCH CARD ================= */
-
-.match-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:28px;
-  padding:35px 20px;
-  background:
-    linear-gradient(145deg,rgba(21,78,43,.8),rgba(3,12,7,.96));
-  border:1px solid rgba(57,214,109,.2);
-  box-shadow:0 30px 70px rgba(0,0,0,.35);
-  margin-bottom:25px;
+input,select{
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.1);
+  outline:none;
+  background:#081d11;
+  color:#fff;
+  font-size:13px;
+  margin-bottom:15px;
 }
 
-.match-card::after{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  right:-130px;
-  top:-130px;
-  border-radius:50%;
-  background:rgba(34,197,94,.08);
+input:focus,select:focus{
+  border-color:#28d968;
+  box-shadow:0 0 0 3px rgba(40,217,104,.1);
+}
+
+input::placeholder{
+  color:#607269;
+}
+
+#loginMessage{
+  min-height:18px;
+  color:#72df96;
+  font-size:11px;
+}
+
+/* HERO */
+
+.hero{
+  text-align:center;
+  padding:15px 0 30px;
+}
+
+.hero small{
+  color:#3de777;
+  font-size:10px;
+  letter-spacing:4px;
+  font-weight:900;
+}
+
+.hero h1{
+  font-size:clamp(40px,8vw,75px);
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-4px;
+  margin:12px 0;
+}
+
+.hero h1 span{
+  color:#39df73;
+}
+
+.hero p{
+  color:#7f9287;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+/* MATCH */
+
+.match{
+  position:relative;
+  overflow:hidden;
+  padding:30px 18px;
+  border-radius:26px;
+  background:linear-gradient(145deg,rgba(16,80,43,.85),rgba(2,12,7,.95));
+  border:1px solid rgba(65,224,117,.2);
+  box-shadow:0 25px 60px rgba(0,0,0,.35);
 }
 
 .teams{
-  position:relative;
-  z-index:2;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -272,279 +214,269 @@ input::placeholder{
 }
 
 .team{
+  width:130px;
   text-align:center;
-  width:150px;
 }
 
 .team img{
-  width:95px;
-  height:95px;
+  width:90px;
+  height:90px;
   object-fit:contain;
-  margin-bottom:10px;
-  filter:drop-shadow(0 0 20px rgba(0,0,0,.5));
+  margin-bottom:8px;
 }
 
-.team-name{
-  font-size:18px;
+.wac-logo{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:white;
+  color:#c91e2b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
   font-weight:900;
+  margin:0 auto 8px;
+}
+
+.team b{
+  font-size:17px;
 }
 
 .vs{
   font-size:18px;
   font-weight:900;
-  color:#43df78;
+  color:#3ee776;
 }
 
-.derby{
-  position:relative;
-  z-index:2;
+.match-title{
   text-align:center;
-  margin-top:28px;
+  margin-top:25px;
 }
 
-.derby-title{
-  font-size:12px;
-  color:#8ea195;
+.match-title small{
+  color:#8b9d93;
+  font-size:9px;
   letter-spacing:3px;
-  font-weight:800;
 }
 
-.derby h2{
-  font-size:26px;
-  margin:7px 0 17px;
+.match-title h2{
+  font-size:25px;
+  margin:7px 0 15px;
 }
 
-.match-info{
+.infos{
   display:flex;
   justify-content:center;
-  gap:10px;
   flex-wrap:wrap;
+  gap:8px;
 }
 
 .info{
-  background:rgba(0,0,0,.28);
+  background:rgba(0,0,0,.3);
   border:1px solid rgba(255,255,255,.06);
-  border-radius:11px;
-  padding:10px 13px;
-  color:#c5d3ca;
-  font-size:11px;
+  border-radius:10px;
+  padding:9px 12px;
+  color:#c2cec7;
+  font-size:10px;
   font-weight:700;
 }
 
-/* ================= BUTTON ================= */
+/* FORM */
 
-.primary-btn{
-  width:100%;
-  border:none;
-  border-radius:15px;
-  padding:17px;
-  margin-top:20px;
-  cursor:pointer;
-  color:#021108;
-  background:linear-gradient(135deg,#35e777,#16a34a);
-  font-size:13px;
-  font-weight:900;
-  letter-spacing:1px;
-  box-shadow:0 12px 30px rgba(34,197,94,.2);
-  transition:.25s;
+.form-section{
+  max-width:700px;
+  margin:30px auto;
 }
 
-.primary-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 35px rgba(34,197,94,.3);
-}
-
-.primary-btn:disabled{
-  opacity:.55;
-  cursor:not-allowed;
-  transform:none;
-}
-
-.secondary-btn{
-  border:1px solid rgba(255,255,255,.1);
-  background:#0b2115;
-  color:#fff;
-  border-radius:12px;
-  padding:13px 16px;
-  cursor:pointer;
-  font-weight:800;
-}
-
-/* ================= TICKET FORM ================= */
-
-.section-title{
-  margin-bottom:18px;
-}
-
-.section-title small{
-  color:#4ce37c;
-  font-size:10px;
-  font-weight:900;
+.form-section > small{
+  color:#3ee776;
+  font-size:9px;
   letter-spacing:2px;
+  font-weight:900;
 }
 
-.section-title h2{
+.form-section h2{
   font-size:28px;
-  margin-top:5px;
+  margin:5px 0 18px;
 }
 
 .form-card{
-  background:rgba(4,18,11,.84);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:23px;
   padding:22px;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  border-radius:22px;
+  background:rgba(3,17,9,.88);
+  border:1px solid rgba(255,255,255,.08);
 }
 
-.grid{
+.form-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
 
 .full{
   grid-column:1/-1;
 }
 
-.price-box{
-  margin-top:18px;
-  padding:18px;
-  border-radius:15px;
-  background:#06150c;
-  border:1px solid rgba(34,197,94,.12);
+.price{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  margin-top:5px;
+  padding:17px;
+  border-radius:13px;
+  background:#06150c;
 }
 
-.price-box span{
-  color:#84958b;
-  font-size:12px;
+.price span{
+  color:#809187;
+  font-size:10px;
+  font-weight:700;
 }
 
-.price-box strong{
-  color:#42e879;
+.price strong{
+  color:#42e878;
   font-size:25px;
 }
 
-.error{
-  color:#ff7474;
-  font-size:11px;
-  margin-top:8px;
-  display:none;
+.main-btn{
+  width:100%;
+  border:0;
+  margin-top:16px;
+  padding:16px;
+  border-radius:13px;
+  cursor:pointer;
+  color:#031009;
+  background:linear-gradient(135deg,#48ed83,#17a94e);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.5px;
 }
 
-/* ================= TICKET ================= */
+.main-btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
 
-.ticket-wrapper{
+#status{
+  text-align:center;
+  min-height:22px;
+  margin-top:12px;
+  font-size:11px;
+}
+
+.error{
+  color:#ff7777;
+}
+
+/* TICKET */
+
+.ticket-area{
   max-width:500px;
   margin:25px auto;
 }
 
 .ticket{
-  background:#fff;
-  color:#111;
-  border-radius:25px;
   overflow:hidden;
+  border-radius:25px;
+  background:white;
+  color:#111;
   box-shadow:0 30px 80px rgba(0,0,0,.55);
 }
 
-.ticket-head{
-  padding:25px;
-  background:linear-gradient(135deg,#075b2d,#0d9a4a);
+.ticket-top{
+  text-align:center;
+  padding:24px;
   color:white;
-  text-align:center;
+  background:linear-gradient(135deg,#075b2c,#12a34c);
 }
 
-.ticket-head img{
-  width:65px;
-  height:65px;
+.ticket-top img{
+  width:60px;
+  height:60px;
   object-fit:contain;
-  margin-bottom:8px;
 }
 
-.ticket-head h2{
-  font-size:25px;
-  font-weight:900;
-}
-
-.ticket-head p{
-  font-size:10px;
-  opacity:.8;
-  letter-spacing:2px;
-  margin-top:4px;
-}
-
-.ticket-body{
-  padding:23px;
-}
-
-.ticket-match{
-  text-align:center;
-  border-bottom:1px dashed #bbb;
-  padding-bottom:20px;
-  margin-bottom:18px;
-}
-
-.ticket-match .big{
-  font-size:25px;
-  font-weight:900;
-}
-
-.ticket-match .small{
-  color:#777;
-  font-size:10px;
+.ticket-top h2{
+  font-size:24px;
   margin-top:5px;
 }
 
-.ticket-details{
+.ticket-top p{
+  font-size:9px;
+  letter-spacing:2px;
+  opacity:.85;
+}
+
+.ticket-content{
+  padding:22px;
+}
+
+.ticket-center{
+  text-align:center;
+  padding-bottom:17px;
+  margin-bottom:17px;
+  border-bottom:1px dashed #aaa;
+}
+
+.ticket-center strong{
+  display:block;
+  font-size:23px;
+}
+
+.ticket-center small{
+  color:#777;
+  font-size:9px;
+}
+
+.details{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:10px;
 }
 
 .detail{
-  background:#f5f6f5;
-  padding:11px;
-  border-radius:10px;
+  padding:10px;
+  border-radius:9px;
+  background:#f2f4f3;
 }
 
 .detail span{
   display:block;
-  font-size:8px;
   color:#777;
+  font-size:7px;
   text-transform:uppercase;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 
-.detail strong{
-  font-size:11px;
+.detail b{
+  font-size:10px;
   word-break:break-word;
 }
 
-.total-ticket{
-  margin-top:15px;
-  background:#eaf8ee;
-  border-radius:12px;
-  padding:15px;
+.ticket-total{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  padding:14px;
+  margin-top:12px;
+  border-radius:10px;
+  background:#e9f8ee;
 }
 
-.total-ticket span{
-  font-size:10px;
+.ticket-total span{
+  font-size:9px;
   font-weight:800;
 }
 
-.total-ticket strong{
-  color:#087a38;
-  font-size:22px;
+.ticket-total b{
+  color:#087837;
+  font-size:21px;
 }
 
 .qr{
   text-align:center;
-  padding:22px 0 5px;
+  padding-top:18px;
 }
 
 .qr img{
@@ -552,85 +484,83 @@ input::placeholder{
   height:180px;
 }
 
-.qr p{
-  font-size:8px;
+.qr small{
+  display:block;
   color:#777;
-  margin-top:7px;
+  font-size:7px;
 }
 
-.ticket-actions{
+.actions{
   display:flex;
   gap:10px;
-  margin-top:18px;
+  margin-top:15px;
 }
 
-.ticket-actions button{
+.actions button{
   flex:1;
 }
 
-/* ================= DASHBOARD ================= */
-
-.dashboard-title{
-  margin:20px 0;
+.secondary{
+  border:1px solid rgba(255,255,255,.12);
+  background:#0b2115;
+  color:white;
+  padding:13px;
+  border-radius:11px;
+  cursor:pointer;
+  font-weight:800;
 }
 
-.dashboard-title small{
-  color:#43df78;
-  font-size:10px;
-  letter-spacing:2px;
-  font-weight:900;
-}
+/* DASHBOARD */
 
-.dashboard-title h1{
+.dashboard h1{
   font-size:32px;
-  margin-top:5px;
+  margin:10px 0 25px;
 }
 
 .stats{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:25px;
+  gap:13px;
+  margin-bottom:22px;
 }
 
 .stat{
-  background:rgba(4,18,11,.85);
+  padding:18px;
+  border-radius:17px;
+  background:rgba(3,18,10,.88);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:18px;
-  padding:20px;
 }
 
 .stat span{
-  color:#7e9085;
-  font-size:10px;
+  color:#778a7e;
+  font-size:9px;
   font-weight:800;
-  text-transform:uppercase;
 }
 
-.stat strong{
+.stat b{
   display:block;
-  font-size:30px;
-  margin-top:7px;
-  color:#42e879;
+  color:#40e576;
+  font-size:28px;
+  margin-top:5px;
 }
 
-.table-card{
-  background:rgba(4,18,11,.86);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:20px;
+.table-box{
   overflow:hidden;
+  border-radius:20px;
+  background:rgba(3,18,10,.9);
+  border:1px solid rgba(255,255,255,.08);
 }
 
-.table-header{
+.table-top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px;
-  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:17px;
+  border-bottom:1px solid rgba(255,255,255,.07);
 }
 
-.table-header h3{
-  font-size:16px;
+.table-top b{
+  font-size:14px;
 }
 
 .table-wrap{
@@ -639,51 +569,37 @@ input::placeholder{
 
 table{
   width:100%;
-  border-collapse:collapse;
   min-width:850px;
+  border-collapse:collapse;
 }
 
 th,td{
-  padding:13px 12px;
   text-align:left;
+  padding:12px;
   border-bottom:1px solid rgba(255,255,255,.05);
-  font-size:10px;
+  font-size:9px;
 }
 
 th{
-  color:#5be783;
-  font-size:9px;
-  text-transform:uppercase;
-  background:#07160d;
+  color:#45e77a;
+  background:#06150c;
+  font-size:8px;
 }
 
 td{
-  color:#b9c8bf;
+  color:#b6c5bc;
 }
 
 .empty{
-  padding:35px;
   text-align:center;
-  color:#728178;
-  font-size:12px;
+  color:#74857c;
+  padding:30px;
+  font-size:11px;
 }
-
-.loading{
-  text-align:center;
-  color:#74d991;
-  padding:25px;
-  font-size:12px;
-}
-
-/* ================= RESPONSIVE ================= */
 
 @media(max-width:650px){
 
-  .page{
-    padding:15px 10px 40px;
-  }
-
-  .grid{
+  .form-grid{
     grid-template-columns:1fr;
   }
 
@@ -691,48 +607,37 @@ td{
     grid-column:auto;
   }
 
+  .stats{
+    grid-template-columns:1fr;
+  }
+
   .teams{
     gap:10px;
   }
 
   .team{
-    width:120px;
+    width:100px;
   }
 
-  .team img{
-    width:75px;
-    height:75px;
+  .team img,
+  .wac-logo{
+    width:72px;
+    height:72px;
   }
 
-  .team-name{
-    font-size:15px;
+  .team b{
+    font-size:14px;
   }
 
-  .vs{
-    font-size:15px;
-  }
-
-  .stats{
-    grid-template-columns:1fr;
-  }
-
-  .topbar{
-    padding:12px;
-  }
-
-  .brand strong{
-    font-size:13px;
-  }
-
-  .ticket-details{
-    grid-template-columns:1fr 1fr;
+  .hero h1{
+    letter-spacing:-2px;
   }
 }
 
 @media print{
 
   body{
-    background:#fff!important;
+    background:white;
   }
 
   body *{
@@ -751,8 +656,8 @@ td{
     width:100%;
   }
 
-  .ticket-actions{
-    display:none!important;
+  .actions{
+    display:none;
   }
 }
 </style>
@@ -760,43 +665,26 @@ td{
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
-<section id="loginPage" class="login-screen">
+<section id="login">
 
-  <div class="login-box">
+  <div class="login-card">
 
-    <img
-      src="image_-_2026-09-29T192341.513-removebg-preview.png"
-      class="logo"
-      alt="RCA">
+    <img src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-    <div class="login-title">RCA TADAKIR</div>
+    <h1>RCA TADAKIR</h1>
 
-    <div class="login-sub">
-      Derby Casablanca
-    </div>
+    <p>DERBY CASABLANCA</p>
 
-    <div class="input-group">
-      <label>NOM</label>
-      <input
-        id="loginName"
-        type="text"
-        placeholder="Entrez votre nom"
-        autocomplete="off">
-    </div>
+    <label>NOM</label>
+    <input id="loginName" type="text" placeholder="Entrez votre nom">
 
-    <div class="input-group">
-      <label>MOD PASS</label>
-      <input
-        id="modPass"
-        type="password"
-        placeholder="Entrez votre mot de passe"
-        autocomplete="off">
-    </div>
+    <label>MOD PASS</label>
+    <input id="loginPass" type="password" placeholder="Entrez votre MOD PASS">
 
-    <div id="loginStatus" class="login-status">
-      Entrez vos informations pour continuer
+    <div id="loginMessage">
+      Entrez vos informations
     </div>
 
   </div>
@@ -804,7 +692,7 @@ td{
 </section>
 
 
-<!-- ================= MEMBER PAGE ================= -->
+<!-- MEMBER -->
 
 <section id="memberPage" class="page hidden">
 
@@ -813,17 +701,14 @@ td{
   <div class="topbar">
 
     <div class="brand">
-      <img
-        src="image_-_2026-09-29T192341.513-removebg-preview.png"
-        alt="RCA">
-
+      <img src="image_-_2026-09-29T192341.513-removebg-preview.png">
       <div>
-        <strong>RCA TADAKIR</strong>
-        <span>OFFICIAL TICKETING</span>
+        <b>RCA TADAKIR</b>
+        <small>OFFICIAL TICKETING</small>
       </div>
     </div>
 
-    <button class="logout-btn" id="logoutMember">
+    <button class="logout" id="memberLogout">
       DÉCONNEXION
     </button>
 
@@ -832,34 +717,28 @@ td{
 
   <div class="hero">
 
-    <div class="mini">
-      CASABLANCA DERBY
-    </div>
+    <small>CASABLANCA DERBY</small>
 
     <h1>
       RCA <span>VS</span> WAC
     </h1>
 
     <p>
-      GET YOUR TICKET FOR THE BIGGEST DERBY
+      GET YOUR OFFICIAL MATCH TICKET
     </p>
 
   </div>
 
 
-  <div class="match-card">
+  <div class="match">
 
     <div class="teams">
 
       <div class="team">
 
-        <img
-          src="image_-_2026-09-29T192341.513-removebg-preview.png"
-          alt="RCA">
+        <img src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-        <div class="team-name">
-          RCA
-        </div>
+        <b>RCA</b>
 
       </div>
 
@@ -869,55 +748,28 @@ td{
 
       <div class="team">
 
-        <div style="
-          width:95px;
-          height:95px;
-          margin:auto auto 10px;
-          border-radius:50%;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:#fff;
-          color:#d71920;
-          font-size:30px;
-          font-weight:900;
-          box-shadow:0 0 20px rgba(0,0,0,.5);
-        ">
+        <div class="wac-logo">
           W
         </div>
 
-        <div class="team-name">
-          WAC
-        </div>
+        <b>WAC</b>
 
       </div>
 
     </div>
 
 
-    <div class="derby">
+    <div class="match-title">
 
-      <div class="derby-title">
-        THE BIG MATCH
-      </div>
+      <small>THE BIG MATCH</small>
 
-      <h2>
-        DERBY CASABLANCA
-      </h2>
+      <h2>DERBY CASABLANCA</h2>
 
-      <div class="match-info">
+      <div class="infos">
 
-        <div class="info">
-          📅 04/10/2026
-        </div>
-
-        <div class="info">
-          🕘 21:30
-        </div>
-
-        <div class="info">
-          🏟️ Sir.alien Stadium
-        </div>
+        <div class="info">📅 04/10/2026</div>
+        <div class="info">🕘 21:30</div>
+        <div class="info">🏟️ Sir.alien Stadium</div>
 
       </div>
 
@@ -926,123 +778,80 @@ td{
   </div>
 
 
-  <div class="section-title">
+  <div class="form-section">
 
     <small>01 — TICKETING</small>
 
-    <h2>
-      Réserver votre ticket
-    </h2>
-
-  </div>
+    <h2>Réserver votre ticket</h2>
 
 
-  <div class="form-card">
+    <div class="form-card">
 
-    <div class="grid">
+      <div class="form-grid">
 
-      <div class="input-group">
+        <div>
+          <label>ROBLOX USERNAME</label>
+          <input id="roblox" type="text" placeholder="Votre username Roblox">
+        </div>
 
-        <label>
-          ROBLOX USERNAME
-        </label>
+        <div>
+          <label>DISCORD USERNAME</label>
+          <input id="discord" type="text" placeholder="Votre username Discord">
+        </div>
 
-        <input
-          id="robloxUsername"
-          type="text"
-          placeholder="Votre username Roblox">
+        <div>
+          <label>CATÉGORIE</label>
 
-      </div>
+          <select id="category">
 
+            <option value="VIRAGE" data-price="5">
+              VIRAGE — $5
+            </option>
 
-      <div class="input-group">
+            <option value="VIP" data-price="100">
+              VIP — $100
+            </option>
 
-        <label>
-          DISCORD USERNAME
-        </label>
+          </select>
+        </div>
 
-        <input
-          id="discordUsername"
-          type="text"
-          placeholder="Votre username Discord">
+        <div>
+          <label>NOMBRE DE TICKETS</label>
 
-      </div>
+          <input
+            id="quantity"
+            type="number"
+            min="1"
+            max="10"
+            placeholder="Entrez le nombre de tickets">
 
-
-      <div class="input-group">
-
-        <label>
-          CATÉGORIE
-        </label>
-
-        <select id="category">
-
-          <option value="VIRAGE" data-price="5">
-            VIRAGE — $5
-          </option>
-
-          <option value="VIP" data-price="100">
-            VIP — $100
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="input-group">
-
-        <label>
-          NOMBRE DE TICKETS
-        </label>
-
-        <input
-          id="quantity"
-          type="number"
-          min="1"
-          max="10"
-          placeholder="Entrez le nombre de tickets">
-
-        <div id="quantityError" class="error">
-          Entrez un nombre entre 1 et 10.
         </div>
 
       </div>
 
-    </div>
+
+      <div class="price">
+
+        <span>TOTAL À PAYER</span>
+
+        <strong id="total">
+          $0
+        </strong>
+
+      </div>
 
 
-    <div class="price-box">
+      <button
+        id="confirm"
+        class="main-btn">
 
-      <span>
-        TOTAL À PAYER
-      </span>
+        CONFIRMER LA RÉSERVATION
 
-      <strong id="totalPrice">
-        $0
-      </strong>
-
-    </div>
+      </button>
 
 
-    <button
-      id="confirmReservation"
-      class="primary-btn">
+      <div id="status"></div>
 
-      CONFIRMER LA RÉSERVATION
-
-    </button>
-
-
-    <div
-      id="reservationStatus"
-      style="
-        text-align:center;
-        min-height:20px;
-        margin-top:12px;
-        font-size:11px;
-        color:#7ddf9a;
-      ">
     </div>
 
   </div>
@@ -1052,7 +861,7 @@ td{
 </section>
 
 
-<!-- ================= TICKET PAGE ================= -->
+<!-- TICKET -->
 
 <section id="ticketPage" class="page hidden">
 
@@ -1061,123 +870,96 @@ td{
   <div class="topbar">
 
     <div class="brand">
-
-      <img
-        src="image_-_2026-09-29T192341.513-removebg-preview.png"
-        alt="RCA">
+      <img src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
       <div>
-        <strong>RCA TADAKIR</strong>
-        <span>YOUR OFFICIAL TICKET</span>
+        <b>RCA TADAKIR</b>
+        <small>YOUR TICKET</small>
       </div>
-
     </div>
-
-    <button
-      class="back-btn"
-      id="backToMember">
-
-      RETOUR
-
-    </button>
 
   </div>
 
 
-  <div class="ticket-wrapper">
+  <div class="ticket-area">
 
     <div class="ticket">
 
-      <div class="ticket-head">
+      <div class="ticket-top">
 
-        <img
-          src="image_-_2026-09-29T192341.513-removebg-preview.png"
-          alt="RCA">
+        <img src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-        <h2>
-          RCA VS WAC
-        </h2>
+        <h2>RCA VS WAC</h2>
 
-        <p>
-          DERBY CASABLANCA
-        </p>
+        <p>DERBY CASABLANCA</p>
 
       </div>
 
 
-      <div class="ticket-body">
+      <div class="ticket-content">
 
-        <div class="ticket-match">
+        <div class="ticket-center">
 
-          <div class="big">
-            RCA VS WAC
-          </div>
+          <strong>RCA VS WAC</strong>
 
-          <div class="small">
+          <small>
             04/10/2026 — 21:30 — Sir.alien Stadium
-          </div>
+          </small>
 
         </div>
 
 
-        <div class="ticket-details">
+        <div class="details">
 
           <div class="detail">
             <span>Roblox</span>
-            <strong id="ticketRoblox">-</strong>
+            <b id="tRoblox">-</b>
           </div>
 
           <div class="detail">
             <span>Discord</span>
-            <strong id="ticketDiscord">-</strong>
+            <b id="tDiscord">-</b>
           </div>
 
           <div class="detail">
             <span>Category</span>
-            <strong id="ticketCategory">-</strong>
+            <b id="tCategory">-</b>
           </div>
 
           <div class="detail">
             <span>Tickets</span>
-            <strong id="ticketQuantity">-</strong>
+            <b id="tQuantity">-</b>
           </div>
 
           <div class="detail">
             <span>Unit Price</span>
-            <strong id="ticketUnitPrice">-</strong>
+            <b id="tPrice">-</b>
           </div>
 
           <div class="detail">
             <span>Date</span>
-            <strong>04/10/2026</strong>
+            <b>04/10/2026</b>
           </div>
 
         </div>
 
 
-        <div class="total-ticket">
+        <div class="ticket-total">
 
-          <span>
-            TOTAL
-          </span>
+          <span>TOTAL</span>
 
-          <strong id="ticketTotal">
-            $0
-          </strong>
+          <b id="tTotal">$0</b>
 
         </div>
 
 
         <div class="qr">
 
-          <img
-            id="qrCode"
-            src=""
-            alt="QR CODE">
+          <img id="qr">
 
-          <p>
+          <small>
             Scan to access Sir.alien Stadium
-          </p>
+          </small>
 
         </div>
 
@@ -1186,20 +968,20 @@ td{
     </div>
 
 
-    <div class="ticket-actions">
+    <div class="actions">
 
       <button
-        class="secondary-btn"
-        id="printTicket">
+        class="secondary"
+        onclick="window.print()">
 
         🖨️ IMPRIMER
 
       </button>
 
       <button
-        class="primary-btn"
-        id="newReservation"
-        style="margin-top:0">
+        class="main-btn"
+        style="margin:0"
+        id="newTicket">
 
         NOUVELLE RÉSERVATION
 
@@ -1214,7 +996,7 @@ td{
 </section>
 
 
-<!-- ================= MANAGER ================= -->
+<!-- MANAGER -->
 
 <section id="managerPage" class="page hidden">
 
@@ -1224,20 +1006,18 @@ td{
 
     <div class="brand">
 
-      <img
-        src="image_-_2026-09-29T192341.513-removebg-preview.png"
-        alt="RCA">
+      <img src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
       <div>
-        <strong>RCA MANAGER</strong>
-        <span>PRIVATE DASHBOARD</span>
+        <b>RCA MANAGER</b>
+        <small>PRIVATE DASHBOARD</small>
       </div>
 
     </div>
 
     <button
-      class="logout-btn"
-      id="logoutManager">
+      class="logout"
+      id="managerLogout">
 
       DÉCONNEXION
 
@@ -1246,97 +1026,423 @@ td{
   </div>
 
 
-  <div class="dashboard-title">
+  <div class="dashboard">
 
-    <small>MANAGER PANEL</small>
+    <h1>Manager Dashboard</h1>
 
-    <h1>
-      Ticket Dashboard
-    </h1>
+
+    <div class="stats">
+
+      <div class="stat">
+        <span>RÉSERVATIONS</span>
+        <b id="reservationsCount">0</b>
+      </div>
+
+      <div class="stat">
+        <span>NOMBRE DE TICKETS</span>
+        <b id="ticketsCount">0</b>
+      </div>
+
+      <div class="stat">
+        <span>TOTAL</span>
+        <b id="moneyCount">$0</b>
+      </div>
+
+    </div>
+
+
+    <div class="table-box">
+
+      <div class="table-top">
+
+        <b>Réservations</b>
+
+        <button
+          class="secondary"
+          id="refresh">
+
+          ↻ Actualiser
+
+        </button>
+
+      </div>
+
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Nom</th>
+              <th>Discord</th>
+              <th>Roblox</th>
+              <th>Catégorie</th>
+              <th>Tickets</th>
+              <th>Prix</th>
+              <th>Total</th>
+              <th>Date</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="rows"></tbody>
+
+        </table>
+
+      </div>
+
+
+      <div
+        id="empty"
+        class="empty">
+
+        Aucune réservation.
+
+      </div>
+
+    </div>
 
   </div>
 
+</div>
 
-  <div class="stats">
-
-    <div class="stat">
-
-      <span>
-        Réservations
-      </span>
-
-      <strong id="statReservations">
-        0
-      </strong>
-
-    </div>
+</section>
 
 
-    <div class="stat">
+<!-- FIREBASE COMPAT -->
 
-      <span>
-        Nombre de tickets
-      </span>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 
-      <strong id="statTickets">
-        0
-      </strong>
-
-    </div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 
 
-    <div class="stat">
+<script>
 
-      <span>
-        Total
-      </span>
+/* ================= FIREBASE ================= */
 
-      <strong id="statMoney">
-        $0
-      </strong>
+const firebaseConfig = {
 
-    </div>
+  apiKey:
+  "AIzaSyAngNc8jXXI2YX-CLrIh1Po4nAXUBAFD50",
 
-  </div>
+  authDomain:
+  "raja-athletic-club.firebaseapp.com",
 
+  projectId:
+  "raja-athletic-club",
 
-  <div class="table-card">
+  storageBucket:
+  "raja-athletic-club.firebasestorage.app",
 
-    <div class="table-header">
+  messagingSenderId:
+  "3445911284",
 
-      <h3>
-        Réservations
-      </h3>
+  appId:
+  "1:3445911284:web:6ff7ce32ac57624e4c38a1",
 
-      <button
-        class="secondary-btn"
-        id="refreshDashboard">
+  measurementId:
+  "G-402TD1QZSM"
 
-        ↻ Actualiser
-
-      </button>
-
-    </div>
+};
 
 
-    <div id="dashboardLoading" class="loading">
-      Chargement...
-    </div>
+let db = null;
 
 
-    <div class="table-wrap">
+try{
 
-      <table>
+  firebase.initializeApp(firebaseConfig);
 
-        <thead>
+  db = firebase.firestore();
 
-          <tr>
-            <th>Nom</th>
-            <th>Discord</th>
-            <th>Roblox</th>
-            <th>Catégorie</th>
-            <th>Tickets</th>
-            <th>Prix</th>
-            <th>Total</th>
-            <th>Date</th>
-          <
+  console.log("FIREBASE CONNECTED");
+
+}catch(error){
+
+  console.error(
+    "Firebase initialization error:",
+    error
+  );
+
+}
+
+
+/* ================= ELEMENTS ================= */
+
+const loginPage =
+document.getElementById("login");
+
+const memberPage =
+document.getElementById("memberPage");
+
+const ticketPage =
+document.getElementById("ticketPage");
+
+const managerPage =
+document.getElementById("managerPage");
+
+
+let currentName = "";
+
+
+/* ================= PAGE ================= */
+
+function page(section){
+
+  loginPage.classList.add("hidden");
+
+  memberPage.classList.add("hidden");
+
+  ticketPage.classList.add("hidden");
+
+  managerPage.classList.add("hidden");
+
+  section.classList.remove("hidden");
+
+}
+
+
+/* ================= LOGIN ================= */
+
+let loginTimer;
+
+
+document
+.getElementById("loginPass")
+.addEventListener(
+  "input",
+  function(){
+
+    clearTimeout(loginTimer);
+
+    const pass =
+      this.value.trim();
+
+
+    if(!pass){
+
+      return;
+
+    }
+
+
+    document
+    .getElementById("loginMessage")
+    .textContent =
+      "Connexion automatique...";
+
+
+    loginTimer =
+      setTimeout(
+        doLogin,
+        700
+      );
+
+  }
+);
+
+
+function doLogin(){
+
+  const name =
+    document
+    .getElementById("loginName")
+    .value
+    .trim();
+
+  const pass =
+    document
+    .getElementById("loginPass")
+    .value
+    .trim();
+
+
+  if(!name){
+
+    document
+    .getElementById("loginMessage")
+    .textContent =
+      "Veuillez entrer votre NOM.";
+
+    document
+    .getElementById("loginName")
+    .focus();
+
+    return;
+
+  }
+
+
+  if(!pass){
+
+    return;
+
+  }
+
+
+  currentName = name;
+
+
+  if(pass === "admin"){
+
+    page(managerPage);
+
+    loadReservations();
+
+  }else{
+
+    page(memberPage);
+
+  }
+
+}
+
+
+/* ================= TOTAL ================= */
+
+const quantity =
+document.getElementById("quantity");
+
+const category =
+document.getElementById("category");
+
+const total =
+document.getElementById("total");
+
+
+function calculate(){
+
+  const q =
+    Number(quantity.value);
+
+  const selected =
+    category.options[
+      category.selectedIndex
+    ];
+
+  const price =
+    Number(selected.dataset.price);
+
+
+  if(
+    !quantity.value ||
+    q < 1 ||
+    q > 10
+  ){
+
+    total.textContent = "$0";
+
+    return 0;
+
+  }
+
+
+  const result =
+    q * price;
+
+
+  total.textContent =
+    "$" + result;
+
+
+  return result;
+
+}
+
+
+quantity.addEventListener(
+  "input",
+  calculate
+);
+
+category.addEventListener(
+  "change",
+  calculate
+);
+
+
+/* ================= CONFIRM ================= */
+
+document
+.getElementById("confirm")
+.addEventListener(
+  "click",
+  saveReservation
+);
+
+
+async function saveReservation(){
+
+  const button =
+    document.getElementById("confirm");
+
+  const status =
+    document.getElementById("status");
+
+
+  const roblox =
+    document
+    .getElementById("roblox")
+    .value
+    .trim();
+
+  const discord =
+    document
+    .getElementById("discord")
+    .value
+    .trim();
+
+  const q =
+    Number(quantity.value);
+
+
+  const selected =
+    category.options[
+      category.selectedIndex
+    ];
+
+  const cat =
+    selected.value;
+
+  const price =
+    Number(selected.dataset.price);
+
+  const amount =
+    q * price;
+
+
+  /* VALIDATION */
+
+  if(!roblox){
+
+    status.className = "error";
+
+    status.textContent =
+      "Entrez votre username Roblox.";
+
+    return;
+
+  }
+
+
+  if(!discord){
+
+    status.className = "error";
+
+    status.textContent =
+      "Entrez votre username Discord.";
+
+    return;
+
+  }
+
+
+  if(
+    !quantity.value ||
+    q < 1 ||
+    q > 10
+  ){
+
+    status.className = "error
