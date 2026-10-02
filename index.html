@@ -1,830 +1,1026 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RCA TADAKIR | Derby Casablanca</title>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  color:#fff;
-  background:
-    radial-gradient(circle at top,#087545 0,#031d13 40%,#010806 100%);
-}
-
-button,input,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* LOGIN */
-
-#login{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.login-card{
-  width:100%;
-  max-width:430px;
-  padding:35px 25px;
-  border-radius:28px;
-  background:rgba(3,20,14,.94);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 25px 80px rgba(0,0,0,.55);
-  text-align:center;
-  animation:loginIn .7s ease;
-}
-
-@keyframes loginIn{
-  from{
-    opacity:0;
-    transform:translateY(30px) scale(.96);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-}
-
-.login-logo{
-  width:120px;
-  height:120px;
-  object-fit:contain;
-  margin-bottom:10px;
-}
-
-.login-card h1{
-  font-size:30px;
-  font-weight:900;
-}
-
-.login-card p{
-  color:#8bd4b0;
-  font-weight:bold;
-  letter-spacing:2px;
-  margin:7px 0 25px;
-}
-
-label{
-  display:block;
-  text-align:left;
-  margin:15px 0 7px;
-  color:#a8dbc2;
-  font-size:13px;
-  font-weight:bold;
-}
-
-input,
-select{
-  width:100%;
-  padding:15px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  background:#0a2118;
-  color:#fff;
-  outline:none;
-}
-
-input:focus,
-select:focus{
-  border-color:#1fc27b;
-  box-shadow:0 0 0 3px rgba(31,194,123,.12);
-}
-
-#loginMessage{
-  min-height:20px;
-  margin-top:18px;
-  color:#80dcae;
-  font-size:13px;
-}
-
-/* GENERAL */
-
-.page{
-  display:none;
-  min-height:100vh;
-}
-
-.container{
-  width:min(1050px,92%);
-  margin:auto;
-  padding:25px 0 50px;
-}
-
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  flex-wrap:wrap;
-  margin-bottom:25px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand img{
-  width:55px;
-  height:55px;
-  object-fit:contain;
-}
-
-.brand h2{
-  font-size:20px;
-}
-
-.brand span{
-  display:block;
-  margin-top:3px;
-  color:#7dcaa5;
-  font-size:11px;
-}
-
-.btn{
-  border:0;
-  border-radius:13px;
-  padding:13px 18px;
-  font-weight:900;
-  transition:.2s;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
-.green{
-  background:#13a866;
-  color:#fff;
-}
-
-.dark{
-  background:#10271d;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.red{
-  background:#b62a37;
-  color:#fff;
-}
-
-/* HERO */
-
-.hero{
-  padding:35px 20px;
-  text-align:center;
-  border-radius:28px;
-  background:
-    linear-gradient(145deg,rgba(13,101,68,.7),rgba(2,14,9,.94));
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
-}
-
-.hero small{
-  color:#94d7b6;
-  font-weight:bold;
-}
-
-.teams{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:35px;
-  margin:25px 0;
-}
-
-.team{
-  font-size:30px;
-  font-weight:900;
-}
-
-.vs{
-  color:#69d99e;
-  font-weight:900;
-}
-
-.match-info{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.info{
-  padding:15px;
-  border-radius:15px;
-  background:rgba(255,255,255,.05);
-}
-
-.info b{
-  display:block;
-  color:#83cbaa;
-  font-size:11px;
-  margin-bottom:5px;
-}
-
-.info span{
-  font-weight:bold;
-}
-
-/* FORM */
-
-.form-card{
-  margin-top:20px;
-  padding:25px;
-  border-radius:25px;
-  background:rgba(3,20,14,.92);
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.form-card h3{
-  margin-bottom:18px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.price-box{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-top:18px;
-  padding:18px;
-  border-radius:16px;
-  background:#071d14;
-}
-
-.total{
-  color:#43d994;
-  font-size:25px;
-  font-weight:900;
-}
-
-.actions{
-  display:flex;
-  gap:10px;
-  margin-top:20px;
-  flex-wrap:wrap;
-}
-
-#saveMessage{
-  min-height:20px;
-  margin-top:15px;
-  text-align:center;
-}
-
-/* TICKET */
-
-.ticket-wrap{
-  display:flex;
-  justify-content:center;
-}
-
-.ticket{
-  width:100%;
-  max-width:560px;
-  overflow:hidden;
-  color:#111;
-  background:#fff;
-  border-radius:25px;
-  box-shadow:0 25px 70px rgba(0,0,0,.5);
-}
-
-.ticket-top{
-  padding:25px;
-  text-align:center;
-  color:#fff;
-  background:#087343;
-}
-
-.ticket-top img{
-  width:75px;
-  height:75px;
-  object-fit:contain;
-}
-
-.ticket-top h2{
-  margin-top:8px;
-}
-
-.ticket-body{
-  padding:25px;
-}
-
-.ticket-match{
-  margin-bottom:20px;
-  text-align:center;
-  font-size:25px;
-  font-weight:900;
-}
-
-.ticket-info{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.ticket-item{
-  padding:13px;
-  border-radius:12px;
-  background:#f1f4f2;
-}
-
-.ticket-item small{
-  display:block;
-  margin-bottom:4px;
-  color:#777;
-}
-
-.qr{
-  margin-top:22px;
-  text-align:center;
-}
-
-.qr img{
-  width:190px;
-  height:190px;
-}
-
-.ticket-bottom{
-  margin-top:22px;
-  padding-top:20px;
-  border-top:2px dashed #aaa;
-  text-align:center;
-}
-
-.print-btn{
-  width:100%;
-  margin-top:15px;
-}
-
-/* MANAGER */
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.stat{
-  padding:22px;
-  border-radius:20px;
-  background:rgba(3,20,14,.92);
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.stat small{
-  color:#82cda9;
-}
-
-.stat strong{
-  display:block;
-  margin-top:8px;
-  font-size:30px;
-}
-
-.table-wrap{
-  overflow-x:auto;
-  border-radius:20px;
-  background:rgba(3,20,14,.92);
-  border:1px solid rgba(255,255,255,.1);
-}
-
-table{
-  width:100%;
-  min-width:850px;
-  border-collapse:collapse;
-}
-
-th,
-td{
-  padding:14px 12px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  text-align:left;
-}
-
-th{
-  color:#79d4a7;
-  font-size:12px;
-}
-
-td{
-  font-size:13px;
-}
-
-.empty,
-.loading{
-  padding:35px;
-  text-align:center;
-  color:#9ab9a9;
-}
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-  .container{
-    width:94%;
-  }
-
-  .teams{
-    gap:15px;
-  }
-
-  .team{
-    font-size:23px;
-  }
-
-  .match-info{
-    grid-template-columns:1fr;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr;
-  }
-
-  .ticket-info{
-    grid-template-columns:1fr;
-  }
-}
-
-/* PRINT */
-
-@media print{
-
-  body{
-    background:#fff;
-  }
-
-  body *{
-    visibility:hidden;
-  }
-
-  #ticketPage,
-  #ticketPage *{
-    visibility:visible;
-  }
-
-  #ticketPage{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-  }
-
-  .no-print{
-    display:none!important;
-  }
-
-  .ticket{
-    margin:auto;
-    box-shadow:none;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RCA TADAKIR | DERBY CASABLANCA</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(0,150,70,.22), transparent 35%),
+        linear-gradient(135deg, #020806, #06150e 50%, #010302);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 25px 15px;
+      animation: fade .4s ease;
+    }
+
+    .page.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .glass {
+      background: rgba(8, 20, 14, .88);
+      border: 1px solid rgba(0, 190, 85, .25);
+      border-radius: 25px;
+      box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        0 0 35px rgba(0,180,80,.08);
+      backdrop-filter: blur(15px);
+    }
+
+    /* =========================
+       START
+    ========================= */
+
+    .start-card {
+      max-width: 520px;
+      text-align: center;
+      padding: 40px 25px;
+    }
+
+    .logo {
+      width: 145px;
+      height: 145px;
+      object-fit: contain;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 25px rgba(255,255,255,.12));
+    }
+
+    .main-title {
+      font-size: clamp(32px, 8vw, 55px);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #00d86a;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .start-line {
+      width: 100px;
+      height: 3px;
+      background: #00c95b;
+      margin: 25px auto;
+      border-radius: 20px;
+    }
+
+    .choice-title {
+      color: #aaa;
+      margin-bottom: 18px;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .choice-btn {
+      border: 0;
+      border-radius: 17px;
+      padding: 20px 10px;
+      cursor: pointer;
+      color: white;
+      font-weight: 900;
+      font-size: 17px;
+      transition: .25s;
+    }
+
+    .choice-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .member-btn {
+      background: linear-gradient(135deg, #009c4c, #00d86a);
+      box-shadow: 0 10px 30px rgba(0,200,80,.2);
+    }
+
+    .manager-btn {
+      background: linear-gradient(135deg, #111, #292929);
+      border: 1px solid #444;
+    }
+
+    /* =========================
+       COMMON
+    ========================= */
+
+    .box {
+      padding: 30px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .back {
+      background: transparent;
+      border: 1px solid #333;
+      color: #bbb;
+      padding: 10px 17px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .back:hover {
+      border-color: #00c95b;
+      color: white;
+    }
+
+    /* =========================
+       DERBY
+    ========================= */
+
+    .derby-card {
+      padding: 35px;
+      text-align: center;
+    }
+
+    .teams {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin: 25px 0;
+    }
+
+    .team {
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    .vs {
+      color: #00d86a;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .derby-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 18px 10px;
+      border-radius: 15px;
+    }
+
+    .info-card span {
+      display: block;
+      color: #888;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .info-card strong {
+      font-size: 15px;
+    }
+
+    .description {
+      color: #bbb;
+      line-height: 1.7;
+      margin: 20px auto;
+      max-width: 700px;
+    }
+
+    .primary {
+      width: 100%;
+      border: 0;
+      background: linear-gradient(135deg, #009b4b, #00db6a);
+      color: white;
+      padding: 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 900;
+      transition: .25s;
+    }
+
+    .primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,200,80,.2);
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #bbb;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #29382f;
+      background: #07100b;
+      color: white;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #00d86a;
+      box-shadow: 0 0 0 3px rgba(0,216,106,.08);
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .category {
+      border: 1px solid #29382f;
+      background: #07100b;
+      padding: 20px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: .2s;
+      text-align: center;
+    }
+
+    .category:hover {
+      border-color: #00c95b;
+    }
+
+    .category.selected {
+      border-color: #00d86a;
+      background: rgba(0,200,80,.1);
+      box-shadow: inset 0 0 25px rgba(0,200,80,.05);
+    }
+
+    .category-name {
+      display: block;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .category-price {
+      color: #00d86a;
+      font-weight: 900;
+      margin-top: 8px;
+    }
+
+    .total-box {
+      background: rgba(0,200,80,.07);
+      border: 1px solid rgba(0,200,80,.2);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .total-label {
+      color: #999;
+      font-size: 13px;
+    }
+
+    .total {
+      font-size: 36px;
+      font-weight: 900;
+      color: #00db6a;
+      margin-top: 5px;
+    }
+
+    /* =========================
+       MANAGER
+    ========================= */
+
+    .manager-card {
+      max-width: 480px;
+      padding: 35px;
+    }
+
+    .lock {
+      font-size: 55px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .error {
+      color: #ff6565;
+      text-align: center;
+      margin-top: 12px;
+      min-height: 20px;
+    }
+
+    /* =========================
+       DASHBOARD
+    ========================= */
+
+    .dashboard {
+      width: 100%;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .logout {
+      border: 1px solid #333;
+      background: #111;
+      color: #ddd;
+      padding: 11px 17px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      padding: 25px 15px;
+      text-align: center;
+      border-radius: 18px;
+      background: #07100b;
+      border: 1px solid #26362c;
+    }
+
+    .stat-icon {
+      font-size: 27px;
+    }
+
+    .stat-title {
+      color: #999;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .stat-value {
+      font-size: 31px;
+      font-weight: 900;
+      margin-top: 8px;
+      color: #00db6a;
+    }
+
+    .refresh {
+      margin-top: 20px;
+      max-width: 220px;
+    }
+
+    .dashboard-note {
+      color: #777;
+      text-align: center;
+      margin-top: 25px;
+      font-size: 12px;
+    }
+
+    /* =========================
+       TICKET
+    ========================= */
+
+    .ticket-wrap {
+      width: 100%;
+      max-width: 750px;
+    }
+
+    .ticket {
+      background: white;
+      color: #111;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,.5);
+    }
+
+    .ticket-top {
+      background: linear-gradient(135deg, #006c35, #00a951);
+      color: white;
+      padding: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .ticket-logo {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .ticket-brand h2 {
+      font-size: 24px;
+    }
+
+    .ticket-brand p {
+      opacity: .8;
+      margin-top: 4px;
+    }
+
+    .ticket-body {
+      padding: 25px;
+    }
+
+    .ticket-match {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .ticket-subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    .ticket-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .detail {
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 13px;
+    }
+
+    .detail span {
+      display: block;
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 5px;
+    }
+
+    .detail strong {
+      word-break: break-word;
+    }
+
+    .qr-area {
+      text-align: center;
+      padding: 25px;
+      border-top: 2px dashed #ddd;
+      margin-top: 25px;
+    }
+
+    #qrCode {
+      width: 190px;
+      height: 190px;
+      object-fit: contain;
+      margin: auto;
+      display: block;
+    }
+
+    .scan-text {
+      margin-top: 10px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    .ticket-total {
+      text-align: center;
+      background: #f1faf4;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+
+    .ticket-total strong {
+      color: #008b43;
+      font-size: 26px;
+    }
+
+    .ticket-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .secondary {
+      border: 1px solid #333;
+      background: #111;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 15px;
+      }
+
+      .box,
+      .start-card,
+      .manager-card,
+      .derby-card {
+        padding: 22px 17px;
+      }
+
+      .choices,
+      .categories,
+      .form-grid,
+      .ticket-details {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .derby-info {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dashboard-header {
+        align-items: flex-start;
+      }
+
+      .teams {
+        gap: 13px;
+      }
+
+      .team {
+        font-size: 23px;
+      }
+
+      .ticket-top {
+        padding: 18px;
+      }
+
+      .ticket-brand h2 {
+        font-size: 18px;
+      }
+
+      .ticket-logo {
+        width: 55px;
+        height: 55px;
+      }
+
+      .ticket-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- =====================================================
+       START PAGE
+  ====================================================== -->
+  <section id="startPage" class="page active">
 
-<!-- ================= LOGIN ================= -->
-
-<section id="login">
-
-  <div class="login-card">
-
-    <img
-      class="login-logo"
-      src="image_-_2026-09-29T192341.513-removebg-preview.png"
-      alt="RCA">
-
-    <h1>RCA TADAKIR</h1>
-
-    <p>DERBY CASABLANCA</p>
-
-
-    <label for="loginName">
-      NOM
-    </label>
-
-    <input
-      id="loginName"
-      type="text"
-      placeholder="Entrez votre nom"
-      autocomplete="off">
-
-
-    <label for="loginPass">
-      MOD PASS
-    </label>
-
-    <input
-      id="loginPass"
-      type="password"
-      placeholder="Entrez votre MOD PASS"
-      autocomplete="off">
-
-
-    <div id="loginMessage">
-      Entrez vos informations
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= MEMBER ================= -->
-
-<section id="memberPage" class="page">
-
-  <div class="container">
-
-    <div class="header">
-
-      <div class="brand">
+    <div class="container">
+      <div class="glass start-card">
 
         <img
           src="image_-_2026-09-29T192341.513-removebg-preview.png"
+          class="logo"
           alt="RCA">
 
-        <div>
-          <h2>RCA TADAKIR</h2>
-          <span>DERBY CASABLANCA</span>
+        <h1 class="main-title">RCA TADAKIR</h1>
+        <div class="subtitle">DERBY CASABLANCA</div>
+
+        <div class="start-line"></div>
+
+        <p class="choice-title">Choisissez votre type d'accès</p>
+
+        <div class="choices">
+
+          <button
+            class="choice-btn member-btn"
+            onclick="openMember()">
+            🟢 MEMBER
+          </button>
+
+          <button
+            class="choice-btn manager-btn"
+            onclick="openManager()">
+            ⚫ MANAGER
+          </button>
+
         </div>
 
       </div>
-
-      <button
-        class="btn dark"
-        onclick="logout()">
-        DÉCONNEXION
-      </button>
-
     </div>
 
+  </section>
 
-    <div class="hero">
 
-      <small>
-        DERBY CASABLANCA
-      </small>
+  <!-- =====================================================
+       DERBY PAGE
+  ====================================================== -->
+  <section id="derbyPage" class="page">
 
-      <div class="teams">
+    <div class="container">
 
-        <div class="team">
-          RCA
+      <div class="glass derby-card">
+
+        <button class="back" onclick="showPage('startPage')">
+          ← Retour
+        </button>
+
+        <h1 class="page-title">DERBY CASABLANCA</h1>
+
+        <div class="teams">
+          <div class="team">RCA</div>
+          <div class="vs">VS</div>
+          <div class="team">WAC</div>
         </div>
 
-        <div class="vs">
-          VS
-        </div>
+        <p class="description">
+          Bienvenue au Derby Casablanca.
+          Préparez-vous à vivre une rencontre exceptionnelle
+          entre RCA et WAC au Sir.alien Stadium.
+        </p>
 
-        <div class="team">
-          WAC
-        </div>
+        <div class="derby-info">
 
-      </div>
+          <div class="info-card">
+            <span>DATE</span>
+            <strong>04/10/2026</strong>
+          </div>
 
+          <div class="info-card">
+            <span>HEURE</span>
+            <strong>21:30</strong>
+          </div>
 
-      <div class="match-info">
-
-        <div class="info">
-          <b>DATE</b>
-          <span>04/10/2026</span>
-        </div>
-
-        <div class="info">
-          <b>HEURE</b>
-          <span>21:30</span>
-        </div>
-
-        <div class="info">
-          <b>STADE</b>
-          <span>Sir.alien Stadium</span>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="form-card">
-
-      <h3>
-        🎟️ RÉSERVER VOS TICKETS
-      </h3>
-
-
-      <div class="grid">
-
-        <div>
-
-          <label>
-            ROBLOX USERNAME
-          </label>
-
-          <input
-            id="roblox"
-            type="text"
-            placeholder="Votre username Roblox">
+          <div class="info-card">
+            <span>STADIUM</span>
+            <strong>Sir.alien Stadium</strong>
+          </div>
 
         </div>
-
-
-        <div>
-
-          <label>
-            DISCORD USERNAME
-          </label>
-
-          <input
-            id="discord"
-            type="text"
-            placeholder="Votre username Discord">
-
-        </div>
-
-
-        <div>
-
-          <label>
-            CATÉGORIE
-          </label>
-
-          <select
-            id="category"
-            onchange="calculate()">
-
-            <option value="">
-              Choisir une catégorie
-            </option>
-
-            <option value="VIRAGE">
-              VIRAGE — $5
-            </option>
-
-            <option value="VIP">
-              VIP — $100
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div>
-
-          <label>
-            NOMBRE DE TICKETS
-          </label>
-
-          <input
-            id="quantity"
-            type="number"
-            min="1"
-            max="10"
-            value=""
-            placeholder="Entrez le nombre de tickets"
-            oninput="calculate()">
-
-        </div>
-
-      </div>
-
-
-      <div class="price-box">
-
-        <span>
-          TOTAL
-        </span>
-
-        <span
-          class="total"
-          id="total">
-          $0
-        </span>
-
-      </div>
-
-
-      <div class="actions">
 
         <button
-          id="confirmBtn"
-          class="btn green"
-          onclick="saveReservation()">
+          class="primary"
+          onclick="showPage('bookingPage')">
+          🎟️ GET TICKET
+        </button>
 
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       BOOKING PAGE
+  ====================================================== -->
+  <section id="bookingPage" class="page">
+
+    <div class="container">
+
+      <div class="glass box">
+
+        <button class="back" onclick="showPage('derbyPage')">
+          ← Retour
+        </button>
+
+        <h1 class="page-title">RCA TADAKIR</h1>
+
+        <p class="page-subtitle">
+          Réservez votre ticket pour le Derby Casablanca
+        </p>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label>ROBLOX USERNAME</label>
+
+            <input
+              id="roblox"
+              type="text"
+              placeholder="Votre username Roblox">
+          </div>
+
+          <div class="field">
+            <label>DISCORD USERNAME</label>
+
+            <input
+              id="discord"
+              type="text"
+              placeholder="Votre username Discord">
+          </div>
+
+          <div class="field full">
+
+            <label>TYPE D'ACCÈS</label>
+
+            <div class="categories">
+
+              <div
+                class="category"
+                id="virage"
+                onclick="selectCategory('VIRAGE', 5)">
+                <span class="category-name">VIRAGE</span>
+                <div class="category-price">$5</div>
+              </div>
+
+              <div
+                class="category"
+                id="vip"
+                onclick="selectCategory('VIP', 100)">
+                <span class="category-name">VIP</span>
+                <div class="category-price">$100</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="field full">
+
+            <label>NOMBRE DE TICKETS</label>
+
+            <input
+              id="quantity"
+              type="number"
+              min="1"
+              max="10"
+              placeholder="Entrez le nombre de tickets"
+              oninput="updateTotal()">
+
+          </div>
+
+        </div>
+
+        <div class="total-box">
+
+          <div class="total-label">
+            TOTAL
+          </div>
+
+          <div
+            class="total"
+            id="total">
+            $0
+          </div>
+
+        </div>
+
+        <button
+          class="primary"
+          id="confirmButton"
+          onclick="generateTicket()">
           CONFIRMER LA RÉSERVATION
-
-        </button>
-
-
-        <button
-          class="btn dark"
-          onclick="logout()">
-
-          ANNULER
-
         </button>
 
       </div>
 
-
-      <div id="saveMessage"></div>
-
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- ================= TICKET ================= -->
+  <!-- =====================================================
+       MANAGER LOGIN
+  ====================================================== -->
+  <section id="managerPage" class="page">
 
-<section id="ticketPage" class="page">
+    <div class="container">
 
-  <div class="container">
+      <div class="glass manager-card">
 
-    <div class="header no-print">
+        <button class="back" onclick="showPage('startPage')">
+          ← Retour
+        </button>
 
-      <div class="brand">
+        <div class="lock">🔐</div>
 
-        <img
-          src="image_-_2026-09-29T192341.513-removebg-preview.png">
+        <h1 class="page-title">
+          MANAGER ACCESS
+        </h1>
 
-        <div>
+        <p class="page-subtitle">
+          Entrez le Code Manager
+        </p>
 
-          <h2>RCA TADAKIR</h2>
+        <div class="field">
 
-          <span>
-            VOTRE TICKET
-          </span>
+          <label>CODE MANAGER</label>
 
+          <input
+            id="managerCode"
+            type="password"
+            placeholder="••••••••"
+            onkeydown="if(event.key === 'Enter') loginManager()">
+
+        </div>
+
+        <button
+          class="primary"
+          onclick="loginManager()">
+          LOGIN
+        </button>
+
+        <div
+          class="error"
+          id="managerError">
         </div>
 
       </div>
 
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       DASHBOARD
+  ====================================================== -->
+  <section id="dashboardPage" class="page">
+
+    <div class="container dashboard">
+
+      <div class="dashboard-header">
+
+        <div>
+          <h1>MANAGER DASHBOARD</h1>
+          <p style="color:#888;margin-top:5px;">
+            RCA TADAKIR • DERBY CASABLANCA
+          </p>
+        </div>
+
+        <button
+          class="logout"
+          onclick="managerLogout()">
+          LOGOUT
+        </button>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+          <div class="stat-icon">🎟️</div>
+          <div class="stat-title">TICKETS SOLD</div>
+          <div
+            class="stat-value"
+            id="soldTickets">
+            0
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">💰</div>
+          <div class="stat-title">TOTAL REVENUE</div>
+          <div
+            class="stat-value"
+            id="revenue">
+            $0
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">🟢</div>
+          <div class="stat-title">VIRAGE</div>
+          <div
+            class="stat-value"
+            id="virageSold">
+            0
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-icon">👑</div>
+          <div class="stat-title">VIP</div>
+          <div
+            class="stat-value"
+            id="vipSold">
+            0
+          </div>
+        </div>
+
+      </div>
 
       <button
-        class="btn dark"
-        onclick="logout()">
-
-        DÉCONNEXION
-
+        class="primary refresh"
+        onclick="loadDashboard()">
+        ↻ ACTUALISER
       </button>
+
+      <p class="dashboard-note">
+        Les statistiques sont récupérées depuis Firebase Firestore.
+      </p>
 
     </div>
 
+  </section>
+
+
+  <!-- =====================================================
+       TICKET PAGE
+  ====================================================== -->
+  <section id="ticketPage" class="page">
 
     <div class="ticket-wrap">
 
-      <div class="ticket">
+      <div class="ticket" id="ticket">
 
         <div class="ticket-top">
 
+          <div class="ticket-brand">
+            <h2>RCA TADAKIR</h2>
+            <p>DERBY CASABLANCA</p>
+          </div>
+
           <img
-            src="image_-_2026-09-29T192341.513-removebg-preview.png">
-
-          <h2>
-            DERBY CASABLANCA
-          </h2>
-
-          <p>
-            RCA VS WAC
-          </p>
+            src="image_-_2026-09-29T192341.513-removebg-preview.png"
+            class="ticket-logo"
+            alt="RCA">
 
         </div>
-
 
         <div class="ticket-body">
 
@@ -832,580 +1028,11 @@ td{
             RCA VS WAC
           </div>
 
-
-          <div class="ticket-info">
-
-            <div class="ticket-item">
-              <small>DATE</small>
-              <b>04/10/2026</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>HEURE</small>
-              <b>21:30</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>STADE</small>
-              <b>Sir.alien Stadium</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>CATÉGORIE</small>
-              <b id="ticketCategory">-</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>NOMBRE</small>
-              <b id="ticketQuantity">-</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>PRIX UNITAIRE</small>
-              <b id="ticketUnitPrice">-</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>ROBLOX</small>
-              <b id="ticketRoblox">-</b>
-            </div>
-
-            <div class="ticket-item">
-              <small>DISCORD</small>
-              <b id="ticketDiscord">-</b>
-            </div>
-
+          <div class="ticket-subtitle">
+            DERBY CASABLANCA
           </div>
 
+          <div class="ticket-details">
 
-          <div class="qr">
-
-            <img
-              id="qrCode"
-              alt="QR CODE">
-
-            <p style="font-size:12px;color:#666;margin-top:7px;">
-              SCAN POUR ACCÉDER AU STADE
-            </p>
-
-          </div>
-
-
-          <div class="ticket-bottom">
-
-            <div>
-              TOTAL :
-              <strong id="ticketTotal">
-                $0
-              </strong>
-            </div>
-
-
-            <button
-              class="btn green print-btn no-print"
-              onclick="window.print()">
-
-              🖨️ IMPRIMER LE TICKET
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= MANAGER ================= -->
-
-<section id="managerPage" class="page">
-
-  <div class="container">
-
-    <div class="header">
-
-      <div class="brand">
-
-        <img
-          src="image_-_2026-09-29T192341.513-removebg-preview.png">
-
-        <div>
-
-          <h2>
-            RCA TADAKIR
-          </h2>
-
-          <span>
-            MANAGER DASHBOARD
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="actions no-print">
-
-        <button
-          class="btn green"
-          onclick="loadReservations()">
-
-          🔄 ACTUALISER
-
-        </button>
-
-
-        <button
-          class="btn red"
-          onclick="logout()">
-
-          DÉCONNEXION
-
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div class="stats">
-
-      <div class="stat">
-
-        <small>
-          TOTAL TICKETS
-        </small>
-
-        <strong id="statTickets">
-          0
-        </strong>
-
-      </div>
-
-
-      <div class="stat">
-
-        <small>
-          RÉSERVATIONS
-        </small>
-
-        <strong id="statReservations">
-          0
-        </strong>
-
-      </div>
-
-
-      <div class="stat">
-
-        <small>
-          CHIFFRE TOTAL
-        </small>
-
-        <strong id="statRevenue">
-          $0
-        </strong>
-
-      </div>
-
-    </div>
-
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>NOM</th>
-            <th>DISCORD</th>
-            <th>ROBLOX</th>
-            <th>CATÉGORIE</th>
-            <th>QUANTITÉ</th>
-            <th>TOTAL</th>
-            <th>DATE</th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody id="reservationTable">
-
-          <tr>
-
-            <td
-              colspan="7"
-              class="loading">
-
-              Chargement...
-
-            </td>
-
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= FIREBASE ================= -->
-
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
-
-<script>
-
-const firebaseConfig = {
-
-  apiKey:
-  "AIzaSyAngNc8jXXI2YX-CLrIh1Po4nAXUBAFD50",
-
-  authDomain:
-  "raja-athletic-club.firebaseapp.com",
-
-  projectId:
-  "raja-athletic-club",
-
-  storageBucket:
-  "raja-athletic-club.firebasestorage.app",
-
-  messagingSenderId:
-  "3445911284",
-
-  appId:
-  "1:3445911284:web:6ff7ce32ac57624e4c38a1",
-
-  measurementId:
-  "G-402TD1QZSM"
-
-};
-
-
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-
-
-let currentName = "";
-
-let loginTimer = null;
-
-
-const stadiumURL =
-"https://www.roblox.com/games/71836037262520/AVL-Sir-Alien-Stadium";
-
-
-// ================= PAGE =================
-
-function showPage(id){
-
-  document.getElementById("login").style.display = "none";
-
-  document.querySelectorAll(".page").forEach(function(page){
-
-    page.style.display = "none";
-
-  });
-
-
-  document.getElementById(id).style.display = "block";
-
-  window.scrollTo(0,0);
-
-}
-
-
-// ================= LOGIN =================
-
-function doLogin(){
-
-  const name =
-    document.getElementById("loginName").value.trim();
-
-  const pass =
-    document.getElementById("loginPass").value.trim();
-
-
-  if(!name){
-
-    document.getElementById("loginMessage").textContent =
-      "Veuillez entrer votre NOM.";
-
-    document.getElementById("loginName").focus();
-
-    return;
-
-  }
-
-
-  if(!pass){
-
-    document.getElementById("loginMessage").textContent =
-      "Veuillez entrer votre MOD PASS.";
-
-    document.getElementById("loginPass").focus();
-
-    return;
-
-  }
-
-
-  currentName = name;
-
-
-  document.getElementById("loginMessage").textContent =
-    "Connexion...";
-
-
-  setTimeout(function(){
-
-    if(pass === "admin"){
-
-      showPage("managerPage");
-
-      loadReservations();
-
-    }else{
-
-      showPage("memberPage");
-
-    }
-
-  },250);
-
-}
-
-
-// ================= KEYBOARD ENTER =================
-
-// NOM → Enter → MOD PASS
-
-document.getElementById("loginName")
-.addEventListener("keydown",function(e){
-
-  if(e.key === "Enter" || e.keyCode === 13){
-
-    e.preventDefault();
-
-    e.stopPropagation();
-
-    document.getElementById("loginPass").focus();
-
-  }
-
-});
-
-
-// MOD PASS → Enter → LOGIN
-
-document.getElementById("loginPass")
-.addEventListener("keydown",function(e){
-
-  if(e.key === "Enter" || e.keyCode === 13){
-
-    e.preventDefault();
-
-    e.stopPropagation();
-
-    clearTimeout(loginTimer);
-
-    doLogin();
-
-  }
-
-});
-
-
-// ================= AUTO LOGIN =================
-
-document.getElementById("loginPass")
-.addEventListener("input",function(){
-
-  clearTimeout(loginTimer);
-
-
-  const password =
-    this.value.trim();
-
-
-  if(password === ""){
-
-    document.getElementById("loginMessage").textContent =
-      "Entrez vos informations";
-
-    return;
-
-  }
-
-
-  document.getElementById("loginMessage").textContent =
-    "Connexion automatique...";
-
-
-  loginTimer = setTimeout(function(){
-
-    doLogin();
-
-  },700);
-
-});
-
-
-// ================= CALCUL =================
-
-function calculate(){
-
-  const category =
-    document.getElementById("category").value;
-
-  const quantity =
-    Number(document.getElementById("quantity").value);
-
-
-  let price = 0;
-
-
-  if(category === "VIRAGE"){
-    price = 5;
-  }
-
-  if(category === "VIP"){
-    price = 100;
-  }
-
-
-  if(!quantity || quantity < 1){
-
-    document.getElementById("total").textContent =
-      "$0";
-
-    return;
-
-  }
-
-
-  document.getElementById("total").textContent =
-    "$" + (price * quantity);
-
-}
-
-
-// ================= SAVE RESERVATION =================
-
-async function saveReservation(){
-
-  const roblox =
-    document.getElementById("roblox").value.trim();
-
-  const discord =
-    document.getElementById("discord").value.trim();
-
-  const category =
-    document.getElementById("category").value;
-
-  const quantity =
-    Number(document.getElementById("quantity").value);
-
-
-  const message =
-    document.getElementById("saveMessage");
-
-  const button =
-    document.getElementById("confirmBtn");
-
-
-  if(!roblox){
-
-    message.textContent =
-      "❌ Entrez votre username Roblox.";
-
-    return;
-
-  }
-
-
-  if(!discord){
-
-    message.textContent =
-      "❌ Entrez votre username Discord.";
-
-    return;
-
-  }
-
-
-  if(!category){
-
-    message.textContent =
-      "❌ Choisissez une catégorie.";
-
-    return;
-
-  }
-
-
-  if(!Number.isInteger(quantity) ||
-     quantity < 1 ||
-     quantity > 10){
-
-    message.textContent =
-      "❌ Nombre de tickets : 1 à 10.";
-
-    return;
-
-  }
-
-
-  const price =
-    category === "VIP" ? 100 : 5;
-
-
-  const total =
-    price * quantity;
-
-
-  button.disabled = true;
-
-  button.style.opacity = ".6";
-
-
-  message.textContent =
-    "⏳ Enregistrement...";
-
-
-  try{
-
-    await db
-      .collection("reservations")
-      .add({
-
-        name: currentName,
-
-        roblox: roblox,
-
-        discord: discord,
-
-        category: category,
-
-        quantity: quantity,
-
-        unitPrice: price,
-
-        total: tota
+            <div class="detail">
+              <sp
