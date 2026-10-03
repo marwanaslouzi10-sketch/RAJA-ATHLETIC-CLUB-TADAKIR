@@ -3,328 +3,541 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>RCA TADAKIR | DERBY CASABLANCA</title>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-body{
-  min-height:100vh;
-  color:#fff;
-  background:radial-gradient(circle at top,#138342,#052b18 45%,#020604);
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
+body{
+font-family:'Montserrat',Arial,sans-serif;
+min-height:100vh;
+color:#fff;
+background:
+radial-gradient(circle at 50% -10%,#20a65b 0%,#0b552f 25%,#031b0e 58%,#010604 100%);
+}
+
+/* ================= PAGES ================= */
+
 .page{
-  display:none;
-  min-height:100vh;
-  padding:25px 15px 50px;
+display:none;
+min-height:100vh;
+padding:25px 15px 60px;
 }
 
 .page:target{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 #home{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* ================= HOME ================= */
+
+.hero{
+width:100%;
+max-width:900px;
+text-align:center;
 }
 
 .logo{
-  width:150px;
-  height:150px;
-  object-fit:contain;
-  margin:20px 0 10px;
-  filter:drop-shadow(0 0 25px rgba(255,255,255,.2));
+width:165px;
+height:165px;
+object-fit:contain;
+margin:20px auto 10px;
+filter:
+drop-shadow(0 0 15px rgba(255,255,255,.18))
+drop-shadow(0 0 35px rgba(32,217,104,.2));
 }
 
-.smallLogo{
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  margin:10px;
+.welcome{
+font-family:'Cinzel',serif;
+font-size:clamp(38px,8vw,72px);
+font-weight:900;
+letter-spacing:5px;
+line-height:1.1;
+margin-top:8px;
+
+background:linear-gradient(
+90deg,
+#ffffff,
+#d7ffe4,
+#ffffff
+);
+
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+
+text-shadow:
+0 0 25px rgba(255,255,255,.15);
 }
 
-.title{
-  font-size:42px;
-  font-weight:900;
-  text-align:center;
+.welcomeSub{
+margin-top:12px;
+font-size:14px;
+letter-spacing:6px;
+font-weight:700;
+color:#aaffc7;
 }
 
-.subtitle{
-  margin-top:8px;
-  color:#aaffc5;
-  font-weight:bold;
-  letter-spacing:4px;
-  text-align:center;
+.divider{
+width:110px;
+height:3px;
+background:#20d968;
+margin:25px auto;
+border-radius:10px;
+box-shadow:0 0 15px #20d968;
 }
 
-.card{
-  width:100%;
-  max-width:520px;
-  margin-top:25px;
-  padding:25px;
-  border-radius:25px;
-  background:rgba(0,0,0,.58);
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 20px 60px rgba(0,0,0,.45);
+/* ================= PRESENTATION ================= */
+
+.presentation{
+width:100%;
+max-width:900px;
+margin-top:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
 }
 
-.match{
-  text-align:center;
-  font-size:32px;
-  font-weight:900;
-  margin-bottom:20px;
+.presentationCard{
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.09),
+rgba(0,0,0,.42)
+);
+
+border:1px solid rgba(255,255,255,.13);
+border-radius:24px;
+padding:25px;
+box-shadow:0 15px 50px rgba(0,0,0,.3);
+backdrop-filter:blur(10px);
 }
 
-.greenText{color:#20d968}
+.presentationCard h2{
+font-family:'Cinzel',serif;
+font-size:22px;
+margin-bottom:14px;
+color:#20d968;
+}
+
+.presentationCard p{
+font-size:14px;
+line-height:1.8;
+color:#ddd;
+}
+
+.presentationCard strong{
+color:#fff;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+width:100%;
+max-width:500px;
+margin-top:25px;
+}
 
 .btn{
-  display:block;
-  width:100%;
-  padding:17px;
-  margin-top:13px;
-  border:0;
-  border-radius:16px;
-  text-align:center;
-  text-decoration:none;
-  font-size:16px;
-  font-weight:900;
-  cursor:pointer;
+display:block;
+width:100%;
+padding:18px;
+margin-top:13px;
+border-radius:17px;
+text-align:center;
+text-decoration:none;
+font-size:16px;
+font-weight:900;
+letter-spacing:.5px;
+cursor:pointer;
+border:0;
 }
 
-.member,.confirm{
-  background:#20d968;
-  color:#031008;
+.member{
+background:#20d968;
+color:#031008;
+box-shadow:0 8px 25px rgba(32,217,104,.18);
 }
 
 .manager{
-  background:#111;
-  color:white;
-  border:1px solid #444;
+background:#101010;
+color:white;
+border:1px solid #444;
 }
 
-.back{
-  background:#242424;
-  color:white;
+/* ================= CARD ================= */
+
+.card{
+width:100%;
+max-width:520px;
+margin-top:25px;
+padding:25px;
+border-radius:25px;
+background:rgba(0,0,0,.58);
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 20px 60px rgba(0,0,0,.45);
+backdrop-filter:blur(12px);
 }
+
+.match{
+text-align:center;
+font-family:'Cinzel',serif;
+font-size:32px;
+font-weight:900;
+margin-bottom:20px;
+}
+
+.greenText{
+color:#20d968;
+}
+
+/* ================= INFO ================= */
 
 .infoGrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:20px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:20px;
 }
 
 .info{
-  background:rgba(255,255,255,.07);
-  padding:14px 7px;
-  border-radius:14px;
-  text-align:center;
+background:rgba(255,255,255,.07);
+padding:15px 8px;
+border-radius:14px;
+text-align:center;
 }
 
 .info small{
-  display:block;
-  color:#999;
-  margin-bottom:6px;
+display:block;
+color:#999;
+margin-bottom:6px;
 }
 
 .info strong{
-  font-size:12px;
+font-size:12px;
 }
 
+/* ================= FORM ================= */
+
 label{
-  display:block;
-  margin:17px 0 7px;
-  font-weight:bold;
+display:block;
+margin:17px 0 7px;
+font-weight:700;
 }
 
 input{
-  width:100%;
-  padding:16px;
-  border-radius:13px;
-  border:1px solid #333;
-  background:#0c0c0c;
-  color:white;
-  font-size:15px;
-  outline:none;
+width:100%;
+padding:16px;
+border-radius:14px;
+border:1px solid #333;
+background:#0b0b0b;
+color:#fff;
+font-size:15px;
+outline:none;
 }
 
 input:focus{
-  border-color:#20d968;
+border-color:#20d968;
 }
 
 .categories{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 }
 
 .category{
-  background:#111;
-  color:white;
-  border:2px solid #333;
+background:#111;
+color:#fff;
+border:2px solid #333;
 }
 
 .category.active{
-  background:#073d20;
-  border-color:#20d968;
+background:#073d20;
+border-color:#20d968;
 }
 
 .total{
-  text-align:center;
-  color:#20d968;
-  font-size:36px;
-  font-weight:900;
-  margin:22px 0;
+text-align:center;
+color:#20d968;
+font-size:36px;
+font-weight:900;
+margin:22px 0;
 }
 
 .error{
-  color:#ff6b6b;
-  text-align:center;
-  font-weight:bold;
-  margin-top:10px;
+color:#ff6b6b;
+text-align:center;
+font-weight:bold;
+margin-top:10px;
 }
 
+/* ================= TICKET ================= */
+
 .ticket{
-  width:100%;
-  max-width:500px;
-  background:white;
-  color:#111;
-  border-radius:24px;
-  padding:25px;
-  margin-top:20px;
+width:100%;
+max-width:500px;
+background:white;
+color:#111;
+border-radius:25px;
+padding:25px;
+margin-top:20px;
 }
 
 .ticketLogo{
-  display:block;
-  width:90px;
-  height:90px;
-  object-fit:contain;
-  margin:auto;
+display:block;
+width:90px;
+height:90px;
+object-fit:contain;
+margin:auto;
 }
 
 .ticketTitle{
-  text-align:center;
-  font-size:28px;
-  font-weight:900;
-  margin-top:10px;
+text-align:center;
+font-family:'Cinzel',serif;
+font-size:28px;
+font-weight:900;
+margin-top:10px;
 }
 
 .ticketSub{
-  text-align:center;
-  color:#777;
-  margin:5px 0 20px;
+text-align:center;
+color:#777;
+margin:5px 0 20px;
 }
 
 .row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:11px 0;
-  border-bottom:1px solid #ddd;
+display:flex;
+justify-content:space-between;
+gap:10px;
+padding:11px 0;
+border-bottom:1px solid #ddd;
 }
 
-.row span:first-child{color:#777}
-.row span:last-child{font-weight:bold;text-align:right}
+.row span:first-child{
+color:#777;
+}
+
+.row span:last-child{
+font-weight:bold;
+text-align:right;
+}
 
 .qr{
-  display:block;
-  width:220px;
-  height:220px;
-  margin:20px auto;
+display:block;
+width:220px;
+height:220px;
+margin:20px auto;
 }
 
 .ticketTotal{
-  color:#08752f!important;
-  font-size:23px;
+color:#08752f!important;
+font-size:23px;
 }
 
+/* ================= DASHBOARD ================= */
+
 .stats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 }
 
 .stat{
-  background:#111;
-  border-radius:18px;
-  padding:20px 10px;
-  text-align:center;
+background:#111;
+border-radius:18px;
+padding:20px 10px;
+text-align:center;
 }
 
 .stat small{
-  display:block;
-  color:#999;
-  margin-bottom:8px;
+display:block;
+color:#999;
+margin-bottom:8px;
 }
 
 .stat strong{
-  color:#20d968;
-  font-size:28px;
+color:#20d968;
+font-size:28px;
 }
 
-@media(max-width:520px){
-  .title{font-size:34px}
-  .infoGrid{grid-template-columns:1fr}
-  .categories{grid-template-columns:1fr}
+/* ================= MOBILE ================= */
+
+@media(max-width:650px){
+
+.presentation{
+grid-template-columns:1fr;
+}
+
+.welcome{
+letter-spacing:3px;
+}
+
+.infoGrid{
+grid-template-columns:1fr;
+}
+
+.categories{
+grid-template-columns:1fr;
+}
+
 }
 
 @media print{
-  body *{visibility:hidden}
-  #ticket,#ticket *{visibility:visible}
-  #ticket{
-    display:block!important;
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-  }
-  .noPrint{display:none!important}
+
+body *{
+visibility:hidden;
 }
+
+#ticket,
+#ticket *{
+visibility:visible;
+}
+
+#ticket{
+display:block!important;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+}
+
+.noPrint{
+display:none!important;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= HOME ================= -->
+
+<!-- =====================================================
+     HOME
+===================================================== -->
 
 <section id="home" class="page">
 
-<img class="logo"
-src="image_-_2026-09-29T192341.513-removebg-preview.png">
+<div class="hero">
 
-<h1 class="title">RCA TADAKIR</h1>
-<p class="subtitle">DERBY CASABLANCA</p>
+<img
+class="logo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="Raja Athletic Club"
+>
 
-<div class="card">
-
-<div class="match">
-<span class="greenText">RCA</span> VS WAC
+<div class="welcome">
+BIENVENUE RAJAWI
 </div>
 
-<a href="#booking" class="btn member">
+<div class="welcomeSub">
+RAJA ATHLETIC CLUB
+</div>
+
+<div class="divider"></div>
+
+</div>
+
+
+<!-- PRESENTATIONS -->
+
+<div class="presentation">
+
+<div class="presentationCard">
+
+<h2>🟢 PRÉSENTATION DU RCA</h2>
+
+<p>
+<strong>Raja Athletic Club</strong>, connu sous le nom de
+<strong>Raja CA</strong>, est un club de football marocain
+basé à Casablanca.
+</p>
+
+<p style="margin-top:12px">
+Fondé en <strong>1949</strong>, le Raja est associé à une
+grande histoire sportive, une identité forte et une importante
+communauté de supporters.
+</p>
+
+</div>
+
+
+<div class="presentationCard">
+
+<h2>🏟️ PRÉSENTATION DU DERBY</h2>
+
+<p>
+Le <strong>Derby de Casablanca</strong> oppose les deux clubs
+casablancais historiques :
+<strong>Raja Athletic Club</strong> et
+<strong>Wydad Athletic Club</strong>.
+</p>
+
+<p style="margin-top:12px">
+Cette affiche rassemble régulièrement les supporters autour
+d'une grande ambiance footballistique à Casablanca.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- BUTTONS -->
+
+<div class="buttons">
+
+<a
+href="#booking"
+class="btn member"
+>
 🟢 MEMBER
 </a>
 
-<a href="#manager" class="btn manager">
+<a
+href="#manager"
+class="btn manager"
+>
 ⚫ MANAGER
 </a>
 
 </div>
+
 </section>
 
 
-<!-- ================= BOOKING FORM ================= -->
+<!-- =====================================================
+     BOOKING
+===================================================== -->
 
 <section id="booking" class="page">
 
-<img class="smallLogo"
-src="image_-_2026-09-29T192341.513-removebg-preview.png">
+<img
+class="smallLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="RCA"
+>
 
-<h1 style="font-size:32px;text-align:center">
+<h1 style="font-family:'Cinzel',serif;font-size:32px;text-align:center">
 GET YOUR TICKET
 </h1>
 
@@ -333,8 +546,6 @@ GET YOUR TICKET
 <div class="match">
 <span class="greenText">RCA</span> VS WAC
 </div>
-
-<!-- DERBY INFORMATION -->
 
 <div class="infoGrid">
 
@@ -355,7 +566,6 @@ GET YOUR TICKET
 
 </div>
 
-<!-- FORM -->
 
 <label>Roblox Username</label>
 
@@ -365,6 +575,7 @@ type="text"
 placeholder="Entrez votre username Roblox"
 >
 
+
 <label>Discord Username</label>
 
 <input
@@ -372,6 +583,7 @@ id="discord"
 type="text"
 placeholder="Entrez votre username Discord"
 >
+
 
 <label>Category</label>
 
@@ -401,6 +613,7 @@ $100
 
 </div>
 
+
 <label>Quantity</label>
 
 <input
@@ -412,34 +625,47 @@ placeholder="Entrez le nombre de tickets"
 oninput="updateTotal()"
 >
 
-<div id="total" class="total">$0</div>
+
+<div id="total" class="total">
+$0
+</div>
 
 <div id="error" class="error"></div>
 
+
 <button
 type="button"
-class="btn confirm"
+class="btn member"
 onclick="confirmTicket()"
 >
 🎟️ CONFIRM RESERVATION
 </button>
 
-<a href="#home" class="btn back">
+<a
+href="#home"
+class="btn manager"
+>
 ← BACK
 </a>
 
 </div>
+
 </section>
 
 
-<!-- ================= MANAGER ================= -->
+<!-- =====================================================
+     MANAGER
+===================================================== -->
 
 <section id="manager" class="page">
 
-<img class="smallLogo"
-src="image_-_2026-09-29T192341.513-removebg-preview.png">
+<img
+class="smallLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="RCA"
+>
 
-<h1 style="font-size:32px">
+<h1 style="font-family:'Cinzel',serif;font-size:32px">
 MANAGER
 </h1>
 
@@ -457,28 +683,37 @@ placeholder="Enter manager code"
 
 <button
 type="button"
-class="btn confirm"
+class="btn member"
 onclick="loginManager()"
 >
 🔐 LOGIN
 </button>
 
-<a href="#home" class="btn back">
+<a
+href="#home"
+class="btn manager"
+>
 ← BACK
 </a>
 
 </div>
+
 </section>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
 
 <section id="dashboard" class="page">
 
-<img class="smallLogo"
-src="image_-_2026-09-29T192341.513-removebg-preview.png">
+<img
+class="smallLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="RCA"
+>
 
-<h1 style="font-size:30px;text-align:center">
+<h1 style="font-family:'Cinzel',serif;font-size:30px;text-align:center">
 MANAGER DASHBOARD
 </h1>
 
@@ -510,21 +745,24 @@ MANAGER DASHBOARD
 
 <button
 type="button"
-class="btn confirm"
+class="btn member"
 onclick="refreshStats()"
 >
 🔄 REFRESH
 </button>
 
-<a href="#home" class="btn back">
+<a href="#home" class="btn manager">
 🚪 LOGOUT
 </a>
 
 </div>
+
 </section>
 
 
-<!-- ================= TICKET ================= -->
+<!-- =====================================================
+     TICKET
+===================================================== -->
 
 <section id="ticket" class="page">
 
@@ -592,17 +830,20 @@ DERBY CASABLANCA
 
 </div>
 
+
 <button
-class="btn confirm noPrint"
+type="button"
+class="btn member noPrint"
 onclick="window.print()"
 style="max-width:500px"
 >
 🖨️ PRINT TICKET
 </button>
 
+
 <a
 href="#booking"
-class="btn back noPrint"
+class="btn manager noPrint"
 style="max-width:500px"
 >
 🎟️ NEW TICKET
@@ -642,6 +883,7 @@ document.getElementById("vip")
 }
 
 updateTotal();
+
 }
 
 
@@ -652,6 +894,7 @@ parseInt(document.getElementById("quantity").value)||0;
 
 document.getElementById("total")
 .textContent="$"+(price*quantity);
+
 }
 
 
@@ -683,20 +926,18 @@ return;
 }
 
 if(!category){
-error.textContent="⚠️ Choisissez VIRAGE ou VIP";
+error.textContent="⚠️ Choisissez une catégorie";
 return;
 }
 
 if(quantity<1 || quantity>10){
-error.textContent="⚠️ Quantity doit être entre 1 et 10";
+error.textContent="⚠️ Quantity entre 1 et 10";
 return;
 }
 
 
 const total=price*quantity;
 
-
-/* TICKET */
 
 document.getElementById("ticketCategory")
 .textContent=category;
@@ -717,14 +958,10 @@ document.getElementById("ticketTotal")
 .textContent="$"+total;
 
 
-/* QR */
-
 document.getElementById("qr").src=
 "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
 +encodeURIComponent(stadiumURL);
 
-
-/* STATS */
 
 let stats=JSON.parse(
 localStorage.getItem("RCA_STATS") ||
@@ -747,10 +984,8 @@ localStorage.setItem(
 JSON.stringify(stats)
 );
 
-
-/* OPEN TICKET */
-
 window.location.hash="ticket";
+
 }
 
 
@@ -773,6 +1008,7 @@ error.textContent="";
 refreshStats();
 
 window.location.hash="dashboard";
+
 }
 
 
@@ -794,6 +1030,7 @@ document.getElementById("virageSold")
 
 document.getElementById("vipSold")
 .textContent=stats.vip;
+
 }
 
 </script>
