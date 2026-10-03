@@ -2,30 +2,17 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>RCA TADAKIR | DERBY CASABLANCA</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 
 body{
   min-height:100vh;
-  background:
-    radial-gradient(circle at top,#168044 0%,#062e1a 35%,#020604 100%);
   color:#fff;
+  background:radial-gradient(circle at top,#138342,#052b18 45%,#020604);
 }
-
-/* ================= PAGES ================= */
 
 .page{
   display:none;
@@ -39,44 +26,36 @@ body{
   align-items:center;
 }
 
-/* HOME DEFAULT */
 #home{
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 
-#home:target{
-  display:flex;
-}
-
-/* ================= DESIGN ================= */
-
 .logo{
   width:150px;
   height:150px;
   object-fit:contain;
-  margin:25px auto 10px;
+  margin:20px 0 10px;
   filter:drop-shadow(0 0 25px rgba(255,255,255,.2));
 }
 
-.logoSmall{
-  width:100px;
-  height:100px;
+.smallLogo{
+  width:90px;
+  height:90px;
   object-fit:contain;
-  margin:15px auto;
+  margin:10px;
 }
 
 .title{
   font-size:42px;
   font-weight:900;
   text-align:center;
-  letter-spacing:2px;
 }
 
 .subtitle{
   margin-top:8px;
-  color:#a9ffc5;
+  color:#aaffc5;
   font-weight:bold;
   letter-spacing:4px;
   text-align:center;
@@ -86,40 +65,37 @@ body{
   width:100%;
   max-width:520px;
   margin-top:25px;
-  padding:24px;
+  padding:25px;
   border-radius:25px;
   background:rgba(0,0,0,.58);
   border:1px solid rgba(255,255,255,.12);
   box-shadow:0 20px 60px rgba(0,0,0,.45);
-  backdrop-filter:blur(12px);
 }
 
 .match{
   text-align:center;
   font-size:32px;
   font-weight:900;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
-.match .green{
-  color:#20d968;
-}
+.greenText{color:#20d968}
 
 .btn{
   display:block;
   width:100%;
-  padding:17px 15px;
+  padding:17px;
   margin-top:13px;
+  border:0;
   border-radius:16px;
   text-align:center;
   text-decoration:none;
-  font-size:17px;
+  font-size:16px;
   font-weight:900;
   cursor:pointer;
-  border:0;
 }
 
-.member{
+.member,.confirm{
   background:#20d968;
   color:#031008;
 }
@@ -127,120 +103,99 @@ body{
 .manager{
   background:#111;
   color:white;
-  border:1px solid #3b3b3b;
+  border:1px solid #444;
 }
 
 .back{
-  background:#222;
-  color:#fff;
-}
-
-.greenBtn{
-  background:#20d968;
-  color:#031008;
-}
-
-/* ================= DERBY ================= */
-
-.derbyTitle{
-  font-size:34px;
-  font-weight:900;
-  text-align:center;
+  background:#242424;
+  color:white;
 }
 
 .infoGrid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-top:20px;
+  margin-bottom:20px;
 }
 
 .info{
   background:rgba(255,255,255,.07);
-  border-radius:15px;
-  padding:15px 8px;
+  padding:14px 7px;
+  border-radius:14px;
   text-align:center;
 }
 
 .info small{
   display:block;
   color:#999;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .info strong{
-  font-size:13px;
+  font-size:12px;
 }
-
-/* ================= FORM ================= */
 
 label{
   display:block;
-  margin-top:18px;
-  margin-bottom:7px;
-  color:#ddd;
+  margin:17px 0 7px;
   font-weight:bold;
 }
 
-input,
-select{
+input{
   width:100%;
   padding:16px;
-  border-radius:14px;
-  border:1px solid #353535;
+  border-radius:13px;
+  border:1px solid #333;
   background:#0c0c0c;
-  color:#fff;
-  outline:none;
+  color:white;
   font-size:15px;
+  outline:none;
 }
 
-input:focus,
-select:focus{
+input:focus{
   border-color:#20d968;
 }
 
-.categoryGrid{
+.categories{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
 .category{
-  border:2px solid #333;
   background:#111;
   color:white;
+  border:2px solid #333;
 }
 
 .category.active{
-  background:#073b20;
+  background:#073d20;
   border-color:#20d968;
 }
 
 .total{
   text-align:center;
-  font-size:35px;
-  font-weight:900;
   color:#20d968;
+  font-size:36px;
+  font-weight:900;
   margin:22px 0;
 }
 
 .error{
-  text-align:center;
   color:#ff6b6b;
+  text-align:center;
   font-weight:bold;
   margin-top:10px;
 }
 
-/* ================= TICKET ================= */
-
 .ticket{
   width:100%;
   max-width:500px;
-  margin:20px auto;
-  background:#fff;
+  background:white;
   color:#111;
-  border-radius:25px;
+  border-radius:24px;
   padding:25px;
+  margin-top:20px;
 }
 
 .ticketLogo{
@@ -258,42 +213,34 @@ select:focus{
   margin-top:10px;
 }
 
-.ticketSubtitle{
+.ticketSub{
   text-align:center;
   color:#777;
   margin:5px 0 20px;
 }
 
-.ticketRow{
+.row{
   display:flex;
   justify-content:space-between;
-  gap:15px;
+  gap:10px;
   padding:11px 0;
   border-bottom:1px solid #ddd;
 }
 
-.ticketRow span:first-child{
-  color:#777;
-}
-
-.ticketRow span:last-child{
-  font-weight:bold;
-  text-align:right;
-}
-
-.ticketTotal{
-  color:#08752f !important;
-  font-size:24px;
-}
+.row span:first-child{color:#777}
+.row span:last-child{font-weight:bold;text-align:right}
 
 .qr{
   display:block;
   width:220px;
   height:220px;
-  margin:20px auto 10px;
+  margin:20px auto;
 }
 
-/* ================= DASHBOARD ================= */
+.ticketTotal{
+  color:#08752f!important;
+  font-size:23px;
+}
 
 .stats{
   display:grid;
@@ -302,745 +249,554 @@ select:focus{
 }
 
 .stat{
-  padding:20px 10px;
-  background:#101010;
-  border:1px solid #292929;
+  background:#111;
   border-radius:18px;
+  padding:20px 10px;
   text-align:center;
 }
 
 .stat small{
   display:block;
   color:#999;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .stat strong{
   color:#20d968;
-  font-size:30px;
+  font-size:28px;
 }
 
-/* ================= PRINT ================= */
+@media(max-width:520px){
+  .title{font-size:34px}
+  .infoGrid{grid-template-columns:1fr}
+  .categories{grid-template-columns:1fr}
+}
 
 @media print{
-
-  body{
-    background:white;
-  }
-
-  body *{
-    visibility:hidden;
-  }
-
+  body *{visibility:hidden}
+  #ticket,#ticket *{visibility:visible}
   #ticket{
     display:block!important;
     position:absolute;
-    left:0;
     top:0;
+    left:0;
     width:100%;
   }
-
-  #ticket .ticket,
-  #ticket .ticket *{
-    visibility:visible;
-  }
-
-  #ticket .printBtn,
-  #ticket .newBtn{
-    display:none!important;
-  }
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:520px){
-
-  .title{
-    font-size:34px;
-  }
-
-  .derbyTitle{
-    font-size:29px;
-  }
-
-  .infoGrid{
-    grid-template-columns:1fr;
-  }
-
-  .categoryGrid{
-    grid-template-columns:1fr;
-  }
-
+  .noPrint{display:none!important}
 }
 </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- ================= HOME ================= -->
 
 <section id="home" class="page">
 
-  <img
-    class="logo"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA"
-  >
+<img class="logo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-  <h1 class="title">RCA TADAKIR</h1>
+<h1 class="title">RCA TADAKIR</h1>
+<p class="subtitle">DERBY CASABLANCA</p>
 
-  <div class="subtitle">
-    DERBY CASABLANCA
-  </div>
+<div class="card">
 
-  <div class="card">
+<div class="match">
+<span class="greenText">RCA</span> VS WAC
+</div>
 
-    <div class="match">
-      <span class="green">RCA</span> VS WAC
-    </div>
+<a href="#booking" class="btn member">
+🟢 MEMBER
+</a>
 
-    <a
-      href="#booking"
-      class="btn member"
-    >
-      🟢 MEMBER
-    </a>
+<a href="#manager" class="btn manager">
+⚫ MANAGER
+</a>
 
-    <a
-      href="#manager"
-      class="btn manager"
-    >
-      ⚫ MANAGER
-    </a>
-
-  </div>
-
+</div>
 </section>
 
 
-<!-- =====================================================
-     BOOKING
-===================================================== -->
+<!-- ================= BOOKING FORM ================= -->
 
 <section id="booking" class="page">
 
-  <img
-    class="logoSmall"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA"
-  >
+<img class="smallLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-  <h1 class="derbyTitle">
-    RCA VS WAC
-  </h1>
+<h1 style="font-size:32px;text-align:center">
+GET YOUR TICKET
+</h1>
 
-  <div class="card">
+<div class="card">
 
-    <div class="infoGrid">
+<div class="match">
+<span class="greenText">RCA</span> VS WAC
+</div>
 
-      <div class="info">
-        <small>DATE</small>
-        <strong>04/10/2026</strong>
-      </div>
+<!-- DERBY INFORMATION -->
 
-      <div class="info">
-        <small>TIME</small>
-        <strong>21:30</strong>
-      </div>
+<div class="infoGrid">
 
-      <div class="info">
-        <small>STADIUM</small>
-        <strong>Sir.alien Stadium</strong>
-      </div>
+<div class="info">
+<small>DATE</small>
+<strong>04/10/2026</strong>
+</div>
 
-    </div>
+<div class="info">
+<small>TIME</small>
+<strong>21:30</strong>
+</div>
 
-    <label>
-      Roblox Username
-    </label>
+<div class="info">
+<small>STADIUM</small>
+<strong>Sir.alien Stadium</strong>
+</div>
 
-    <input
-      id="roblox"
-      type="text"
-      placeholder="Votre username Roblox"
-    >
+</div>
 
-    <label>
-      Discord Username
-    </label>
+<!-- FORM -->
 
-    <input
-      id="discord"
-      type="text"
-      placeholder="Votre username Discord"
-    >
+<label>Roblox Username</label>
 
-    <label>
-      Category
-    </label>
+<input
+id="roblox"
+type="text"
+placeholder="Entrez votre username Roblox"
+>
 
-    <div class="categoryGrid">
+<label>Discord Username</label>
 
-      <button
-        type="button"
-        class="btn category"
-        id="virage"
-        onclick="chooseCategory('VIRAGE',5)"
-      >
-        VIRAGE
-        <br>
-        $5
-      </button>
+<input
+id="discord"
+type="text"
+placeholder="Entrez votre username Discord"
+>
 
-      <button
-        type="button"
-        class="btn category"
-        id="vip"
-        onclick="chooseCategory('VIP',100)"
-      >
-        VIP
-        <br>
-        $100
-      </button>
+<label>Category</label>
 
-    </div>
+<div class="categories">
 
-    <label>
-      Quantity
-    </label>
+<button
+type="button"
+id="virage"
+class="btn category"
+onclick="selectCategory('VIRAGE',5)"
+>
+VIRAGE
+<br>
+$5
+</button>
 
-    <input
-      id="quantity"
-      type="number"
-      min="1"
-      max="10"
-      placeholder="Entrez le nombre de tickets"
-      oninput="calculateTotal()"
-    >
+<button
+type="button"
+id="vip"
+class="btn category"
+onclick="selectCategory('VIP',100)"
+>
+VIP
+<br>
+$100
+</button>
 
-    <div
-      id="total"
-      class="total"
-    >
-      $0
-    </div>
+</div>
 
-    <div
-      id="error"
-      class="error"
-    ></div>
+<label>Quantity</label>
 
-    <button
-      type="button"
-      class="btn greenBtn"
-      onclick="buyTicket()"
-    >
-      🎟️ CONFIRM RESERVATION
-    </button>
+<input
+id="quantity"
+type="number"
+min="1"
+max="10"
+placeholder="Entrez le nombre de tickets"
+oninput="updateTotal()"
+>
 
-    <a
-      href="#home"
-      class="btn back"
-    >
-      ← BACK
-    </a>
+<div id="total" class="total">$0</div>
 
-  </div>
+<div id="error" class="error"></div>
 
+<button
+type="button"
+class="btn confirm"
+onclick="confirmTicket()"
+>
+🎟️ CONFIRM RESERVATION
+</button>
+
+<a href="#home" class="btn back">
+← BACK
+</a>
+
+</div>
 </section>
 
 
-<!-- =====================================================
-     MANAGER
-===================================================== -->
+<!-- ================= MANAGER ================= -->
 
 <section id="manager" class="page">
 
-  <img
-    class="logoSmall"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA"
-  >
+<img class="smallLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-  <h1 class="derbyTitle">
-    MANAGER
-  </h1>
+<h1 style="font-size:32px">
+MANAGER
+</h1>
 
-  <div class="card">
+<div class="card">
 
-    <label>
-      Manager Code
-    </label>
+<label>Manager Code</label>
 
-    <input
-      id="managerCode"
-      type="password"
-      placeholder="Enter manager code"
-    >
+<input
+id="managerCode"
+type="password"
+placeholder="Enter manager code"
+>
 
-    <div
-      id="managerError"
-      class="error"
-    ></div>
+<div id="managerError" class="error"></div>
 
-    <button
-      type="button"
-      class="btn greenBtn"
-      onclick="managerLogin()"
-    >
-      🔐 LOGIN
-    </button>
+<button
+type="button"
+class="btn confirm"
+onclick="loginManager()"
+>
+🔐 LOGIN
+</button>
 
-    <a
-      href="#home"
-      class="btn back"
-    >
-      ← BACK
-    </a>
+<a href="#home" class="btn back">
+← BACK
+</a>
 
-  </div>
-
+</div>
 </section>
 
 
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
+<!-- ================= DASHBOARD ================= -->
 
 <section id="dashboard" class="page">
 
-  <img
-    class="logoSmall"
-    src="image_-_2026-09-29T192341.513-removebg-preview.png"
-    alt="RCA"
-  >
+<img class="smallLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png">
 
-  <h1 class="derbyTitle">
-    MANAGER DASHBOARD
-  </h1>
+<h1 style="font-size:30px;text-align:center">
+MANAGER DASHBOARD
+</h1>
 
-  <div class="card">
+<div class="card">
 
-    <div class="stats">
+<div class="stats">
 
-      <div class="stat">
-        <small>TICKETS SOLD</small>
-        <strong id="ticketsSold">0</strong>
-      </div>
+<div class="stat">
+<small>TICKETS SOLD</small>
+<strong id="ticketsSold">0</strong>
+</div>
 
-      <div class="stat">
-        <small>REVENUE</small>
-        <strong id="revenue">$0</strong>
-      </div>
+<div class="stat">
+<small>REVENUE</small>
+<strong id="revenue">$0</strong>
+</div>
 
-      <div class="stat">
-        <small>VIRAGE SOLD</small>
-        <strong id="virageSold">0</strong>
-      </div>
+<div class="stat">
+<small>VIRAGE SOLD</small>
+<strong id="virageSold">0</strong>
+</div>
 
-      <div class="stat">
-        <small>VIP SOLD</small>
-        <strong id="vipSold">0</strong>
-      </div>
+<div class="stat">
+<small>VIP SOLD</small>
+<strong id="vipSold">0</strong>
+</div>
 
-    </div>
+</div>
 
-    <button
-      type="button"
-      class="btn greenBtn"
-      onclick="refreshStats()"
-    >
-      🔄 REFRESH
-    </button>
+<button
+type="button"
+class="btn confirm"
+onclick="refreshStats()"
+>
+🔄 REFRESH
+</button>
 
-    <a
-      href="#home"
-      class="btn back"
-    >
-      🚪 LOGOUT
-    </a>
+<a href="#home" class="btn back">
+🚪 LOGOUT
+</a>
 
-  </div>
-
+</div>
 </section>
 
 
-<!-- =====================================================
-     TICKET
-===================================================== -->
+<!-- ================= TICKET ================= -->
 
 <section id="ticket" class="page">
 
-  <div class="ticket">
+<div class="ticket">
 
-    <img
-      class="ticketLogo"
-      src="image_-_2026-09-29T192341.513-removebg-preview.png"
-      alt="RCA"
-    >
+<img
+class="ticketLogo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+>
 
-    <div class="ticketTitle">
-      RCA VS WAC
-    </div>
+<div class="ticketTitle">
+RCA VS WAC
+</div>
 
-    <div class="ticketSubtitle">
-      DERBY CASABLANCA
-    </div>
+<div class="ticketSub">
+DERBY CASABLANCA
+</div>
 
-    <div class="ticketRow">
-      <span>Date</span>
-      <span>04/10/2026</span>
-    </div>
+<div class="row">
+<span>Date</span>
+<span>04/10/2026</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Time</span>
-      <span>21:30</span>
-    </div>
+<div class="row">
+<span>Time</span>
+<span>21:30</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Stadium</span>
-      <span>Sir.alien Stadium</span>
-    </div>
+<div class="row">
+<span>Stadium</span>
+<span>Sir.alien Stadium</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Category</span>
-      <span id="tCategory">-</span>
-    </div>
+<div class="row">
+<span>Category</span>
+<span id="ticketCategory">-</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Tickets</span>
-      <span id="tQuantity">-</span>
-    </div>
+<div class="row">
+<span>Number</span>
+<span id="ticketQuantity">-</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Unit Price</span>
-      <span id="tPrice">-</span>
-    </div>
+<div class="row">
+<span>Unit Price</span>
+<span id="ticketPrice">-</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Roblox</span>
-      <span id="tRoblox">-</span>
-    </div>
+<div class="row">
+<span>Roblox</span>
+<span id="ticketRoblox">-</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Discord</span>
-      <span id="tDiscord">-</span>
-    </div>
+<div class="row">
+<span>Discord</span>
+<span id="ticketDiscord">-</span>
+</div>
 
-    <div class="ticketRow">
-      <span>Total</span>
-      <span
-        id="tTotal"
-        class="ticketTotal"
-      >
-        $0
-      </span>
-    </div>
+<div class="row">
+<span>Total</span>
+<span id="ticketTotal" class="ticketTotal">$0</span>
+</div>
 
-    <img
-      id="qr"
-      class="qr"
-      alt="QR CODE"
-    >
+<img id="qr" class="qr">
 
-    <div
-      style="
-        text-align:center;
-        font-size:12px;
-        color:#777;
-      "
-    >
-      AVL - Sir Alien Stadium
-    </div>
+</div>
 
-  </div>
+<button
+class="btn confirm noPrint"
+onclick="window.print()"
+style="max-width:500px"
+>
+🖨️ PRINT TICKET
+</button>
 
-  <button
-    type="button"
-    class="btn greenBtn printBtn"
-    onclick="window.print()"
-    style="max-width:500px"
-  >
-    🖨️ PRINT TICKET
-  </button>
-
-  <a
-    href="#booking"
-    class="btn back newBtn"
-    style="max-width:500px"
-  >
-    🎟️ NEW RESERVATION
-  </a>
+<a
+href="#booking"
+class="btn back noPrint"
+style="max-width:500px"
+>
+🎟️ NEW TICKET
+</a>
 
 </section>
 
 
 <script>
 
-/* =====================================================
-   VARIABLES
-===================================================== */
+let category="";
+let price=0;
 
-let selectedCategory = "";
-let selectedPrice = 0;
-
-const stadiumURL =
+const stadiumURL=
 "https://www.roblox.com/games/71836037262520/AVL-Sir-Alien-Stadium";
 
 
-/* =====================================================
-   CATEGORY
-===================================================== */
+function selectCategory(name,cost){
 
-function chooseCategory(category,price){
+category=name;
+price=cost;
 
-  selectedCategory = category;
-  selectedPrice = price;
+document.getElementById("virage")
+.classList.remove("active");
 
-  document
-    .getElementById("virage")
-    .classList.remove("active");
+document.getElementById("vip")
+.classList.remove("active");
 
-  document
-    .getElementById("vip")
-    .classList.remove("active");
+if(name==="VIRAGE"){
+document.getElementById("virage")
+.classList.add("active");
+}
 
-  if(category === "VIRAGE"){
+if(name==="VIP"){
+document.getElementById("vip")
+.classList.add("active");
+}
 
-    document
-      .getElementById("virage")
-      .classList.add("active");
-
-  }
-
-  if(category === "VIP"){
-
-    document
-      .getElementById("vip")
-      .classList.add("active");
-
-  }
-
-  calculateTotal();
+updateTotal();
 }
 
 
-/* =====================================================
-   TOTAL
-===================================================== */
+function updateTotal(){
 
-function calculateTotal(){
+const quantity=
+parseInt(document.getElementById("quantity").value)||0;
 
-  const quantity =
-    parseInt(
-      document.getElementById("quantity").value
-    ) || 0;
-
-  const total =
-    selectedPrice * quantity;
-
-  document
-    .getElementById("total")
-    .textContent = "$" + total;
+document.getElementById("total")
+.textContent="$"+(price*quantity);
 }
 
 
-/* =====================================================
-   BUY TICKET
-===================================================== */
+function confirmTicket(){
 
-function buyTicket(){
+const roblox=
+document.getElementById("roblox").value.trim();
 
-  const roblox =
-    document.getElementById("roblox").value.trim();
+const discord=
+document.getElementById("discord").value.trim();
 
-  const discord =
-    document.getElementById("discord").value.trim();
+const quantity=
+parseInt(document.getElementById("quantity").value)||0;
 
-  const quantity =
-    parseInt(
-      document.getElementById("quantity").value
-    ) || 0;
+const error=
+document.getElementById("error");
 
-  const error =
-    document.getElementById("error");
-
-  error.textContent = "";
+error.textContent="";
 
 
-  if(!roblox){
+if(!roblox){
+error.textContent="⚠️ Entrez votre username Roblox";
+return;
+}
 
-    error.textContent =
-      "⚠️ Entrez votre username Roblox";
+if(!discord){
+error.textContent="⚠️ Entrez votre username Discord";
+return;
+}
 
-    return;
-  }
+if(!category){
+error.textContent="⚠️ Choisissez VIRAGE ou VIP";
+return;
+}
 
-
-  if(!discord){
-
-    error.textContent =
-      "⚠️ Entrez votre username Discord";
-
-    return;
-  }
-
-
-  if(!selectedCategory){
-
-    error.textContent =
-      "⚠️ Choisissez une catégorie";
-
-    return;
-  }
-
-
-  if(quantity < 1 || quantity > 10){
-
-    error.textContent =
-      "⚠️ Choisissez une quantité entre 1 et 10";
-
-    return;
-  }
-
-
-  const total =
-    selectedPrice * quantity;
-
-
-  /* =================
-     LOCAL STATISTICS
-  ================= */
-
-  let stats =
-    JSON.parse(
-      localStorage.getItem("RCA_STATS") ||
-      '{"tickets":0,"revenue":0,"virage":0,"vip":0}'
-    );
-
-
-  stats.tickets += quantity;
-  stats.revenue += total;
-
-
-  if(selectedCategory === "VIRAGE"){
-    stats.virage += quantity;
-  }
-
-  if(selectedCategory === "VIP"){
-    stats.vip += quantity;
-  }
-
-
-  localStorage.setItem(
-    "RCA_STATS",
-    JSON.stringify(stats)
-  );
-
-
-  /* =================
-     TICKET
-  ================= */
-
-  document.getElementById("tCategory")
-    .textContent = selectedCategory;
-
-  document.getElementById("tQuantity")
-    .textContent = quantity;
-
-  document.getElementById("tPrice")
-    .textContent = "$" + selectedPrice;
-
-  document.getElementById("tRoblox")
-    .textContent = roblox;
-
-  document.getElementById("tDiscord")
-    .textContent = discord;
-
-  document.getElementById("tTotal")
-    .textContent = "$" + total;
-
-
-  /* =================
-     QR CODE
-  ================= */
-
-  document.getElementById("qr").src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
-    + encodeURIComponent(stadiumURL);
-
-
-  /* =================
-     OPEN TICKET
-  ================= */
-
-  window.location.hash = "ticket";
+if(quantity<1 || quantity>10){
+error.textContent="⚠️ Quantity doit être entre 1 et 10";
+return;
 }
 
 
-/* =====================================================
-   MANAGER LOGIN
-===================================================== */
-
-function managerLogin(){
-
-  const code =
-    document
-      .getElementById("managerCode")
-      .value
-      .trim();
-
-  const error =
-    document.getElementById("managerError");
+const total=price*quantity;
 
 
-  if(code !== "RCA2026"){
+/* TICKET */
 
-    error.textContent =
-      "❌ Code incorrect";
+document.getElementById("ticketCategory")
+.textContent=category;
 
-    return;
-  }
+document.getElementById("ticketQuantity")
+.textContent=quantity;
+
+document.getElementById("ticketPrice")
+.textContent="$"+price;
+
+document.getElementById("ticketRoblox")
+.textContent=roblox;
+
+document.getElementById("ticketDiscord")
+.textContent=discord;
+
+document.getElementById("ticketTotal")
+.textContent="$"+total;
 
 
-  error.textContent = "";
+/* QR */
 
-  refreshStats();
+document.getElementById("qr").src=
+"https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
++encodeURIComponent(stadiumURL);
 
-  window.location.hash = "dashboard";
+
+/* STATS */
+
+let stats=JSON.parse(
+localStorage.getItem("RCA_STATS") ||
+'{"tickets":0,"revenue":0,"virage":0,"vip":0}'
+);
+
+stats.tickets+=quantity;
+stats.revenue+=total;
+
+if(category==="VIRAGE"){
+stats.virage+=quantity;
+}
+
+if(category==="VIP"){
+stats.vip+=quantity;
+}
+
+localStorage.setItem(
+"RCA_STATS",
+JSON.stringify(stats)
+);
+
+
+/* OPEN TICKET */
+
+window.location.hash="ticket";
 }
 
 
-/* =====================================================
-   REFRESH STATS
-===================================================== */
+function loginManager(){
+
+const code=
+document.getElementById("managerCode")
+.value.trim();
+
+const error=
+document.getElementById("managerError");
+
+if(code!=="RCA2026"){
+error.textContent="❌ Code incorrect";
+return;
+}
+
+error.textContent="";
+
+refreshStats();
+
+window.location.hash="dashboard";
+}
+
 
 function refreshStats(){
 
-  const stats =
-    JSON.parse(
-      localStorage.getItem("RCA_STATS") ||
-      '{"tickets":0,"revenue":0,"virage":0,"vip":0}'
-    );
+let stats=JSON.parse(
+localStorage.getItem("RCA_STATS") ||
+'{"tickets":0,"revenue":0,"virage":0,"vip":0}'
+);
 
+document.getElementById("ticketsSold")
+.textContent=stats.tickets;
 
-  document.getElementById("ticketsSold")
-    .textContent = stats.tickets;
+document.getElementById("revenue")
+.textContent="$"+stats.revenue;
 
-  document.getElementById("revenue")
-    .textContent = "$" + stats.revenue;
+document.getElementById("virageSold")
+.textContent=stats.virage;
 
-  document.getElementById("virageSold")
-    .textContent = stats.virage;
-
-  document.getElementById("vipSold")
-    .textContent = stats.vip;
+document.getElementById("vipSold")
+.textContent=stats.vip;
 }
 
 </script>
 
 </body>
-    </html>
+  </html>
