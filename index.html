@@ -7,880 +7,269 @@
 <title>RCA TADAKIR | Derby Casablanca</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    min-height:100%;
 }
 
 body{
-    min-height:100vh;
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color:#fff;
-
-    background:
-        radial-gradient(
-            circle at 50% -15%,
-            #16c968 0%,
-            #07512d 22%,
-            #031b10 48%,
-            #010705 85%
-        );
-
+    font-family:Arial,Helvetica,sans-serif;
+    background:#03150c;
+    color:white;
     overflow-x:hidden;
 }
 
-
-/* =========================================================
-   BACKGROUND EFFECTS
-========================================================= */
-
-body::before{
+/* BACKGROUND */
+body:before{
     content:"";
     position:fixed;
     inset:0;
-    z-index:-5;
-
+    z-index:-1;
     background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(0,255,130,.12),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 90% 75%,
-            rgba(0,255,130,.08),
-            transparent 28%
-        );
+        radial-gradient(circle at top,#149447 0%,#073c24 28%,#03150c 65%,#010806 100%);
 }
 
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-4;
-    pointer-events:none;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.015) 1px,
-            transparent 1px
-        );
-
-    background-size:45px 45px;
-
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-    );
-}
-
-
-/* =========================================================
-   PARTICLES
-========================================================= */
-
-.particles{
-    position:fixed;
-    inset:0;
-    z-index:-3;
-    pointer-events:none;
-    overflow:hidden;
-}
-
-.particle{
-    position:absolute;
-
-    width:4px;
-    height:4px;
-
-    border-radius:50%;
-
-    background:#39f58b;
-
-    box-shadow:
-        0 0 12px #39f58b,
-        0 0 25px rgba(57,245,139,.5);
-
-    animation:
-        floatParticle
-        linear
-        infinite;
-}
-
-@keyframes floatParticle{
-
-    0%{
-        transform:
-            translateY(110vh)
-            translateX(0)
-            scale(.3);
-
-        opacity:0;
-    }
-
-    10%{
-        opacity:.8;
-    }
-
-    90%{
-        opacity:.8;
-    }
-
-    100%{
-        transform:
-            translateY(-10vh)
-            translateX(80px)
-            scale(1);
-
-        opacity:0;
-    }
-}
-
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container{
+/* APP */
+.app{
     width:100%;
-    max-width:1050px;
-
+    max-width:900px;
     margin:auto;
-
-    padding:20px;
+    padding:15px;
 }
 
-
-/* =========================================================
-   PAGES
-========================================================= */
-
+/* PAGES */
 .page{
     display:none;
-
-    min-height:
-        calc(100vh - 40px);
-
+    min-height:calc(100vh - 30px);
     align-items:center;
     justify-content:center;
 }
 
 .page.active{
     display:flex;
-
-    animation:
-        pageEnter
-        .65s
-        cubic-bezier(.2,.8,.2,1);
+    animation:show .4s ease;
 }
 
-@keyframes pageEnter{
-
+@keyframes show{
     from{
         opacity:0;
-        transform:
-            translateY(35px)
-            scale(.97);
+        transform:translateY(15px);
     }
-
     to{
         opacity:1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
-
-.card{
-    position:relative;
-
-    width:100%;
-    max-width:900px;
-
-    padding:42px;
-
-    border-radius:32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,35,22,.94),
-            rgba(1,12,7,.95)
-        );
-
-    border:
-        1px solid
-        rgba(95,255,160,.15);
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.65),
-        inset 0 1px 0 rgba(255,255,255,.04);
-
-    backdrop-filter:blur(25px);
-
-    overflow:hidden;
-}
-
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    width:250px;
-    height:250px;
-
-    top:-140px;
-    right:-100px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(29,240,113,.18),
-            transparent 70%
-        );
-
-    pointer-events:none;
-}
-
-.card::after{
-    content:"";
-
-    position:absolute;
-
-    width:200px;
-    height:200px;
-
-    bottom:-120px;
-    left:-80px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,255,130,.1),
-            transparent 70%
-        );
-
-    pointer-events:none;
-}
-
-
-/* =========================================================
-   LOGO
-========================================================= */
-
-.logo{
-    width:150px;
-    height:150px;
-
-    object-fit:contain;
-
-    display:block;
-
-    margin:
-        0 auto 22px;
-
-    filter:
-        drop-shadow(
-            0 0 20px
-            rgba(27,234,112,.3)
-        );
-
-    animation:
-        logoFloat
-        4s
-        ease-in-out
-        infinite;
-}
-
-@keyframes logoFloat{
-
-    0%,
-    100%{
         transform:translateY(0);
     }
-
-    50%{
-        transform:translateY(-9px);
-    }
 }
 
+/* CARD */
+.card{
+    width:100%;
+    background:rgba(2,18,10,.96);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 20px 70px rgba(0,0,0,.55);
+}
 
-/* =========================================================
-   TITLES
-========================================================= */
+/* LOGO */
+.logo{
+    display:block;
+    width:130px;
+    height:130px;
+    object-fit:contain;
+    margin:0 auto 20px;
+    filter:drop-shadow(0 0 20px rgba(30,240,110,.3));
+}
 
+/* TITLES */
 h1{
     text-align:center;
-
-    font-size:
-        clamp(34px,6vw,58px);
-
-    line-height:1;
-
-    font-weight:1000;
-
-    letter-spacing:-2px;
-
-    margin-bottom:18px;
+    font-size:42px;
+    margin-bottom:15px;
 }
 
 h2{
     text-align:center;
-
-    font-size:
-        clamp(25px,4vw,36px);
-
-    font-weight:950;
-
+    font-size:30px;
     margin-bottom:15px;
 }
 
 .green{
     color:#21ed78;
-
-    text-shadow:
-        0 0 25px
-        rgba(33,237,120,.25);
 }
 
 .subtitle{
-    max-width:680px;
-
-    margin:
-        0 auto 30px;
-
     text-align:center;
-
-    color:#aebeb5;
-
-    line-height:1.85;
-
-    font-size:15px;
+    color:#aebdb5;
+    line-height:1.8;
+    margin-bottom:25px;
 }
 
-
-/* =========================================================
-   PREMIUM BUTTONS
-========================================================= */
-
+/* BUTTONS */
 .btn{
-    position:relative;
-
     width:100%;
-
+    padding:16px;
+    margin-top:10px;
     border:0;
-
-    padding:17px 22px;
-
-    border-radius:16px;
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #20ed78,
-            #079343
-        );
-
+    border-radius:14px;
+    background:linear-gradient(135deg,#20ed78,#087d3e);
+    color:white;
     font-size:16px;
-
-    font-weight:950;
-
-    letter-spacing:.3px;
-
+    font-weight:bold;
     cursor:pointer;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 12px 35px
-        rgba(0,230,105,.18);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        filter .25s ease;
-}
-
-.btn::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-120%;
-
-    width:80%;
-    height:100%;
-
-    background:
-        linear-gradient(
-            100deg,
-            transparent,
-            rgba(255,255,255,.3),
-            transparent
-        );
-
-    transform:skewX(-20deg);
-
-    transition:
-        left .65s ease;
-}
-
-.btn:hover::before{
-    left:140%;
+    transition:.2s;
 }
 
 .btn:hover{
-    transform:
-        translateY(-4px)
-        scale(1.01);
-
-    box-shadow:
-        0 18px 45px
-        rgba(0,240,110,.28);
-
-    filter:brightness(1.08);
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(30,240,110,.2);
 }
 
 .btn:active{
-    transform:
-        translateY(0)
-        scale(.98);
+    transform:scale(.98);
 }
 
 .btn.secondary{
-    margin-top:12px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    box-shadow:none;
-
-    color:#c5d1ca;
+    background:#15251d;
+    color:#b9c8c0;
 }
 
-.btn.secondary:hover{
-    background:
-        rgba(255,255,255,.08);
-
-    border-color:
-        rgba(33,237,120,.25);
+/* NOTICE */
+.notice{
+    padding:17px;
+    margin:20px 0;
+    text-align:center;
+    line-height:1.7;
+    border-radius:15px;
+    background:rgba(33,237,120,.06);
+    border:1px solid rgba(33,237,120,.15);
+    color:#c4d2ca;
 }
 
-
-/* =========================================================
-   CURVA
-========================================================= */
-
+/* IMAGE */
 .curva{
     width:100%;
-
-    height:370px;
-
+    height:320px;
     object-fit:cover;
-
-    border-radius:22px;
-
-    margin-bottom:25px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0,0,0,.4);
-
-    transition:
-        transform .5s ease,
-        filter .5s ease;
+    border-radius:18px;
+    margin:10px 0 20px;
+    border:1px solid rgba(255,255,255,.1);
 }
 
-.curva:hover{
-    transform:scale(1.015);
-
-    filter:
-        brightness(1.08)
-        saturate(1.1);
-}
-
-
-/* =========================================================
-   NOTICE
-========================================================= */
-
-.notice{
-    position:relative;
-
-    padding:18px;
-
-    margin:20px 0;
-
-    border-radius:17px;
-
+/* TEAMS */
+.derby-title{
     text-align:center;
-
-    line-height:1.7;
-
-    color:#c7d5ce;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(25,230,105,.08),
-            rgba(255,255,255,.025)
-        );
-
-    border:
-        1px solid
-        rgba(25,230,105,.16);
-
-    box-shadow:
-        inset 0 0 25px
-        rgba(25,230,105,.025);
-}
-
-
-/* =========================================================
-   DERBY
-========================================================= */
-
-.derby-label{
-    text-align:center;
-
-    letter-spacing:5px;
-
-    color:#8e9d95;
-
+    color:#8fa198;
     font-size:12px;
-
-    font-weight:950;
-
-    margin-bottom:28px;
+    letter-spacing:4px;
+    margin-bottom:25px;
 }
 
 .teams{
     display:flex;
-
-    align-items:center;
-
     justify-content:center;
-
-    gap:40px;
-
-    margin-bottom:30px;
+    align-items:center;
+    gap:25px;
+    margin-bottom:25px;
 }
 
 .team{
-    width:190px;
-
+    width:180px;
     text-align:center;
-
-    padding:20px 10px;
-
-    border-radius:22px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid
-        rgba(255,255,255,.06);
-
-    transition:
-        transform .3s ease,
-        border-color .3s ease,
-        background .3s ease;
-}
-
-.team:hover{
-    transform:
-        translateY(-6px);
-
-    background:
-        rgba(27,234,112,.05);
-
-    border-color:
-        rgba(27,234,112,.2);
 }
 
 .team img{
-    width:105px;
-    height:105px;
-
+    width:100px;
+    height:100px;
     object-fit:contain;
-
-    margin-bottom:10px;
-
-    filter:
-        drop-shadow(
-            0 0 15px
-            rgba(27,234,112,.2)
-        );
 }
 
 .team-name{
-    font-size:24px;
-
-    font-weight:1000;
-
-    letter-spacing:2px;
+    font-size:25px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
 .team-sub{
-    color:#7f8e86;
-
+    color:#819087;
     font-size:11px;
-
-    margin-top:5px;
+    margin-top:4px;
 }
 
 .vs{
-    width:65px;
-    height:65px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:50%;
-
     color:#21ed78;
-
-    font-size:22px;
-
-    font-weight:1000;
-
-    background:
-        rgba(27,234,112,.06);
-
-    border:
-        1px solid
-        rgba(27,234,112,.25);
-
-    box-shadow:
-        0 0 30px
-        rgba(27,234,112,.1);
-
-    animation:
-        vsPulse
-        2.2s
-        ease-in-out
-        infinite;
+    font-size:27px;
+    font-weight:bold;
 }
 
-@keyframes vsPulse{
-
-    0%,
-    100%{
-        box-shadow:
-            0 0 20px
-            rgba(27,234,112,.08);
-    }
-
-    50%{
-        box-shadow:
-            0 0 40px
-            rgba(27,234,112,.25);
-    }
-}
-
-
-/* =========================================================
-   INFO GRID
-========================================================= */
-
+/* INFO */
 .info-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:15px;
-
-    margin:28px 0;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:25px 0;
 }
 
 .info{
-    padding:22px 12px;
-
+    padding:18px 10px;
     text-align:center;
-
-    border-radius:19px;
-
-    background:
-        rgba(255,255,255,.04);
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
-}
-
-.info:hover{
-    transform:translateY(-5px);
-
-    background:
-        rgba(27,234,112,.055);
-
-    border-color:
-        rgba(27,234,112,.18);
+    background:rgba(255,255,255,.05);
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.07);
 }
 
 .info-icon{
-    font-size:27px;
-
-    margin-bottom:9px;
+    font-size:25px;
+    margin-bottom:7px;
 }
 
 .info small{
     display:block;
-
-    color:#7e8d85;
-
-    margin-bottom:7px;
-
+    color:#829087;
     font-size:10px;
-
-    letter-spacing:1px;
+    margin-bottom:6px;
 }
 
 .info strong{
-    font-size:14px;
+    font-size:13px;
 }
 
-
-/* =========================================================
-   FORM
-========================================================= */
-
-.form{
-    margin-top:25px;
-}
-
-.field-label{
+/* FORM */
+label.field{
     display:block;
-
-    margin:
-        18px 0 9px;
-
-    color:#c9d5ce;
-
+    color:#c5d1ca;
     font-size:12px;
-
-    font-weight:900;
-
-    letter-spacing:1px;
+    font-weight:bold;
+    margin:18px 0 8px;
 }
 
-input[type="text"],
-input[type="number"]{
-
+input[type=text],
+input[type=number]{
     width:100%;
-
-    padding:16px;
-
-    border-radius:15px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
+    padding:15px;
+    background:#0b1d13;
+    color:white;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
     outline:none;
-
-    background:
-        rgba(255,255,255,.045);
-
-    color:#fff;
-
     font-size:15px;
-
-    transition:
-        border-color .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-}
-
-input::placeholder{
-    color:#68766e;
 }
 
 input:focus{
-    border-color:#20ed78;
-
-    background:
-        rgba(27,234,112,.045);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(27,234,112,.07),
-        0 0 25px
-        rgba(27,234,112,.08);
+    border-color:#21ed78;
+    box-shadow:0 0 0 3px rgba(33,237,120,.08);
 }
 
-input[type="number"]{
-    appearance:textfield;
-}
-
-
-/* =========================================================
-   SEATS
-========================================================= */
-
+/* SEATS */
 .seats{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:15px;
-
-    margin-top:10px;
-}
-
-.seat{
-    cursor:pointer;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
 .seat input{
@@ -888,568 +277,246 @@ input[type="number"]{
 }
 
 .seat-box{
-    position:relative;
-
-    padding:25px;
-
+    padding:22px;
     text-align:center;
-
-    border-radius:20px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    transition:
-        .3s ease;
-
-    overflow:hidden;
+    background:#0b1d13;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.seat-box::before{
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(27,234,112,.12),
-            transparent 65%
-        );
-
-    opacity:0;
-
-    transition:.3s;
-}
-
-.seat:hover .seat-box{
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(27,234,112,.3);
+.seat-box:hover{
+    border-color:#21ed78;
 }
 
 .seat input:checked + .seat-box{
+    background:rgba(33,237,120,.1);
     border-color:#21ed78;
-
-    background:
-        rgba(27,234,112,.09);
-
-    box-shadow:
-        0 0 35px
-        rgba(27,234,112,.1),
-        inset 0 0 25px
-        rgba(27,234,112,.04);
-}
-
-.seat input:checked + .seat-box::before{
-    opacity:1;
+    box-shadow:0 0 20px rgba(33,237,120,.08);
 }
 
 .seat-title{
-    position:relative;
-
-    font-size:21px;
-
-    font-weight:1000;
+    font-size:20px;
+    font-weight:bold;
 }
 
 .seat-price{
-    position:relative;
-
     color:#21ed78;
-
-    font-size:30px;
-
-    font-weight:1000;
-
+    font-size:27px;
+    font-weight:bold;
     margin-top:7px;
 }
 
 .seat-box small{
-    position:relative;
-
     display:block;
-
+    color:#7d8c83;
     margin-top:5px;
-
-    color:#78877f;
-
-    font-size:11px;
 }
 
-
-/* =========================================================
-   TOTAL
-========================================================= */
-
+/* TOTAL */
 .total-box{
-    margin:24px 0;
-
-    padding:23px;
-
+    margin:22px 0;
+    padding:20px;
     text-align:center;
-
-    border-radius:19px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(27,234,112,.07),
-            rgba(255,255,255,.035)
-        );
-
-    border:
-        1px solid
-        rgba(27,234,112,.12);
+    border-radius:15px;
+    background:#0b1d13;
+    border:1px solid rgba(33,237,120,.12);
 }
 
 .total-label{
-    color:#87968e;
-
+    color:#85938b;
     font-size:11px;
-
-    letter-spacing:2px;
 }
 
 .total{
-    margin-top:6px;
-
     color:#21ed78;
-
-    font-size:40px;
-
-    font-weight:1000;
-
-    text-shadow:
-        0 0 25px
-        rgba(27,234,112,.2);
+    font-size:38px;
+    font-weight:bold;
+    margin-top:5px;
 }
 
-
-/* =========================================================
-   TICKET
-========================================================= */
-
+/* TICKET */
 .ticket{
     background:#f5f7f5;
-
-    color:#09130d;
-
-    border-radius:25px;
-
+    color:#101810;
+    border-radius:20px;
     overflow:hidden;
-
-    box-shadow:
-        0 35px 100px
-        rgba(0,0,0,.55);
-
-    animation:
-        ticketAppear
-        .7s
-        cubic-bezier(.2,.8,.2,1);
-}
-
-@keyframes ticketAppear{
-
-    from{
-        opacity:0;
-
-        transform:
-            translateY(30px)
-            rotateX(8deg)
-            scale(.96);
-    }
-
-    to{
-        opacity:1;
-
-        transform:
-            translateY(0)
-            rotateX(0)
-            scale(1);
-    }
 }
 
 .ticket-head{
-    padding:30px;
-
-    text-align:center;
-
+    background:linear-gradient(135deg,#06371e,#0c9c4b);
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            #042d19,
-            #0da850
-        );
-
-    position:relative;
-}
-
-.ticket-head::after{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    right:0;
-    bottom:-1px;
-
-    height:1px;
-
-    background:
-        rgba(255,255,255,.25);
+    text-align:center;
+    padding:25px;
 }
 
 .ticket-head h2{
     margin:0;
-
-    font-size:27px;
 }
 
 .ticket-head p{
     margin-top:7px;
-
     opacity:.8;
-
-    font-size:12px;
-
-    letter-spacing:2px;
 }
 
 .ticket-body{
-    padding:28px;
+    padding:22px;
 }
 
 .ticket-match{
     text-align:center;
-
-    padding-bottom:25px;
-
-    border-bottom:
-        1px dashed
-        #aab2ad;
+    padding-bottom:20px;
+    border-bottom:1px dashed #999;
 }
 
 .ticket-teams{
     display:flex;
-
-    align-items:center;
     justify-content:center;
-
-    gap:22px;
-
-    font-size:28px;
-
-    font-weight:1000;
+    align-items:center;
+    gap:20px;
+    font-size:26px;
+    font-weight:bold;
 }
 
 .ticket-vs{
-    color:#079544;
-
-    font-size:17px;
+    color:#078c45;
+    font-size:15px;
 }
 
 .ticket-competition{
-    color:#6d776f;
-
-    margin-top:8px;
-
+    color:#69736d;
     font-size:11px;
-
-    letter-spacing:1px;
+    margin-top:7px;
 }
 
 .ticket-info{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:13px;
-
-    margin-top:25px;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
 }
 
 .ticket-detail{
-    padding:15px;
-
-    border-radius:14px;
-
     background:#e9eeeb;
-
-    transition:.2s;
-}
-
-.ticket-detail:hover{
-    background:#e0e8e3;
+    padding:13px;
+    border-radius:11px;
 }
 
 .ticket-detail small{
     display:block;
-
     color:#68736c;
-
     margin-bottom:5px;
-
     font-size:10px;
-
-    letter-spacing:.5px;
 }
 
 .ticket-detail strong{
-    font-size:14px;
+    font-size:13px;
 }
 
 .user-data{
-    margin-top:22px;
-
-    padding-top:20px;
-
-    border-top:
-        1px dashed
-        #9ea9a2;
-}
-
-.user-data p{
-    margin:9px 0;
-
-    font-size:14px;
+    border-top:1px dashed #999;
+    margin-top:20px;
+    padding-top:18px;
+    font-size:13px;
+    line-height:2;
 }
 
 .total-ticket{
-    margin-top:22px;
-
-    padding:18px;
-
-    border-radius:15px;
-
     text-align:center;
-
     background:#e7f3eb;
+    padding:16px;
+    border-radius:12px;
+    margin-top:18px;
 }
 
 .total-ticket small{
     color:#68736c;
-
-    font-size:10px;
-
-    letter-spacing:1px;
 }
 
 .total-ticket strong{
     display:block;
-
     color:#078c45;
-
-    font-size:37px;
-
-    margin-top:4px;
+    font-size:34px;
+    margin-top:5px;
 }
 
 .qr-box{
     text-align:center;
-
-    margin-top:25px;
-
+    border-top:1px dashed #999;
+    margin-top:20px;
     padding-top:20px;
-
-    border-top:
-        1px dashed
-        #9ea9a2;
 }
 
 .qr-box img{
     width:180px;
     height:180px;
-
+    background:white;
     padding:8px;
-
-    background:#fff;
-
-    border-radius:13px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.1);
+    border-radius:10px;
 }
 
 .qr-box p{
-    margin-top:9px;
-
-    color:#5f6b63;
-
+    color:#68736c;
     font-size:10px;
+    margin-top:8px;
 }
 
 .ticket-code{
-    margin-top:12px;
-
     text-align:center;
-
-    font-weight:1000;
-
-    letter-spacing:3px;
-
+    margin-top:12px;
     color:#087d3e;
-
-    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
 }
 
 .ticket-footer{
-    padding:17px;
-
     text-align:center;
-
+    padding:15px;
     background:#e9eeeb;
-
-    color:#657068;
-
+    color:#68736c;
     font-size:10px;
-
     line-height:1.6;
 }
 
-
-/* =========================================================
-   SUCCESS
-========================================================= */
-
 .success{
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:8px;
-
     text-align:center;
-
     color:#21ed78;
-
-    font-weight:950;
-
-    margin-bottom:20px;
-
-    animation:
-        successPulse
-        2s
-        ease-in-out
-        infinite;
+    font-weight:bold;
+    margin-bottom:15px;
 }
 
-@keyframes successPulse{
+/* MOBILE */
+@media(max-width:650px){
 
-    0%,
-    100%{
-        opacity:.8;
-    }
-
-    50%{
-        opacity:1;
-    }
-}
-
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-.loading{
-    position:fixed;
-
-    inset:0;
-
-    z-index:9999;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:#020806;
-
-    transition:
-        opacity .6s ease,
-        visibility .6s ease;
-}
-
-.loading.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.loader{
-    width:65px;
-    height:65px;
-
-    border-radius:50%;
-
-    border:
-        3px solid
-        rgba(255,255,255,.08);
-
-    border-top-color:#21ed78;
-
-    animation:
-        spin
-        .8s
-        linear
-        infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:700px){
-
-    .container{
-        padding:12px;
+    .app{
+        padding:10px;
     }
 
     .page{
-        min-height:
-            calc(100vh - 24px);
+        min-height:calc(100vh - 20px);
     }
 
     .card{
-        padding:25px 17px;
-
-        border-radius:25px;
-    }
-
-    .logo{
-        width:120px;
-        height:120px;
+        padding:22px 15px;
+        border-radius:20px;
     }
 
     h1{
-        letter-spacing:-1px;
+        font-size:32px;
     }
 
-    .subtitle{
-        font-size:14px;
+    h2{
+        font-size:25px;
+    }
+
+    .logo{
+        width:105px;
+        height:105px;
     }
 
     .curva{
-        height:260px;
+        height:230px;
     }
 
     .teams{
@@ -1457,10 +524,784 @@ input[type="number"]{
     }
 
     .team{
-        width:130px;
-
-        padding:15px 5px;
+        width:120px;
     }
 
     .team img{
-        width:75
+        width:75px;
+        height:75px;
+    }
+
+    .team-name{
+        font-size:20px;
+    }
+
+    .vs{
+        font-size:20px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .seats{
+        grid-template-columns:1fr;
+    }
+
+    .ticket-info{
+        grid-template-columns:1fr;
+    }
+
+    .ticket-teams{
+        font-size:21px;
+    }
+}
+
+/* PRINT */
+@media print{
+
+    body{
+        background:white;
+    }
+
+    .page{
+        display:none!important;
+    }
+
+    #ticketPage{
+        display:flex!important;
+    }
+
+    .card{
+        padding:0;
+        box-shadow:none;
+        background:white;
+        border:0;
+    }
+
+    .no-print,
+    .success{
+        display:none!important;
+    }
+
+    .ticket{
+        box-shadow:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- HOME -->
+<section class="page active" id="homePage">
+
+<div class="card">
+
+<img
+class="logo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="RCA"
+onerror="this.style.display='none'">
+
+<h1>
+BIENVENUE
+<span class="green">RAJAWI</span>
+</h1>
+
+<p class="subtitle">
+Bienvenue sur la plateforme de réservation
+des billets du grand Derby de Casablanca.
+<br><br>
+<strong class="green">RCA × WAC</strong>
+</p>
+
+<button class="btn" onclick="showPage('aboutPage')">
+NEXT →
+</button>
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="page" id="aboutPage">
+
+<div class="card">
+
+<img
+class="logo"
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="RCA"
+onerror="this.style.display='none'">
+
+<h2>
+RAJA CLUB <span class="green">ATHLETIC</span>
+</h2>
+
+<p class="subtitle">
+Découvrez les informations du Derby de Casablanca
+et préparez votre réservation.
+</p>
+
+<img
+class="curva"
+src="IMG_0062.webp"
+alt="Curva"
+onerror="this.style.display='none'">
+
+<div class="notice">
+💚 Préparez-vous pour le grand Derby de Casablanca.
+</div>
+
+<button class="btn" onclick="showPage('derbyPage')">
+CONTINUER →
+</button>
+
+<button class="btn secondary" onclick="showPage('homePage')">
+← RETOUR
+</button>
+
+</div>
+</section>
+
+
+<!-- DERBY -->
+<section class="page" id="derbyPage">
+
+<div class="card">
+
+<div class="derby-title">
+DERBY DE CASABLANCA
+</div>
+
+<div class="teams">
+
+<div class="team">
+
+<img
+src="image_-_2026-09-29T192341.513-removebg-preview.png"
+alt="RCA"
+onerror="this.style.display='none'">
+
+<div class="team-name">
+RCA
+</div>
+
+<div class="team-sub">
+RAJA CASABLANCA
+</div>
+
+</div>
+
+<div class="vs">
+VS
+</div>
+
+<div class="team">
+
+<div style="
+height:100px;
+display:flex;
+align-items:center;
+justify-content:center;
+">
+
+<span style="
+font-size:45px;
+font-weight:bold;
+">
+WAC
+</span>
+
+</div>
+
+<div class="team-name">
+WAC
+</div>
+
+<div class="team-sub">
+WYDAD CASABLANCA
+</div>
+
+</div>
+
+</div>
+
+<h2>
+DERBY <span class="green">CASABLANCA</span>
+</h2>
+
+<p class="subtitle">
+Une grande rencontre entre RCA et WAC.
+Consultez les informations avant de réserver.
+</p>
+
+<div class="info-grid">
+
+<div class="info">
+<div class="info-icon">📅</div>
+<small>DATE</small>
+<strong>04/10/2026</strong>
+</div>
+
+<div class="info">
+<div class="info-icon">🕤</div>
+<small>HEURE</small>
+<strong>21:30</strong>
+</div>
+
+<div class="info">
+<div class="info-icon">🏟️</div>
+<small>STADE</small>
+<strong>Sir.alien Stadium</strong>
+</div>
+
+</div>
+
+<div class="notice">
+🔥 Choisissez votre catégorie et le nombre de billets.
+</div>
+
+<button class="btn" onclick="showPage('formPage')">
+GET TICKET 🎟️
+</button>
+
+<button class="btn secondary" onclick="showPage('aboutPage')">
+← RETOUR
+</button>
+
+</div>
+</section>
+
+
+<!-- FORM -->
+<section class="page" id="formPage">
+
+<div class="card">
+
+<h2>
+GET YOUR <span class="green">TICKET</span>
+</h2>
+
+<p class="subtitle">
+Entrez vos informations pour générer votre billet.
+</p>
+
+<label class="field">
+ROBLOX USERNAME
+</label>
+
+<input
+id="roblox"
+type="text"
+placeholder="Votre username Roblox">
+
+<label class="field">
+DISCORD USERNAME
+</label>
+
+<input
+id="discord"
+type="text"
+placeholder="Votre username Discord">
+
+<label class="field">
+CHOISISSEZ VOTRE PLACE
+</label>
+
+<div class="seats">
+
+<label class="seat">
+
+<input
+type="radio"
+name="seat"
+value="VIRAGE"
+data-price="5"
+onchange="updateTotal()">
+
+<div class="seat-box">
+
+<div class="seat-title">
+VIRAGE
+</div>
+
+<div class="seat-price">
+$5
+</div>
+
+<small>
+Prix par ticket
+</small>
+
+</div>
+
+</label>
+
+
+<label class="seat">
+
+<input
+type="radio"
+name="seat"
+value="VIP"
+data-price="100"
+onchange="updateTotal()">
+
+<div class="seat-box">
+
+<div class="seat-title">
+VIP
+</div>
+
+<div class="seat-price">
+$100
+</div>
+
+<small>
+Prix par ticket
+</small>
+
+</div>
+
+</label>
+
+</div>
+
+
+<label class="field">
+NOMBRE DE TICKETS
+</label>
+
+<input
+id="quantity"
+type="number"
+min="1"
+max="10"
+value="1"
+oninput="updateTotal()">
+
+<div class="total-box">
+
+<div class="total-label">
+PRIX TOTAL
+</div>
+
+<div class="total">
+$<span id="totalPreview">0</span>
+</div>
+
+</div>
+
+<button class="btn" onclick="generateTicket()">
+CONFIRMER 🎟️
+</button>
+
+<button class="btn secondary" onclick="showPage('derbyPage')">
+← RETOUR
+</button>
+
+</div>
+</section>
+
+
+<!-- TICKET -->
+<section class="page" id="ticketPage">
+
+<div class="card">
+
+<div class="success">
+✓ VOTRE BILLET A ÉTÉ GÉNÉRÉ
+</div>
+
+<div class="ticket">
+
+<div class="ticket-head">
+
+<h2>RCA TADAKIR</h2>
+
+<p>
+DERBY CASABLANCA
+</p>
+
+</div>
+
+<div class="ticket-body">
+
+<div class="ticket-match">
+
+<div class="ticket-teams">
+
+<span>RCA</span>
+
+<span class="ticket-vs">
+VS
+</span>
+
+<span>WAC</span>
+
+</div>
+
+<div class="ticket-competition">
+DERBY DE CASABLANCA
+</div>
+
+</div>
+
+
+<div class="ticket-info">
+
+<div class="ticket-detail">
+<small>DATE</small>
+<strong>04/10/2026</strong>
+</div>
+
+<div class="ticket-detail">
+<small>HEURE</small>
+<strong>21:30</strong>
+</div>
+
+<div class="ticket-detail">
+<small>STADE</small>
+<strong>Sir.alien Stadium</strong>
+</div>
+
+<div class="ticket-detail">
+<small>CATÉGORIE</small>
+<strong id="ticketSeat">-</strong>
+</div>
+
+<div class="ticket-detail">
+<small>NOMBRE</small>
+<strong id="ticketQuantity">-</strong>
+</div>
+
+<div class="ticket-detail">
+<small>PRIX UNITAIRE</small>
+<strong>
+$<span id="ticketUnitPrice">0</span>
+</strong>
+</div>
+
+</div>
+
+
+<div class="user-data">
+
+<p>
+<strong>ROBLOX :</strong>
+<span id="ticketRoblox">-</span>
+</p>
+
+<p>
+<strong>DISCORD :</strong>
+<span id="ticketDiscord">-</span>
+</p>
+
+</div>
+
+
+<div class="total-ticket">
+
+<small>
+TOTAL À PAYER
+</small>
+
+<strong>
+$<span id="ticketPrice">0</span>
+</strong>
+
+</div>
+
+
+<div class="qr-box">
+
+<img
+id="ticketQR"
+alt="QR Code">
+
+<p>
+SCANNEZ POUR OUVRIR LE SIR.ALIEN STADIUM
+</p>
+
+</div>
+
+
+<div class="ticket-code">
+RCA-WAC-04102026
+</div>
+
+</div>
+
+
+<div class="ticket-footer">
+
+Ce billet a été généré par RCA TADAKIR.<br>
+Scannez le QR Code pour accéder au Sir.alien Stadium.
+
+</div>
+
+</div>
+
+
+<div class="no-print">
+
+<button class="btn" onclick="window.print()">
+🖨️ IMPRIMER LE TICKET
+</button>
+
+<button class="btn secondary" onclick="showPage('formPage')">
+← MODIFIER LA RÉSERVATION
+</button>
+
+<button class="btn secondary" onclick="newReservation()">
+↻ NOUVELLE RÉSERVATION
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* ==============================
+   STADIUM LINK
+============================== */
+
+const stadiumURL =
+"https://www.roblox.com/games/71836037262520/AVL-Sir-Alien-Stadium";
+
+
+/* ==============================
+   CHANGE PAGE
+============================== */
+
+function showPage(id){
+
+    const pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page){
+        page.classList.remove("active");
+    });
+
+    const selected =
+        document.getElementById(id);
+
+    if(selected){
+        selected.classList.add("active");
+        window.scrollTo(0,0);
+    }
+}
+
+
+/* ==============================
+   TOTAL PRICE
+============================== */
+
+function updateTotal(){
+
+    const selected =
+        document.querySelector(
+            'input[name="seat"]:checked'
+        );
+
+    const quantity =
+        parseInt(
+            document.getElementById("quantity").value
+        );
+
+    const totalElement =
+        document.getElementById("totalPreview");
+
+    if(!selected){
+        totalElement.textContent = "0";
+        return;
+    }
+
+    if(isNaN(quantity) || quantity < 1){
+        totalElement.textContent = "0";
+        return;
+    }
+
+    if(quantity > 10){
+        document.getElementById("quantity").value = 10;
+    }
+
+    const price =
+        Number(selected.dataset.price);
+
+    const finalQuantity =
+        Math.min(quantity,10);
+
+    totalElement.textContent =
+        price * finalQuantity;
+}
+
+
+/* ==============================
+   GENERATE QR
+============================== */
+
+function generateQR(){
+
+    const qr =
+        document.getElementById("ticketQR");
+
+    qr.src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
+        +
+        encodeURIComponent(stadiumURL);
+}
+
+
+/* ==============================
+   GENERATE TICKET
+============================== */
+
+function generateTicket(){
+
+    const roblox =
+        document.getElementById("roblox").value.trim();
+
+    const discord =
+        document.getElementById("discord").value.trim();
+
+    const selected =
+        document.querySelector(
+            'input[name="seat"]:checked'
+        );
+
+    const quantity =
+        parseInt(
+            document.getElementById("quantity").value
+        );
+
+
+    if(!roblox){
+        alert("Veuillez entrer votre username Roblox.");
+        document.getElementById("roblox").focus();
+        return;
+    }
+
+
+    if(!discord){
+        alert("Veuillez entrer votre username Discord.");
+        document.getElementById("discord").focus();
+        return;
+    }
+
+
+    if(!selected){
+        alert("Veuillez choisir VIRAGE ou VIP.");
+        return;
+    }
+
+
+    if(
+        isNaN(quantity) ||
+        quantity < 1 ||
+        quantity > 10
+    ){
+        alert("Le nombre de tickets doit être entre 1 et 10.");
+        return;
+    }
+
+
+    const seat =
+        selected.value;
+
+    const unitPrice =
+        Number(selected.dataset.price);
+
+    const total =
+        unitPrice * quantity;
+
+
+    document.getElementById("ticketRoblox")
+        .textContent = roblox;
+
+    document.getElementById("ticketDiscord")
+        .textContent = discord;
+
+    document.getElementById("ticketSeat")
+        .textContent = seat;
+
+    document.getElementById("ticketQuantity")
+        .textContent = quantity;
+
+    document.getElementById("ticketUnitPrice")
+        .textContent = unitPrice;
+
+    document.getElementById("ticketPrice")
+        .textContent = total;
+
+
+    generateQR();
+
+    showPage("ticketPage");
+}
+
+
+/* ==============================
+   NEW RESERVATION
+============================== */
+
+function newReservation(){
+
+    document.getElementById("roblox").value = "";
+
+    document.getElementById("discord").value = "";
+
+    document.getElementById("quantity").value = 1;
+
+    document
+        .querySelectorAll('input[name="seat"]')
+        .forEach(function(input){
+            input.checked = false;
+        });
+
+    document.getElementById("totalPreview")
+        .textContent = "0";
+
+    showPage("homePage");
+}
+
+
+/* ==============================
+   ENTER KEY
+============================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key !== "Enter"){
+            return;
+        }
+
+        const active =
+            document.querySelector(".page.active");
+
+        if(
+            active &&
+            active.id === "formPage"
+        ){
+            generateTicket();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+   </html>
